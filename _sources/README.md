@@ -1,6 +1,6 @@
 # Khoa học dữ liệu trong Kinh tế và Kinh doanh
 
-**Các tác giả: [TS. Nguyễn Quang Huy](https://nct.neu.edu.vn/giang-vien/ts-nguyen-quang-huy), [TS. Nguyễn Trung Thành](), [PGS. TS. Trần Thị Bích](), [TS. Phạm Xuan Lâm](), [TS. Nguyễn Thị Bạch Tuyết](), [TS. Nguyễn Mạnh Thế]()    🚀**
+**Các tác giả: [TS. Nguyễn Quang Huy](https://nct.neu.edu.vn/giang-vien/ts-nguyen-quang-huy), [PGS.TS. Hà Minh Hoàng](), [TS. Nguyễn Trung Thành]() [PGS. TS. Trần Thị Bích](), [TS. Phạm Xuân Lâm](), [TS. Nguyễn Thị Bạch Tuyết](), [TS. Nguyễn Mạnh Thế]()    🚀**
 
 Khoa học dữ liệu (KHDL) là ngành khoa học kết hợp giữa toán học - xác suất - thống kê với khoa học máy tính và kiến thức chuyên môn trong một lĩnh vực cụ thể như kinh tế, tài chính, y học, giáo dục, thể thao, v.v. để khám phá những thông tin hữu ích và có giá trị nằm trong dữ liệu liên quan đến lĩnh vực chuyên môn đó. Những thông tin hữu ích này được sử dụng để hướng dẫn việc ra quyết định và lập kế hoạch chiến lược cho các cơ quan, tổ chức, doanh nghiệp và các cá nhân hoạt động trong lĩnh vực này.
 
