@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mô hình tuyến tính &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'practice-exercises/50_bai_tap_linear_softmax_models';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/practice-exercises/50_bai_tap_linear_softmax_models.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cây quyết định và tập hợp cây quyết định" href="50_bai_tap_cay_rung_boosting.html" />
+    <link rel="prev" title="Thực hành trực quan hóa dữ liệu" href="50_bai_tap_matplotlib_seaborn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter7-Import-data.html">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter10-visualization.html">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas_Exercise.html">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/main?urlpath=tree/practice-exercises/50_bai_tap_linear_softmax_models.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/blob/main/practice-exercises/50_bai_tap_linear_softmax_models.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2Fpractice-exercises/50_bai_tap_linear_softmax_models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/practice-exercises/50_bai_tap_linear_softmax_models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mô hình tuyến tính</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-1-linear-regression-boston-housing">Câu 1 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-2-linear-regression-boston-housing">Câu 2 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-3-linear-regression-boston-housing">Câu 3 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-4-linear-regression-boston-housing">Câu 4 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-5-linear-regression-boston-housing">Câu 5 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-6-linear-regression-boston-housing">Câu 6 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-7-linear-regression-boston-housing">Câu 7 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-8-linear-regression-boston-housing">Câu 8 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-9-linear-regression-boston-housing">Câu 9 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-10-linear-regression-boston-housing">Câu 10 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-11-linear-regression-boston-housing">Câu 11 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-12-linear-regression-boston-housing">Câu 12 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-13-linear-regression-boston-housing">Câu 13 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-14-linear-regression-boston-housing">Câu 14 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-15-linear-regression-boston-housing">Câu 15 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-16-linear-regression-boston-housing">Câu 16 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-17-linear-regression-boston-housing">Câu 17 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-18-linear-regression-boston-housing">Câu 18 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-19-linear-regression-boston-housing">Câu 19 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-20-linear-regression-boston-housing">Câu 20 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-21-logistic-regression-ung-thu-wisconsin">Câu 21 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-22-logistic-regression-ung-thu-wisconsin">Câu 22 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-23-logistic-regression-ung-thu-wisconsin">Câu 23 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-24-logistic-regression-ung-thu-wisconsin">Câu 24 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-25-logistic-regression-ung-thu-wisconsin">Câu 25 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-26-logistic-regression-ung-thu-wisconsin">Câu 26 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-27-logistic-regression-ung-thu-wisconsin">Câu 27 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-28-logistic-regression-ung-thu-wisconsin">Câu 28 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-29-logistic-regression-ung-thu-wisconsin">Câu 29 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-30-logistic-regression-ung-thu-wisconsin">Câu 30 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-31-logistic-regression-ung-thu-wisconsin">Câu 31 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-32-logistic-regression-ung-thu-wisconsin">Câu 32 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-33-logistic-regression-ung-thu-wisconsin">Câu 33 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-34-logistic-regression-ung-thu-wisconsin">Câu 34 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-35-logistic-regression-ung-thu-wisconsin">Câu 35 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-36-logistic-regression-ung-thu-wisconsin">Câu 36 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-37-logistic-regression-ung-thu-wisconsin">Câu 37 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-38-logistic-regression-ung-thu-wisconsin">Câu 38 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-39-logistic-regression-ung-thu-wisconsin">Câu 39 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-40-logistic-regression-ung-thu-wisconsin">Câu 40 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-41-softmax-multiclass-iris">Câu 41 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-42-softmax-multiclass-iris">Câu 42 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-43-softmax-multiclass-iris">Câu 43 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-44-softmax-multiclass-iris">Câu 44 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-45-softmax-multiclass-iris">Câu 45 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-46-softmax-multiclass-iris">Câu 46 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-47-softmax-multiclass-iris">Câu 47 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-48-softmax-multiclass-iris">Câu 48 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-49-softmax-multiclass-iris">Câu 49 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-50-softmax-multiclass-iris">Câu 50 - Softmax Multiclass - Iris</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mo-hinh-tuyen-tinh">
+<h1>Mô hình tuyến tính<a class="headerlink" href="#mo-hinh-tuyen-tinh" title="Link to this heading">#</a></h1>
+<section id="cau-1-linear-regression-boston-housing">
+<h2>Câu 1 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-1-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Tải dữ liệu Boston Housing từ sklearn và chuyển thành DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-2-linear-regression-boston-housing">
+<h2>Câu 2 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-2-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Chia dữ liệu thành tập huấn luyện và kiểm tra (80/20).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-3-linear-regression-boston-housing">
+<h2>Câu 3 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-3-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Huấn luyện mô hình hồi quy tuyến tính để dự đoán MEDV.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-4-linear-regression-boston-housing">
+<h2>Câu 4 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-4-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Hiển thị hệ số và intercept của mô hình tuyến tính.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-5-linear-regression-boston-housing">
+<h2>Câu 5 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-5-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Dự đoán giá nhà trên tập kiểm tra và tính MAE, MSE, RMSE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-6-linear-regression-boston-housing">
+<h2>Câu 6 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-6-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ scatter giữa giá nhà thực tế và dự đoán.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-7-linear-regression-boston-housing">
+<h2>Câu 7 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-7-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ residual plot (giá trị thực - giá trị dự đoán).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-8-linear-regression-boston-housing">
+<h2>Câu 8 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-8-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Tính R-squared của mô hình trên tập huấn luyện và kiểm tra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-9-linear-regression-boston-housing">
+<h2>Câu 9 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-9-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Chuẩn hóa dữ liệu đầu vào trước khi huấn luyện.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-10-linear-regression-boston-housing">
+<h2>Câu 10 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-10-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>So sánh hiệu suất mô hình trước và sau khi chuẩn hóa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-11-linear-regression-boston-housing">
+<h2>Câu 11 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-11-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Loại bỏ các biến có tương quan thấp với MEDV và huấn luyện lại mô hình.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-12-linear-regression-boston-housing">
+<h2>Câu 12 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-12-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Thêm tương tác giữa các biến (feature interaction) vào mô hình.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-13-linear-regression-boston-housing">
+<h2>Câu 13 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-13-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Sử dụng Ridge Regression và so sánh với Linear Regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-14-linear-regression-boston-housing">
+<h2>Câu 14 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-14-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Sử dụng Lasso Regression và so sánh kết quả với Ridge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-15-linear-regression-boston-housing">
+<h2>Câu 15 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-15-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Tìm alpha tốt nhất cho Ridge Regression bằng cross-validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-16-linear-regression-boston-housing">
+<h2>Câu 16 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-16-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Hiển thị biểu đồ so sánh hệ số mô hình Ridge với Lasso.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-17-linear-regression-boston-housing">
+<h2>Câu 17 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-17-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Vẽ heatmap hệ số tương quan giữa các đặc trưng đầu vào.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-18-linear-regression-boston-housing">
+<h2>Câu 18 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-18-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>So sánh mô hình hồi quy tuyến tính khi dùng toàn bộ biến và chỉ top 5 biến liên quan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-19-linear-regression-boston-housing">
+<h2>Câu 19 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-19-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Thử huấn luyện mô hình trên tập dữ liệu nhỏ hơn (50%) và so sánh kết quả.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-20-linear-regression-boston-housing">
+<h2>Câu 20 - Linear Regression - Boston Housing<a class="headerlink" href="#cau-20-linear-regression-boston-housing" title="Link to this heading">#</a></h2>
+<p>Tạo pipeline bao gồm chuẩn hóa + LinearRegression, và đánh giá mô hình.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-21-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 21 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-21-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Tải dữ liệu ung thư Wisconsin từ sklearn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-22-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 22 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-22-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Chuyển dữ liệu thành DataFrame và hiển thị info().</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-23-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 23 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-23-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Gán nhãn benign = 0, malignant = 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-24-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 24 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-24-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Chia dữ liệu thành tập huấn luyện và kiểm tra (80/20).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-25-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 25 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-25-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Huấn luyện mô hình LogisticRegression để phân loại.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-26-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 26 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-26-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Hiển thị các hệ số và intercept của mô hình.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-27-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 27 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-27-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Dự đoán nhãn trên tập kiểm tra và in ma trận nhầm lẫn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-28-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 28 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-28-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Tính accuracy, precision, recall và F1-score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-29-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 29 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-29-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ ROC và tính AUC.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-30-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 30 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-30-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Hiển thị xác suất dự đoán (predict_proba) cho 5 mẫu đầu tiên.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-31-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 31 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-31-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>So sánh hiệu suất mô hình trên tập huấn luyện và kiểm tra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-32-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 32 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-32-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Chuẩn hóa dữ liệu trước khi huấn luyện.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-33-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 33 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-33-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>So sánh logistic regression trước và sau khi chuẩn hóa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-34-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 34 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-34-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Hiển thị các đặc trưng ảnh hưởng nhiều nhất đến dự đoán.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-35-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 35 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-35-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Tạo biểu đồ bar hệ số (coef_) của logistic model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-36-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 36 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-36-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Sử dụng GridSearchCV để chọn tham số C tối ưu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-37-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 37 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-37-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Thử loại bỏ 5 đặc trưng có hệ số thấp nhất và huấn luyện lại.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-38-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 38 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-38-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Tạo pipeline gồm StandardScaler và LogisticRegression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-39-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 39 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-39-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Tạo mô hình logistic chỉ với 2 biến đầu tiên và vẽ đường phân chia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-40-logistic-regression-ung-thu-wisconsin">
+<h2>Câu 40 - Logistic Regression - Ung thư Wisconsin<a class="headerlink" href="#cau-40-logistic-regression-ung-thu-wisconsin" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ xác suất dự đoán theo một đặc trưng đầu vào.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-41-softmax-multiclass-iris">
+<h2>Câu 41 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-41-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Tải dữ liệu Iris từ sklearn, sử dụng đầy đủ cả 3 lớp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-42-softmax-multiclass-iris">
+<h2>Câu 42 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-42-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Chia dữ liệu thành tập huấn luyện và kiểm tra (80/20).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-43-softmax-multiclass-iris">
+<h2>Câu 43 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-43-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Chuẩn hóa dữ liệu đầu vào bằng StandardScaler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-44-softmax-multiclass-iris">
+<h2>Câu 44 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-44-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Huấn luyện mô hình LogisticRegression với <code class="docutils literal notranslate"><span class="pre">multi_class='multinomial'</span></code> và solver=’lbfgs’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-45-softmax-multiclass-iris">
+<h2>Câu 45 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-45-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Hiển thị xác suất dự đoán của 5 mẫu đầu tiên sử dụng hàm softmax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-46-softmax-multiclass-iris">
+<h2>Câu 46 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-46-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>In ra ma trận nhầm lẫn và classification report trên tập kiểm tra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-47-softmax-multiclass-iris">
+<h2>Câu 47 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-47-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ decision region cho 2 đặc trưng đầu tiên.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-48-softmax-multiclass-iris">
+<h2>Câu 48 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-48-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Hiển thị hệ số (coef_) của từng lớp trong mô hình softmax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-49-softmax-multiclass-iris">
+<h2>Câu 49 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-49-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Vẽ biểu đồ heatmap hệ số của 3 lớp với các đặc trưng.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cau-50-softmax-multiclass-iris">
+<h2>Câu 50 - Softmax Multiclass - Iris<a class="headerlink" href="#cau-50-softmax-multiclass-iris" title="Link to this heading">#</a></h2>
+<p>Tạo pipeline chuẩn hóa + mô hình softmax logistic và đánh giá bằng cross-validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Câu trả lời ở đây</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./practice-exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="50_bai_tap_matplotlib_seaborn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Thực hành trực quan hóa dữ liệu</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="50_bai_tap_cay_rung_boosting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cây quyết định và tập hợp cây quyết định</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-1-linear-regression-boston-housing">Câu 1 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-2-linear-regression-boston-housing">Câu 2 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-3-linear-regression-boston-housing">Câu 3 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-4-linear-regression-boston-housing">Câu 4 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-5-linear-regression-boston-housing">Câu 5 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-6-linear-regression-boston-housing">Câu 6 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-7-linear-regression-boston-housing">Câu 7 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-8-linear-regression-boston-housing">Câu 8 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-9-linear-regression-boston-housing">Câu 9 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-10-linear-regression-boston-housing">Câu 10 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-11-linear-regression-boston-housing">Câu 11 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-12-linear-regression-boston-housing">Câu 12 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-13-linear-regression-boston-housing">Câu 13 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-14-linear-regression-boston-housing">Câu 14 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-15-linear-regression-boston-housing">Câu 15 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-16-linear-regression-boston-housing">Câu 16 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-17-linear-regression-boston-housing">Câu 17 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-18-linear-regression-boston-housing">Câu 18 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-19-linear-regression-boston-housing">Câu 19 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-20-linear-regression-boston-housing">Câu 20 - Linear Regression - Boston Housing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-21-logistic-regression-ung-thu-wisconsin">Câu 21 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-22-logistic-regression-ung-thu-wisconsin">Câu 22 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-23-logistic-regression-ung-thu-wisconsin">Câu 23 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-24-logistic-regression-ung-thu-wisconsin">Câu 24 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-25-logistic-regression-ung-thu-wisconsin">Câu 25 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-26-logistic-regression-ung-thu-wisconsin">Câu 26 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-27-logistic-regression-ung-thu-wisconsin">Câu 27 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-28-logistic-regression-ung-thu-wisconsin">Câu 28 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-29-logistic-regression-ung-thu-wisconsin">Câu 29 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-30-logistic-regression-ung-thu-wisconsin">Câu 30 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-31-logistic-regression-ung-thu-wisconsin">Câu 31 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-32-logistic-regression-ung-thu-wisconsin">Câu 32 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-33-logistic-regression-ung-thu-wisconsin">Câu 33 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-34-logistic-regression-ung-thu-wisconsin">Câu 34 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-35-logistic-regression-ung-thu-wisconsin">Câu 35 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-36-logistic-regression-ung-thu-wisconsin">Câu 36 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-37-logistic-regression-ung-thu-wisconsin">Câu 37 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-38-logistic-regression-ung-thu-wisconsin">Câu 38 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-39-logistic-regression-ung-thu-wisconsin">Câu 39 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-40-logistic-regression-ung-thu-wisconsin">Câu 40 - Logistic Regression - Ung thư Wisconsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-41-softmax-multiclass-iris">Câu 41 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-42-softmax-multiclass-iris">Câu 42 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-43-softmax-multiclass-iris">Câu 43 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-44-softmax-multiclass-iris">Câu 44 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-45-softmax-multiclass-iris">Câu 45 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-46-softmax-multiclass-iris">Câu 46 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-47-softmax-multiclass-iris">Câu 47 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-48-softmax-multiclass-iris">Câu 48 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-49-softmax-multiclass-iris">Câu 49 - Softmax Multiclass - Iris</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-50-softmax-multiclass-iris">Câu 50 - Softmax Multiclass - Iris</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

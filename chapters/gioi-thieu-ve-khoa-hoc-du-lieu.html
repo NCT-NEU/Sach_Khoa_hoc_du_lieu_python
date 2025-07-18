@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. Các khái niệm cơ bản trong khoa học dữ liệu &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/gioi-thieu-ve-khoa-hoc-du-lieu';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Nguyên lý phân tích dữ liệu" href="nguyen-ly-phan-tich-du-lieu.html" />
+    <link rel="prev" title="Khoa học dữ liệu trong Kinh tế và Kinh doanh" href="../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7-Import-data.html">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter10-visualization.html">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/Pandas_Exercise.html">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_linear_softmax_models.html">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/main?urlpath=tree/chapters/gioi-thieu-ve-khoa-hoc-du-lieu.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/blob/main/chapters/gioi-thieu-ve-khoa-hoc-du-lieu.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2Fchapters/gioi-thieu-ve-khoa-hoc-du-lieu.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/gioi-thieu-ve-khoa-hoc-du-lieu.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Các khái niệm cơ bản trong khoa học dữ liệu</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-chung">1.1. Giới thiệu chung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khai-niem-ve-khoa-hoc-du-lieu">1.1.1. Khái niệm về Khoa học dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh">1.1.2. Khoa học dữ liệu trong Kinh tế và Kinh doanh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-phat-trien-cua-he-sinh-thai-du-lieu-hien-dai">1.1.3. Sự phát triển của hệ sinh thái dữ liệu hiện đại</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phan-tich-du-lieu-hay-khoa-hoc-du-lieu">1.1.4. Phân tích dữ liệu hay khoa học dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#du-lieu-la-gi">1.2. Dữ liệu là gì ?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phan-loai-du-lieu">1.2.1. Phân loại dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dinh-dang-tep-chua-du-lieu">1.2.2. Định dạng tệp chứa dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nguon-du-lieu">1.2.3. Nguồn dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ngon-ngu-may-tinh-cho-chuyen-gia-du-lieu">1.2.4. Ngôn ngữ máy tính cho chuyên gia dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kho-luu-tru-du-lieu">1.3. Kho lưu trữ dữ liệu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-so-du-lieu-quan-he">1.3.1. Cơ sở dữ liệu quan hệ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-so-du-lieu-phi-quan-he">1.3.2. Cơ sở dữ liệu phi quan hệ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mart-data-lake-quy-trinh-etl-va-data-pipelines">1.3.3. Data mart, data lake, quy trình ETL và data pipelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nen-tang-du-lieu-lon">1.3.4. Nền tảng dữ liệu lớn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-vi-tri-cong-viec-trong-khoa-hoc-du-lieu">1.4. Các vị trí công việc trong khoa học dữ liệu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chuyen-gia-phan-tich-du-lieu">1.4.1. Chuyên gia phân tích dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ky-su-du-lieu">1.4.2. Kỹ sư dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chuyen-gia-du-lieu">1.4.3. Chuyên gia dữ liệu</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="" src="../_images/banner.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="cac-khai-niem-co-ban-trong-khoa-hoc-du-lieu">
+<h1><span class="section-number">1. </span>Các khái niệm cơ bản trong khoa học dữ liệu<a class="headerlink" href="#cac-khai-niem-co-ban-trong-khoa-hoc-du-lieu" title="Link to this heading">#</a></h1>
+<hr><p>Chương sách này sẽ giới thiệu một cách hệ thống các khái niệm nền tảng trong khoa học dữ liệu.
+Nội dung chương bắt đầu từ xác lập định nghĩa dữ liệu trong các bối cảnh khác nhau như dữ liệu định lượng, dữ liệu định tính cho đến dữ liệu có cấu trúc, dữ liệu phi cấu trúc.
+Tiếp theo, chương trình bày tổng quan về các nền tảng công nghệ đóng vai trò cốt lõi trong việc thu thập, lưu trữ, xử lý và phân tích dữ liệu, bao gồm hệ quản trị cơ sở dữ liệu, công nghệ lưu trữ phân tán, điện toán đám mây và các ngôn ngữ lập trình phổ biến trong lĩnh vực này.</p>
+<p>Phần tiếp theo của chương sẽ làm rõ hệ sinh thái nghề nghiệp trong khoa học dữ liệu – một lĩnh vực có tính liên ngành cao và đòi hỏi sự cộng tác của nhiều vai trò chuyên biệt.
+Các vai trò như nhà phân tích dữ liệu (Data Analyst), kỹ sư dữ liệu (Data Engineer), nhà khoa học dữ liệu (Data Scientist), …, sẽ được giới thiệu và phân biệt rõ ràng về chức năng, kỹ năng cốt lõi cũng như vị trí trong quy trình phân tích dữ liệu toàn diện.</p>
+<section id="gioi-thieu-chung">
+<h2><span class="section-number">1.1. </span>Giới thiệu chung<a class="headerlink" href="#gioi-thieu-chung" title="Link to this heading">#</a></h2>
+<hr><section id="khai-niem-ve-khoa-hoc-du-lieu">
+<h3><span class="section-number">1.1.1. </span>Khái niệm về Khoa học dữ liệu<a class="headerlink" href="#khai-niem-ve-khoa-hoc-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Khoa học dữ liệu (Data Science) là một lĩnh vực liên ngành, kết hợp chặt chẽ giữa ba trụ cột chính: toán học và thống kê, khoa học máy tính, và kiến thức chuyên sâu về lĩnh vực ứng dụng (domain knowledge).
+Sự giao thoa giữa ba thành phần này tạo nên nền tảng lý thuyết và thực tiễn vững chắc để khai thác giá trị từ dữ liệu.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/intro1.png"><img alt="../_images/intro1.png" src="../_images/intro1.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Khoa học dữ liệu là kết hợp giữa Toán - thống kê, Khoa học máy tính, và Kiến thức chuyên môn</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Một quy trình ứng dụng Khoa học dữ liệu để giải quyết một vấn đề trong các tổ chức thường bao gồm các bước như sau</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/intro2.png"><img alt="../_images/intro2.png" src="../_images/intro2.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Các bước trong một quy trình ứng dụng Khoa học dữ liệu để giải quyết vấn đề</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Nhập liệu</strong> là quá trình tìm kiếm và thu thập dữ liệu từ các nguồn khác nhau nhằm phục vụ cho mục đích ra quyết định.
+Có những dự án làm việc trực tiếp trên dữ liệu có sẵn và đã được thiết kế sẵn sàng cho mục tiêu phân tích, nhưng cũng có những dự án mà quá trình nhập liệu lại chiếm phần lớn thời gian và quyết định sự thành công hay thất bại của dự án.</p></li>
+<li><p><strong>Sắp xếp</strong> hay tổ chức dữ liệu, hay còn được gọi là tiền xử lý dữ liệu, là các bước biến dữ liệu từ dạng thô thành dữ liệu theo đúng như định dạng mong muốn.</p></li>
+<li><p><strong>Biến đổi</strong> dữ liệu là quá trình tính toán trên các biến hoặc các quan sát của dữ liệu để dữ liệu có thể đưa vào các công cụ trực quan hoặc các mô hình phân tích.</p></li>
+<li><p><strong>Trực quan</strong> dữ liệu là là quá trình biến dữ liệu dạng số, bảng biểu hoặc văn bản thành các biểu diễn hình ảnh như biểu đồ, đồ thị, bản đồ, sơ đồ… nhằm giúp người xem hiểu, phân tích và rút ra thông tin một cách dễ dàng và trực quan hơn.</p></li>
+<li><p><strong>Xây dựng mô hình</strong> là quá trình tính toán và đánh giá mối liên hệ giữa các biến trong dữ liệu đến các biến mục tiêu, là đầu ra của toàn bộ quá trình.
+Mô hình thường được xây dựng với một trong hai mục đích: xem xét sự tác động của một biến giải thích đến các biến mục tiêu, hoặc dự đoán giá trị của các biến mục tiêu dựa trên các giá trị sẵn có của biến giải thích.</p></li>
+</ul>
+<p>Mô hình trên dữ liệu được xây dựng dựa trên những nguyên lý của toán học và xác suất thống kê.
+Dữ liệu được sử dụng để xây dựng mô hình có thể là các dữ liệu nhỏ với một vài cột (biến) và vài chục dòng (quan sát), nhưng cũng có thể là các dữ liệu lớn với hàng nghìn cột và hàng triệu quan sát.
+Dữ liệu thậm chí không có dạng bảng biểu như chúng ta gặp hàng ngày mà có thể là các hình ảnh, các văn bản, giọng nói, dạng đồ thị,…
+Để xử lý các bộ dữ liệu phức tạp, có kích thước khổng lồ, hay các dữ liệu không có cấu trúc bảng thông thường, người xử lý dữ liệu cần có kiến thức về lập trình và khoa học máy tính để thực hiện các phép tính toán dữ liệu trên máy tính điện tử.</p>
+<p>Những ứng dụng của KHDL có thể thuộc về bất kỳ lĩnh vực nào như kinh doanh, y học, vật lý, thiên văn, quản lý nhà nước, chính sách công, v.v.
+nên đòi hỏi người xây dựng mô hình cũng cần có kiến thức chuyên môn trong lĩnh vực tương ứng để không bị sai định hướng trong quá trình làm việc với dữ liệu.</p>
+</section>
+<section id="khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh">
+<h3><span class="section-number">1.1.2. </span>Khoa học dữ liệu trong Kinh tế và Kinh doanh<a class="headerlink" href="#khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh" title="Link to this heading">#</a></h3>
+<hr><p><strong>Khoa học dữ liệu trong kinh tế và kinh doanh</strong> có những đặc thù khác biệt so với khoa học dữ liệu trong các lĩnh vực như kỹ thuật, y sinh học, hay khoa học tự nhiên.
+Sự khác biệt này xuất phát từ bản chất của dữ liệu, mục tiêu phân tích, và bối cảnh ra quyết định.</p>
+<ul class="simple">
+<li><p>Trước hết, trong các ứng dụng kinh tế và kinh doanh, dữ liệu thường có nguồn gốc hành vi của con người, phản ánh các quá trình ra quyết định của con người như tiêu dùng, đầu tư, định giá, hoặc quản trị rủi ro.
+Dữ liệu trong lĩnh vực này thường không độc lập mà chịu ảnh hưởng của kỳ vọng, thông tin bất cân xứng và các yếu tố kinh tế vĩ mô, điều này đòi hỏi cách tiếp cận khác biệt so với các lĩnh vực dữ liệu vật lý thuần túy.</p></li>
+<li><p>Thứ hai, các mô hình được sử dụng trong kinh tế và kinh doanh thường cần giải thích được về mặt ý nghĩa kinh tế học hoặc ý nghĩa trong quản trị doanh nghiệp, nhằm phục vụ quá trình ra quyết định của con người hoặc tổ chức.
+Do đó, khoa học dữ liệu trong lĩnh vực này không chỉ tập trung vào độ chính xác dự đoán, mà còn phải đảm bảo tính minh bạch, khả năng giải thích nhân quả, và sự phù hợp với lý thuyết nền tảng.</p></li>
+<li><p>Cuối cùng, mục tiêu của khoa học dữ liệu trong kinh tế – kinh doanh thường liên quan đến tối ưu hóa lợi nhuận, hiệu quả vận hành, hoặc ra quyết định chiến lược, chứ không chỉ dừng lại ở mô hình hóa hoặc phát hiện các giá trị của dữ liệu.
+Điều này khiến khoa học dữ liệu trong lĩnh vực này thường kết hợp chặt chẽ với các mô hình kinh tế lượng, tài chính định lượng, và các công cụ ra quyết định định lượng khác.</p></li>
+</ul>
+</section>
+<section id="su-phat-trien-cua-he-sinh-thai-du-lieu-hien-dai">
+<h3><span class="section-number">1.1.3. </span>Sự phát triển của hệ sinh thái dữ liệu hiện đại<a class="headerlink" href="#su-phat-trien-cua-he-sinh-thai-du-lieu-hien-dai" title="Link to this heading">#</a></h3>
+<hr><p>Sự phát triển không ngừng của tốc độ xử lý dữ liệu, băng thông mạng, cùng với sự xuất hiện liên tục của các công cụ tạo lập và chia sẻ dữ liệu đã tạo ra một chu trình tăng trưởng dữ liệu liên tục và khép kín.
+Trong bối cảnh đó, hệ sinh thái dữ liệu hiện đại được cấu thành từ mạng lưới phức hợp gồm các nguồn dữ liệu đa dạng, công cụ phân tích chuyên biệt, các hạ tầng công nghệ có khả năng lưu trữ, xử lý và phân phối dữ liệu.</p>
+<p>Dữ liệu ngày nay tồn tại dưới nhiều định dạng khác nhau, từ văn bản, hình ảnh, video, dữ liệu cảm biến, tương tác người dùng, đến dòng sự kiện theo thời gian thực.
+Việc tích hợp và trích xuất dữ liệu từ các nguồn dữ liệu đa dạng thường là bước đầu tiên trong quy trình phân tích dữ liệu.
+Tiếp theo, dữ liệu cần được làm sạch, chuẩn hóa và tối ưu hóa để phù hợp với các quy chuẩn nội bộ. Trong nhiều trường hợp, dữ liệu được sử dụng cần phải tuân theo các quy định pháp lý, đặc biệt trong trường hợp dữ liệu cá nhân hoặc dữ liệu nhạy cảm.
+Sau cùng, các ứng dụng, các chuyên viên phân tích, các chuyên gia xây dựng mô hình sẽ truy xuất dữ liệu từ các cơ sở dữ liệu để phục vụ các mục tiêu nghiệp vụ cụ thể.</p>
+<p>Trong hệ sinh thái này, một số công nghệ đang định hình xu thế mới bao gồm: điện toán đám mây, các mô hình học máy, và các nền tảng phân tích dữ liệu lớn (big data).
+Nhờ có nền tảng đám mây, các tổ chức ngày nay có thể dễ dàng tiếp cận với khả năng lưu trữ gần như vô hạn, tính toán hiệu năng cao, và bộ công cụ học máy hiện đại.
+Các nhà khoa học dữ liệu có thể huấn luyện mô hình dự đoán trên khối dữ liệu lịch sử khổng lồ, vượt qua giới hạn của các công cụ phân tích truyền thống, để tạo ra tri thức mới và tăng cường khả năng ra quyết định dựa trên dữ liệu.</p>
+<p>Việc khai thác hiệu quả giá trị từ dữ liệu đòi hỏi một hệ sinh thái nhân lực đa dạng với nhiều vai trò chuyên biệt:</p>
+<ul class="simple">
+<li><p>Kỹ sư dữ liệu (data engineer) là người xây dựng và duy trì kiến trúc dữ liệu.
+Họ đảm nhiệm việc trích xuất, tích hợp, và tổ chức dữ liệu từ nhiều nguồn, đảm bảo dữ liệu sẵn sàng cho các ứng dụng và phân tích.</p></li>
+<li><p>Chuyên viên phân tích dữ liệu (data analyst) là người diễn giải dữ liệu thành thông tin hữu ích.
+Họ làm sạch, trực quan hóa dữ liệu, áp dụng các phương pháp thống kê để khám phá mối quan hệ và xu hướng, từ đó hỗ trợ ra quyết định.</p></li>
+<li><p>Nhà khoa học dữ liệu (data scientist) là người xây dựng các mô hình dự đoán dựa trên học máy hoặc học sâu.
+Họ kết hợp kiến thức về toán, thống kê, lập trình và kiến thức chuyên ngành để đưa ra các giải pháp phân tích tiên tiến.</p></li>
+<li><p>Chuyên viên phân tích nghiệp vụ (business analyst) sử dụng đầu ra từ các vai trò trên để đánh giá tác động đến tổ chức, đưa ra khuyến nghị chiến lược hoặc cải thiện hiệu quả hoạt động, tập trung vào cả yếu tố nội tại lẫn ảnh hưởng từ môi trường bên ngoài.</p></li>
+</ul>
+<p>Tóm lại, kỹ sư dữ liệu tạo ra nền tảng dữ liệu có thể sử dụng được, nhà phân tích khai thác dữ liệu để rút ra tri thức, nhà khoa học dữ liệu dự đoán tương lai dựa vào quá khứ, và các nhà phân tích nghiệp vụ sử dụng những tri thức này để ra quyết định có giá trị thực tiễn.
+Trong thực tế, sự dịch chuyển giữa các vai trò trong hệ sinh thái dữ liệu là phổ biến và được thúc đẩy bởi quá trình tích lũy kỹ năng liên ngành. Vai trò cụ thể của các nhân lực trong lĩnh vực khoa học dữ liệu sẽ được thảo luận trong phần sau của chương.</p>
+</section>
+<section id="phan-tich-du-lieu-hay-khoa-hoc-du-lieu">
+<h3><span class="section-number">1.1.4. </span>Phân tích dữ liệu hay khoa học dữ liệu<a class="headerlink" href="#phan-tich-du-lieu-hay-khoa-hoc-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p><strong>Khoa học dữ liệu</strong> là một lĩnh vực liên ngành rộng lớn không chỉ bao gồm phân tích mà còn liên quan đến xây dựng mô hình dự đoán, phát triển thuật toán và tối ưu hóa, tự động hóa quy trình ra quyết định dựa trên dữ liệu.
+<strong>Phân tích dữ liệu</strong> là một thành phần thiết yếu trong khoa học dữ liệu, nhưng không bao gồm các kỹ thuật xây dựng mô hình phức tạp, tự động hóa mô hình, ứng dụng trí tuệ nhân tạo, và khai thác dữ liệu ở quy mô lớn.</p>
+<p>Mục tiêu cốt lõi của phân tích dữ liệu là phát hiện các giá trị trong dữ liệu, các mối liên hệ giữa các biến trong dữ liệu, từ đó hình thành các hiểu biết và định hướng hành động trong tương lai.
+Việc áp dụng phân tích dữ liệu không chỉ giúp các tổ chức hiểu rõ hơn về hiệu suất trong quá khứ mà còn cung cấp cơ sở để đánh giá, lựa chọn và tối ưu hóa các chiến lược kinh doanh.</p>
+<p>Có bốn hình thức phân tích dữ liệu chính:</p>
+<ul class="simple">
+<li><p><strong>Phân tích mô tả</strong> (descriptive analytics): tóm lược và trình bày các sự kiện đã xảy ra, thường được sử dụng để phản ánh các chỉ số hiệu quả trong quá khứ.</p></li>
+<li><p><strong>Phân tích chẩn đoán</strong> (diagnostic analytics): làm rõ nguyên nhân đằng sau các hiện tượng được phát hiện ở bước mô tả, thông qua truy vết và phân tích các yếu tố ảnh hưởng.</p></li>
+<li><p><strong>Phân tích dự đoán</strong> (predictive analytics): sử dụng dữ liệu quá khứ và mô hình thống kê để dự báo xu hướng hoặc kết quả tiềm năng trong tương lai, với bản chất mang tính xác suất.</p></li>
+<li><p><strong>Phân tích đề xuất</strong> (prescriptive analytics): gợi ý hành động tối ưu dựa trên phân tích các kết quả khả dĩ và xác suất xảy ra của chúng, thường ứng dụng trong các hệ thống ra quyết định tự động.</p></li>
+</ul>
+<p>Quy trình phân tích dữ liệu bao thường gồm các bước: xác định vấn đề và mục tiêu phân tích; xác lập tiêu chí đo lường; thu thập và làm sạch dữ liệu; phân tích và khai phá dữ liệu; diễn giải kết quả; và trình bày phát hiện một cách hiệu quả, thường thông qua báo cáo, biểu đồ, dashboard hoặc trình bày tương tác.</p>
+<p>Hay khái niệm có thể gây nhầm lẫn với bạn đọc là <strong>data analysis</strong> và <strong>data analytics</strong>.
+Thực tế thì</p>
+<ul class="simple">
+<li><p><strong>Analysis</strong>, hay phân tích nói chung, được hiểu là sự kiểm tra một cách chi tiết cấu trúc của một đối tượng – có thể không liên quan đến dữ liệu định lượng, ví dụ như phân tích kinh doanh hay phân tích tâm lý.</p></li>
+<li><p><strong>Analytics</strong>, hay phân tích dựa trên dữ liệu, hàm ý việc kiểm tra có áp dụng các kỹ thuật tính toán hoặc thống kê có hệ thống lên dữ liệu số nhằm suy luận và ra quyết định.</p></li>
+</ul>
+<p>Tuy nhiên, trong nhiều bối cảnh thực tiễn và cả trong khuôn khổ cuốn sách này, hai thuật ngữ vẫn được dùng hoán đổi, đặc biệt khi đề cập đến các kỹ thuật xử lý dữ liệu nhằm hỗ trợ ra quyết định.</p>
+</section>
+</section>
+<section id="du-lieu-la-gi">
+<h2><span class="section-number">1.2. </span>Dữ liệu là gì ?<a class="headerlink" href="#du-lieu-la-gi" title="Link to this heading">#</a></h2>
+<hr><p>Dữ liệu là thông tin chưa được xử lý, tồn tại ở dạng thô và cần được tổ chức lại để trở nên có ý nghĩa.
+Nói cách khác, dữ liệu là tập hợp của các sự kiện, quan sát, nhận thức, con số, ký tự, biểu tượng hoặc hình ảnh, tất cả đều có thể được giải thích để rút ra thông tin.</p>
+<section id="phan-loai-du-lieu">
+<h3><span class="section-number">1.2.1. </span>Phân loại dữ liệu<a class="headerlink" href="#phan-loai-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Một trong những cách phổ biến để phân loại dữ liệu là dựa trên cấu trúc.
+Theo tiêu chí này, dữ liệu được chia thành ba loại chính: dữ liệu có cấu trúc (structured), dữ liệu kiểu bán cấu trúc (semi-structured), dữ liệu phi cấu trúc (unstructured).</p>
+<p><strong>Dữ liệu có cấu trúc</strong> là loại dữ liệu có định dạng rõ ràng, tuân theo một mô hình dữ liệu được xác định trước và thường được lưu trữ trong các hệ quản trị cơ sở dữ liệu dạng quan hệ (relational databases).
+Dữ liệu này có thể được biểu diễn dưới dạng bảng với các hàng và cột, cho phép xử lý bằng các công cụ và kỹ thuật phân tích dữ liệu truyền thống.</p>
+<p>Các nguồn phổ biến lưu trữ và cung cấp dữ liệu có cấu trúc bao gồm:</p>
+<ul class="simple">
+<li><p>Cơ sở dữ liệu quan hệ (SQL Databases)</p></li>
+<li><p>Bảng tính điện tử như Excel hoặc Google Sheets</p></li>
+</ul>
+<p><strong>Dữ liệu bán cấu trúc</strong> là loại dữ liệu có một số đặc điểm tổ chức, nhưng không tuân theo một lược đồ dữ liệu cố định như dữ liệu có cấu trúc.
+Dữ liệu bán cấu trúc không thể biểu diễn một cách chặt chẽ bằng hàng và cột trong cơ sở dữ liệu.
+Thay vào đó, nó chứa các thẻ hoặc thuộc tính dùng để nhóm thông tin và sắp xếp theo cấu trúc phân cấp.</p>
+<p>Một số nguồn dữ liệu bán cấu trúc điển hình:</p>
+<ul class="simple">
+<li><p>Email</p></li>
+<li><p>Tài liệu XML hoặc các ngôn ngữ đánh dấu khác</p></li>
+</ul>
+<p>Các định dạng như XML và JSON là phương tiện phổ biến để lưu trữ và trao đổi dữ liệu bán cấu trúc nhờ khả năng định nghĩa các thẻ và thuộc tính theo yêu cầu người dùng.</p>
+<p><strong>Dữ liệu phi cấu trúc</strong> là loại dữ liệu không có định dạng cụ thể hoặc không tuân theo bất kỳ quy tắc cú pháp nào rõ ràng.
+Do đó, loại dữ liệu này không thể lưu trữ hiệu quả trong cơ sở dữ liệu quan hệ truyền thống.
+Tuy nhiên, dữ liệu phi cấu trúc lại phong phú về mặt nội dung và có ứng dụng rộng rãi trong các bài toán phân tích và trí tuệ kinh doanh hiện đại.</p>
+<p>Các nguồn dữ liệu phi cấu trúc thường gặp bao gồm:</p>
+<ul class="simple">
+<li><p>Trang web</p></li>
+<li><p>Dữ liệu từ mạng xã hội</p></li>
+<li><p>Hình ảnh (JPEG, PNG, GIF,…)</p></li>
+<li><p>Tệp âm thanh, video</p></li>
+<li><p>Văn bản (PDF, Word, PowerPoint)</p></li>
+</ul>
+<p>Loại dữ liệu này thường được lưu trữ dưới dạng tệp văn bản, tài liệu, hoặc trong các cơ sở dữ liệu NoSQL – nơi cung cấp công cụ phân tích phù hợp với tính chất không có cấu trúc của dữ liệu.</p>
+</section>
+<section id="dinh-dang-tep-chua-du-lieu">
+<h3><span class="section-number">1.2.2. </span>Định dạng tệp chứa dữ liệu<a class="headerlink" href="#dinh-dang-tep-chua-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Trong môi trường làm việc với dữ liệu, việc nắm bắt các định dạng tệp và cấu trúc dữ liệu là yếu tố thiết yếu nhằm bảo đảm hiệu quả trong lưu trữ, truy xuất và phân tích thông tin.
+Các định dạng tệp phổ biến được sử dụng bao gồm: tệp dữ liệu văn bản phân tách (delimited text), bảng tính Microsoft Excel, ngôn ngữ đánh dấu mở rộng (XML), định dạng tài liệu di động (PDF), và JavaScript Object Notation (JSON).</p>
+<ul class="simple">
+<li><p><strong>Tệp văn bản phân tách</strong> lưu trữ dữ liệu dưới dạng văn bản thuần, trong đó mỗi dòng đại diện cho một bản ghi, và các giá trị trong dòng được phân tách bởi một ký tự đặc biệt gọi là dấu phân tách.
+Các dấu phân tách phổ biến bao gồm dấu phẩy (,), tab, dấu hai chấm (:), thanh dọc (|), và dấu cách (space).
+Các định dạng tệp CSV (Comma-Separated Values) và TSV (Tab-Separated Values) là những ví dụ điển hình.
+Tệp CSV sử dụng dấu phẩy làm dấu phân tách, trong khi TSV sử dụng ký tự tab.
+Tệp phân tách thường có dòng đầu tiên là tiêu đề của các cột và có thể xử lý dễ dàng bằng nhiều phần mềm phân tích dữ liệu.</p></li>
+<li><p><strong>Bảng tính Microsoft Excel</strong> là định dạng bảng tính được phát triển bởi Microsoft.
+Tệp dữ liệu thường gồm nhiều trang tính (worksheet), mỗi trang có cấu trúc hàng (row) và cột (column), trong đó ô dữ liệu (cell) là đơn vị cơ bản.
+Bảng tính hỗ trợ nhiều chức năng tính toán, định dạng và bảo mật dữ liệu, đồng thời có khả năng tương thích cao với các phần mềm phân tích khác.</p></li>
+<li><p><strong>Ngôn ngữ đánh dấu mở rộng XML</strong> là một ngôn ngữ đánh dấu có thể đọc được bởi cả con người và máy tính, XML cho phép mô tả dữ liệu theo cấu trúc phân cấp.
+XML không sử dụng các thẻ (tag) được định nghĩa trước mà cho phép người dùng tự định nghĩa.
+XML được sử dụng rộng rãi trong truyền tải dữ liệu qua Internet và có tính độc lập cao với nền tảng phần cứng hoặc ngôn ngữ lập trình.</p></li>
+<li><p><strong>Định dạng tài liệu di động</strong> được phát triển bởi Adobe, còn được gọi là các file <em>.pdf</em>, là định dạng tiêu chuẩn để trình bày văn bản và hình ảnh một cách thống nhất, bất kể phần mềm, phần cứng hay hệ điều hành sử dụng.
+PDF thường được dùng trong các tài liệu pháp lý, tài chính và biểu mẫu cần điền thông tin.</p></li>
+<li><p><strong>JavaScript Object Notation</strong>, hay JSON, là định dạng văn bản nhẹ và dễ hiểu, được thiết kế để truyền tải dữ liệu có cấu trúc qua web.
+JSON hỗ trợ lưu trữ dữ liệu dạng cặp khóa-giá trị và có tính tương thích cao với hầu hết các ngôn ngữ lập trình, đặc biệt phổ biến trong các giao diện lập trình ứng dụng và dịch vụ web.</p></li>
+</ul>
+</section>
+<section id="nguon-du-lieu">
+<h3><span class="section-number">1.2.3. </span>Nguồn dữ liệu<a class="headerlink" href="#nguon-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Dữ liệu ngày nay được sinh ra từ nhiều nguồn đa dạng và liên tục.
+Có thể phân loại các nguồn dữ liệu phổ biến như sau:</p>
+<ul class="simple">
+<li><p><strong>Cơ sở dữ liệu quan hệ</strong> (relational databases) là nguồn dữ liệu có cấu trúc được lưu trữ trong các hệ quản trị cơ sở dữ liệu như SQL Server, Oracle, MySQL và IBM DB2.
+Dữ liệu này có thể khai thác để phân tích giao dịch bán lẻ, quản trị quan hệ khách hàng, hay dự báo doanh số.</p></li>
+<li><p><strong>Tệp văn bản phẳng, bảng tính và XML</strong> lưu trữ dữ liệu dưới dạng dòng văn bản, trong đó mỗi dòng là một bản ghi với các giá trị phân tách bằng dấu đặc biệt.
+Bảng tính như Excel hoặc Google Sheets cung cấp khả năng lưu trữ dữ liệu dạng bảng, có thể kèm theo định dạng và công thức.
+XML hỗ trợ cấu trúc dữ liệu phức tạp và thường dùng trong khảo sát, sao kê ngân hàng và dữ liệu phi cấu trúc.</p></li>
+<li><p><strong>API (Application Programming Interface) và dịch vụ Web</strong> là các cổng kết nối cho phép người dùng hoặc ứng dụng truy cập dữ liệu từ hệ thống khác.
+Ví dụ: API của Twitter hoặc Facebook để phân tích cảm xúc từ bài đăng; API thị trường chứng khoán để truy xuất dữ liệu giá, EPS, và lịch sử giao dịch.</p></li>
+<li><p><strong>Web Scraping</strong> là phương pháp trích xuất dữ liệu từ các trang web không có API công khai.
+Các công cụ phổ biến gồm Scrapy, và Selenium.
+Web scraping được dùng trong so sánh giá, thu thập dữ liệu khách hàng, hoặc tạo tập dữ liệu huấn luyện cho mô hình học máy.</p></li>
+<li><p><strong>Dữ liệu từ các nguồn cấp khác</strong>: được truyền liên tục từ các thiết bị IoT, hệ thống GPS, cảm biến, camera an ninh, và mạng xã hội.
+Ứng dụng trong phân tích thời gian thực như giao dịch tài chính, giám sát an ninh, và quản lý chuỗi cung ứng.
+Các nền tảng như Apache Kafka, Spark Streaming và Storm thường được dùng để xử lý dạng dữ liệu này.</p></li>
+</ul>
+</section>
+<section id="ngon-ngu-may-tinh-cho-chuyen-gia-du-lieu">
+<h3><span class="section-number">1.2.4. </span>Ngôn ngữ máy tính cho chuyên gia dữ liệu<a class="headerlink" href="#ngon-ngu-may-tinh-cho-chuyen-gia-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Ngôn ngữ lập trình và truy vấn dữ liệu đóng vai trò trung tâm trong hoạt động phân tích và xử lý dữ liệu.
+Ba loại ngôn ngữ phổ biến bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Ngôn ngữ truy vấn</strong>, chẳng hạn như SQL (structured query language), là ngôn ngữ tiêu chuẩn để truy xuất và thao tác với dữ liệu trong cơ sở dữ liệu quan hệ.
+SQL cho phép thực hiện các thao tác như tạo bảng, chèn, cập nhật và truy vấn dữ liệu với cú pháp gần gũi ngôn ngữ tự nhiên.</p></li>
+<li><p><strong>Ngôn ngữ lập trình</strong>:</p>
+<ul>
+<li><p>Python: Là ngôn ngữ lập trình thông dụng, mã nguồn mở, cú pháp đơn giản, dễ học. Python sở hữu hệ sinh thái thư viện phong phú như NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn cho khoa học dữ liệu và học máy.</p></li>
+<li><p>R: Là ngôn ngữ chuyên biệt cho thống kê và trực quan hóa dữ liệu, với các thư viện như ggplot2, dplyr, và Shiny hỗ trợ xây dựng ứng dụng phân tích tương tác.</p></li>
+</ul>
+</li>
+<li><p><strong>Ngôn ngữ shell và script</strong>:</p>
+<ul>
+<li><p>Unix/Linux Shell: Cho phép tự động hóa các tác vụ lặp lại như sao lưu, xử lý tệp và giám sát hệ thống.</p></li>
+<li><p>PowerShell: Được Microsoft phát triển, hỗ trợ làm việc với dữ liệu có cấu trúc như JSON, XML, REST API và có thể dùng để tạo dashboard, báo cáo và GUI tương tác.</p></li>
+</ul>
+</li>
+</ul>
+<p>Như vậy, việc lựa chọn và sử dụng thành thạo một số ngôn ngữ trong ba nhóm trên là yêu cầu thiết yếu đối với bất kỳ chuyên gia dữ liệu nào nhằm phục vụ hiệu quả cho quá trình khai thác, xử lý và phân tích dữ liệu trong môi trường thực tiễn.</p>
+</section>
+</section>
+<section id="kho-luu-tru-du-lieu">
+<h2><span class="section-number">1.3. </span>Kho lưu trữ dữ liệu<a class="headerlink" href="#kho-luu-tru-du-lieu" title="Link to this heading">#</a></h2>
+<hr><p>Kho dữ liệu, hay data repository, là một thuật ngữ tổng quát chỉ hệ thống lưu trữ dữ liệu đã được thu thập, tổ chức và cách ly nhằm phục vụ cho hoạt động vận hành doanh nghiệp, hoặc để phân tích và khai phá thông tin nhằm hỗ trợ ra quyết định.
+Kho dữ liệu có thể là một cơ sở dữ liệu đơn lẻ hoặc một hạ tầng cơ sở dữ liệu phức hợp bao gồm nhiều hệ thống quản lý dữ liệu khác nhau, từ quy mô nhỏ đến rất lớn.</p>
+<p>Có nhiều dạng kho dữ liệu mà dữ liệu có thể được lưu trữ, trong đó đáng chú ý là cơ sở dữ liệu (database), kho dữ liệu doanh nghiệp (data warehouse), và các hệ thống lưu trữ dữ liệu lớn (big data stores).
+Các hệ thống này sẽ được trình bày chi tiết hơn ở các phần tiếp theo.</p>
+<p>Cơ sở dữ liệu là tập hợp có cấu trúc của dữ liệu, được thiết kế để thực hiện các thao tác nhập liệu, lưu trữ, tìm kiếm, truy vấn và cập nhật dữ liệu một cách hiệu quả.
+Hệ quản trị cơ sở dữ liệu là tập hợp các chương trình phần mềm giúp tạo lập, duy trì và thao tác trên cơ sở dữ liệu, cho phép người dùng truy xuất, chỉnh sửa và trích xuất thông tin từ cơ sở dữ liệu thông qua các truy vấn.</p>
+<p>Chẳng hạn, nếu doanh nghiệp cần truy xuất danh sách khách hàng không hoạt động trong 6 tháng trở lên, một câu truy vấn sẽ được DBMS xử lý để trả về danh sách các khách hàng thỏa điều kiện đó.
+Mặc dù cơ sở dữ liệu và DBMS là hai khái niệm khác nhau, chúng thường được sử dụng thay thế cho nhau trong thực tế.</p>
+<p>Việc lựa chọn loại cơ sở dữ liệu phụ thuộc vào nhiều yếu tố như kiểu và cấu trúc dữ liệu, cơ chế truy vấn, độ trễ cho phép, tốc độ xử lý giao dịch, và mục đích sử dụng.
+Hai loại cơ sở dữ liệu chính hiện nay là: cơ sở dữ liệu quan hệ (relational databases) và cơ sở dữ liệu phi quan hệ (non-relational databases hoặc NoSQL).</p>
+<ul class="simple">
+<li><p><strong>Cơ sở dữ liệu quan hệ</strong> tổ chức dữ liệu theo dạng bảng (table), mỗi bảng gồm các hàng (records) và cột (attributes), tuân thủ một mô hình dữ liệu chặt chẽ với lược đồ xác định.
+RDBMS tối ưu hóa cho các thao tác truy vấn phức tạp và dữ liệu có khối lượng lớn.
+Ngôn ngữ truy vấn có cấu trúc (SQL - Structured Query Language) là ngôn ngữ tiêu chuẩn được sử dụng trong RDBMS.</p></li>
+<li><p><strong>Cơ sở dữ liệu phi quan hệ</strong> ra đời nhằm đáp ứng yêu cầu lưu trữ và xử lý khối lượng lớn dữ liệu đa dạng về hình thức và tốc độ sinh dữ liệu ngày càng cao trong bối cảnh điện toán đám mây, Internet vạn vật (IoT), và mạng xã hội phát triển.
+Không giống như RDBMS, NoSQL cho phép lưu trữ dữ liệu không có cấu trúc cố định và hỗ trợ khả năng mở rộng linh hoạt theo chiều ngang.</p></li>
+</ul>
+<p><strong>Kho dữ liệu doanh nghiệp</strong>, hay data warehouse, là một kho lưu trữ trung tâm hợp nhất dữ liệu từ nhiều nguồn khác nhau, xử lý thông qua quy trình trích xuất, chuyển đổi và load dữ liệu, nhằm tạo ra một cơ sở dữ liệu duy nhất phục vụ cho phân tích và khai thác thông tin chiến lược.
+Kho dữ liệu doanh nghiệp thường được sử dụng trong hệ thống thông tin quản trị và hỗ trợ ra quyết định.</p>
+<p>Liên quan đến kho dữ liệu còn có các khái niệm như data mart và data lake, sẽ được trình bày chi tiết trong các phần sau.
+Trong khi Kho dữ liệu doanh nghiệp chủ yếu sử dụng các công nghệ quan hệ truyền thống, thì với sự xuất hiện của các công nghệ NoSQL và các loại dữ liệu mới, hiện nay nhiều hệ thống Kho dữ liệu doanh nghiệp cũng tích hợp các kho dữ liệu phi quan hệ.</p>
+<p>Kho dữ liệu lớn là hạ tầng lưu trữ và tính toán phân tán, được thiết kế để lưu trữ, mở rộng và xử lý các tập dữ liệu khổng lồ.
+Các kho dữ liệu này cho phép xử lý song song và phân phối dữ liệu trên nhiều nodes trong mạng, đảm bảo khả năng mở rộng quy mô và tính sẵn sàng cao.</p>
+<section id="co-so-du-lieu-quan-he">
+<h3><span class="section-number">1.3.1. </span>Cơ sở dữ liệu quan hệ<a class="headerlink" href="#co-so-du-lieu-quan-he" title="Link to this heading">#</a></h3>
+<hr><p>Cơ sở dữ liệu quan hệ là một kiểu tổ chức dữ liệu theo cấu trúc bảng, trong đó các bảng có thể liên kết với nhau thông qua các thuộc tính chung.
+Mỗi bảng gồm các hàng, rows hay records, và cột, column hay attributes.
+Ví dụ như bảng khách hàng có thể bao gồm các cột như mã khách hàng, tên công ty, địa chỉ, và số điện thoại liên hệ chính, với mỗi hàng tương ứng với một khách hàng cụ thể.</p>
+<p>Sự liên kết giữa các bảng dựa trên khóa ngoại (foreign keys) là yếu tố cốt lõi trong mô hình quan hệ.
+Ví dụ, bảng giao dịch có thể bao gồm các cột như ngày giao dịch, mã khách hàng, số tiền, và phương thức thanh toán; bảng này có thể liên kết với bảng khách hàng thông qua mã khách hàng.
+Khả năng tạo ra các bảng mới thông qua truy vấn kết hợp từ nhiều bảng giúp người dùng khai thác dữ liệu hiệu quả, phát hiện mối quan hệ giữa các đối tượng và hỗ trợ ra quyết định chính xác hơn.</p>
+<p>Cơ sở dữ liệu quan hệ sử dụng ngôn ngữ SQL để truy vấn, cập nhật, và quản lý dữ liệu.
+Khác với bảng tính bị giới hạn về quy mô và chức năng, cơ sở dữ liệu quan hệ được thiết kế để xử lý dữ liệu ở quy mô lớn, với khả năng kiểm soát kiểu dữ liệu và giới hạn giá trị nhằm đảm bảo tính nhất quán và toàn vẹn của dữ liệu.</p>
+<p>Các hệ thống cơ sở dữ liệu quan hệ phổ biến hiện nay bao gồm: MySQL, PostgreSQL, Microsoft SQL Server, và Oracle Database.
+Trong môi trường đám mây, các dịch vụ như Amazon RDS, Google Cloud SQL, Oracle Cloud, và SQL Azure ngày càng được ưa chuộng nhờ khả năng mở rộng linh hoạt và khả năng sao lưu liên tục.</p>
+<p>Cơ sở dữ liệu quan hệ là một công nghệ đã phát triển, có tài liệu phong phú và cộng đồng người dùng lớn, giúp việc đào tạo và tuyển dụng trở nên dễ dàng.
+Một số ưu điểm nổi bật của cơ sở dữ liệu quan hệ bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Tính linh hoạt</strong>: cho phép thêm bảng, thêm cột, đổi tên, và chỉnh sửa trong khi cơ sở dữ liệu vẫn đang hoạt động.</p></li>
+<li><p><strong>Giảm thiểu dư thừa dữ liệu</strong>: dữ liệu được chuẩn hóa, ví dụ như thông tin khách hàng chỉ lưu một lần trong bảng khách hàng, còn bảng giao dịch chỉ lưu mã liên kết.</p></li>
+<li><p><strong>Hỗ trợ sao lưu và phục hồi</strong>: cho phép xuất và nhập dữ liệu dễ dàng, đồng thời có thể thiết lập cơ chế sao lưu liên tục trong môi trường đám mây.</p></li>
+<li><p><strong>Tuân thủ ACID</strong>: bảo đảm tính toàn vẹn và nhất quán của dữ liệu thông qua các thuộc tính nguyên tử (Atomicity), nhất quán (Consistency), cô lập (Isolation), và bền vững (Durability).</p></li>
+</ul>
+<p>Tuy nhiên, cơ sở dữ liệu quan hệ cũng tồn tại một số hạn chế, như khó khăn trong việc xử lý dữ liệu phi cấu trúc hoặc bán cấu trúc, yêu cầu sự tương thích hoàn toàn về lược đồ khi di chuyển giữa các hệ thống, và giới hạn về độ dài của các trường dữ liệu.
+Dù vậy, cơ sở dữ liệu quan hệ vẫn giữ vai trò trung tâm trong các hệ thống xử lý dữ liệu có cấu trúc nhờ độ tin cậy cao và khả năng tích hợp tốt với các công nghệ truyền thống và hiện đại.</p>
+</section>
+<section id="co-so-du-lieu-phi-quan-he">
+<h3><span class="section-number">1.3.2. </span>Cơ sở dữ liệu phi quan hệ<a class="headerlink" href="#co-so-du-lieu-phi-quan-he" title="Link to this heading">#</a></h3>
+<hr><p>Cơ sở dữ liệu phi quan hệ là một nhóm các hệ thống quản lý dữ liệu phi quan hệ, được thiết kế nhằm cung cấp khả năng lưu trữ và truy xuất dữ liệu với cấu trúc linh hoạt, không tuân thủ chặt chẽ các mô hình quan hệ truyền thống.
+Thuật ngữ “NoSQL” không có nghĩa phủ định việc sử dụng SQL, mà phản ánh sự mở rộng phạm vi của cơ sở dữ liệu vượt ra ngoài các hệ thống chỉ sử dụng SQL, cho phép xử lý dữ liệu phi cấu trúc và bán cấu trúc với quy mô lớn và tốc độ cao.</p>
+<p>NoSQL ngày càng được ứng dụng rộng rãi trong bối cảnh các hệ thống điện toán đám mây, dữ liệu lớn, mạng xã hội và các ứng dụng web hoặc di động có lưu lượng người dùng cao.
+Không giống như cơ sở dữ liệu quan hệ, các hệ thống NoSQL không yêu cầu định nghĩa trước lược đồ, đồng thời hỗ trợ nhiều mô hình lưu trữ dữ liệu khác nhau, từ đó mang lại sự linh hoạt trong thiết kế và khả năng mở rộng ngang cao.</p>
+<p>Các mô hình chính của NoSQL bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Cơ sở dữ liệu dạng khóa–giá trị</strong>, hay key–value stores, lưu trữ dữ liệu dưới dạng các cặp khóa và giá trị.
+Mỗi khóa là một định danh duy nhất, ánh xạ tới một giá trị có thể là kiểu đơn giản như chuỗi, số hoặc cấu trúc phức hợp như tài liệu JSON.
+Mô hình này đơn giản nhưng cực kỳ hiệu quả đối với các ứng dụng yêu cầu truy cập dữ liệu nhanh, chẳng hạn như lưu trữ phiên làm việc của người dùng, cấu hình hệ thống, bộ nhớ đệm, và quản lý trạng thái.
+Một số ví dụ tiêu biểu bao gồm Redis, Memcached và Amazon DynamoDB. Tuy nhiên, mô hình khóa–giá trị không phù hợp nếu cần tìm kiếm theo thuộc tính hoặc thiết lập quan hệ giữa các thực thể dữ liệu.</p></li>
+<li><p><strong>Cơ sở dữ liệu dạng tài liệu</strong>, hay document stores, lưu trữ dữ liệu dưới dạng các tài liệu độc lập, thường sử dụng định dạng JSON, BSON hoặc XML.
+Mỗi tài liệu chứa dữ liệu và siêu dữ liệu liên quan, có thể có cấu trúc khác nhau giữa các tài liệu trong cùng một collection.
+Mô hình này rất phù hợp với các ứng dụng yêu cầu tính linh hoạt trong thiết kế dữ liệu như hệ thống thương mại điện tử, nền tảng phân tích văn bản, quản lý hồ sơ bệnh án, hoặc các hệ thống CRM.
+Các hệ thống nổi bật gồm MongoDB, CouchDB, Amazon DocumentDB, và IBM Cloudant.
+Mặc dù hỗ trợ tìm kiếm linh hoạt và chỉ mục tùy chỉnh, các hệ quản trị này có thể gặp hạn chế về hiệu năng khi xử lý các giao dịch phức tạp hoặc truy vấn nhiều bảng.</p></li>
+<li><p><strong>Cơ sở dữ liệu dạng cột</strong>, hay column-oriented stores, lưu trữ dữ liệu theo từng cột thay vì từng hàng, giúp tăng tốc độ truy xuất dữ liệu trong các trường hợp cần xử lý các truy vấn lớn theo chiều dọc.
+Các cột thường được nhóm thành “họ cột”, phản ánh các trường dữ liệu có xu hướng được truy xuất cùng nhau.
+Mô hình này rất thích hợp cho các ứng dụng cần ghi dữ liệu với tần suất cao, lưu trữ dữ liệu thời gian thực, hoặc xử lý dữ liệu từ các thiết bị IoT.
+Một số hệ thống tiêu biểu gồm Apache Cassandra và HBase.
+Tuy nhiên, mô hình này có thể không phù hợp nếu cần hỗ trợ truy vấn linh hoạt với cấu trúc dữ liệu thay đổi thường xuyên.</p></li>
+<li><p><strong>Cơ sở dữ liệu dạng đồ thị</strong>, hay graph databases, được thiết kế để mô hình hóa dữ liệu và các mối quan hệ giữa dữ liệu dưới dạng các đỉnh (nodes) và cạnh (edges).
+Mỗi đỉnh đại diện cho một thực thể, trong khi các cạnh biểu thị mối quan hệ giữa các thực thể.
+Cách tổ chức này cho phép thực hiện hiệu quả các truy vấn về kết nối, chẳng hạn như tìm đường đi ngắn nhất, phát hiện cộng đồng trong mạng xã hội, hoặc phân tích mối quan hệ giữa các thực thể trong hệ thống quản lý truy cập.
+Các hệ thống nổi bật trong nhóm này bao gồm Neo4j, Amazon Neptune và Azure Cosmos DB. Tuy nhiên, cơ sở dữ liệu đồ thị có thể không lý tưởng cho các ứng dụng yêu cầu xử lý giao dịch lớn hoặc phân tích dữ liệu khối lượng cao theo cách tổng hợp.</p></li>
+</ul>
+</section>
+<section id="data-mart-data-lake-quy-trinh-etl-va-data-pipelines">
+<h3><span class="section-number">1.3.3. </span>Data mart, data lake, quy trình ETL và data pipelines<a class="headerlink" href="#data-mart-data-lake-quy-trinh-etl-va-data-pipelines" title="Link to this heading">#</a></h3>
+<hr><p>Trong bối cảnh hiện đại, khi dữ liệu ngày càng đóng vai trò trung tâm trong việc ra quyết định, các tổ chức cần xây dựng các kiến trúc lưu trữ và xử lý dữ liệu một cách có hệ thống và hiệu quả.
+Bốn thành phần quan trọng trong hệ sinh thái dữ liệu hiện đại bao gồm: data mart, data lake, quy trình Extract – Transform – Load, và data pipeline.
+Mỗi thành phần đảm nhận một vai trò riêng trong việc quản lý, tích hợp và phục vụ dữ liệu cho các mục tiêu phân tích, dự báo và ra quyết định.</p>
+<ul class="simple">
+<li><p><strong>Kho dữ liệu chuyên biệt</strong>, hay data mart, là một phần con được trích lọc từ kho dữ liệu tổng thể (data warehouse), được xây dựng để phục vụ một mục đích phân tích cụ thể hoặc một bộ phận chức năng trong tổ chức, chẳng hạn như tài chính, nhân sự, marketing, hoặc bán hàng.
+Các data mart thường có quy mô nhỏ hơn, phạm vi chuyên biệt, và được tối ưu hóa cho các truy vấn đặc thù của từng nhóm người dùng.
+Việc triển khai Data Mart giúp giảm độ phức tạp trong truy vấn, cải thiện hiệu năng truy xuất, đồng thời tăng tính bảo mật dữ liệu bằng cách giới hạn phạm vi truy cập theo vai trò.
+Các data mart có thể được xây dựng theo hướng độc lập hoặc được trích xuất từ kho dữ liệu trung tâm.</p></li>
+<li><p><strong>Hồ dữ liệu</strong>, hay data lake, là kho lưu trữ dữ liệu linh hoạt, có khả năng chứa dữ liệu ở nhiều định dạng và mức độ xử lý khác nhau, bao gồm dữ liệu có cấu trúc, bán cấu trúc, và phi cấu trúc.
+Khác với kho dữ liệu, vốn yêu cầu chuẩn hóa và mô hình hóa dữ liệu trước khi lưu trữ, data lake cho phép giữ nguyên trạng thái gốc của dữ liệu – một đặc điểm quan trọng trong các ứng dụng phân tích dữ liệu lớn và mô hình học máy.
+Mỗi phần tử dữ liệu trong data lake thường được gắn với một định danh duy nhất cùng với metadata mô tả, cho phép truy xuất linh hoạt và hỗ trợ tích hợp dễ dàng với các công cụ phân tích hiện đại.
+Data lake thường được xây dựng trên các hệ thống lưu trữ phân tán như Hadoop Distributed File System hoặc Amazon S3.</p></li>
+<li><p><strong>Quy trình Extract – Transform – Load</strong> là quy trình kỹ thuật then chốt trong việc chuyển đổi dữ liệu từ trạng thái thô sang trạng thái có thể phân tích được.
+Quy trình này bao gồm ba bước chính:</p>
+<ul>
+<li><p>Extract (Trích xuất): Dữ liệu được thu thập từ nhiều nguồn khác nhau như cơ sở dữ liệu giao dịch, tập tin CSV, API, thiết bị IoT, hoặc các hệ thống web. Việc trích xuất có thể thực hiện theo kiểu hàng loạt (batch processing) hoặc thời gian thực (streaming).</p></li>
+<li><p>Transform (Biến đổi): Dữ liệu được xử lý để làm sạch, chuẩn hóa định dạng, lọc bỏ thông tin không cần thiết, chuyển đổi đơn vị, mã hóa dữ liệu nhạy cảm, và xây dựng các mối liên kết giữa các bảng. Đây là bước quan trọng để đảm bảo tính nhất quán và toàn vẹn của dữ liệu.</p></li>
+<li><p>Load (Tải vào): Dữ liệu đã xử lý được tải vào các kho lưu trữ đích như Data Warehouse hoặc Data Lake. Quá trình nạp có thể là toàn bộ (full load), gia tăng (incremental load), hoặc làm mới (refresh). Việc xác minh và giám sát sau khi nạp dữ liệu là cần thiết để đảm bảo chất lượng dữ liệu và phát hiện lỗi tải (load failures).</p></li>
+</ul>
+</li>
+<li><p><strong>Pipeline dữ liệu</strong>, hay data pipeline, là một hệ thống kỹ thuật toàn diện, đảm nhiệm việc di chuyển, chuyển đổi và phân phối dữ liệu từ nhiều nguồn đến các đích khác nhau.
+Mặc dù thuật ngữ “ETL” thường được sử dụng thay thế cho “data pipeline”, song data pipeline mang tính khái quát và linh hoạt hơn, cũng như các kiến trúc xử lý theo luồng.
+Một Data Pipeline điển hình có thể bao gồm:</p>
+<ul>
+<li><p>Thu thập dữ liệu từ nhiều nguồn khác nhau</p></li>
+<li><p>Chuyển đổi định dạng dữ liệu và áp dụng logic nghiệp vụ</p></li>
+<li><p>Đồng bộ hóa dữ liệu theo lịch trình hoặc theo sự kiện</p></li>
+<li><p>Tích hợp với các nền tảng lưu trữ hoặc hiển thị như dashboard, mô hình học máy, hoặc hệ thống ra quyết định</p></li>
+</ul>
+</li>
+</ul>
+<p>Các công nghệ phổ biến hỗ trợ triển khai Pipeline dữ liệu bao gồm Apache Kafka, Apache Beam, Google Cloud Dataflow, và AWS Glue.
+Trong môi trường dữ liệu hiện đại, pipelines thường được thiết kế theo kiến trúc hướng sự kiện (event-driven), hỗ trợ khả năng mở rộng, chống lỗi, và giám sát tự động.</p>
+</section>
+<section id="nen-tang-du-lieu-lon">
+<h3><span class="section-number">1.3.4. </span>Nền tảng dữ liệu lớn<a class="headerlink" href="#nen-tang-du-lieu-lon" title="Link to this heading">#</a></h3>
+<hr><p>Trong kỷ nguyên số, dữ liệu phát sinh từ mọi hoạt động của con người, thiết bị và hệ thống.
+Sự gia tăng đột biến về lượng dữ liệu đã làm nảy sinh khái niệm dữ liệu lớn, hay Big data, một lĩnh vực trung tâm trong phân tích hiện đại, yêu cầu những công nghệ mới nhằm thu thập, lưu trữ, xử lý và khai thác dữ liệu ở quy mô chưa từng có.</p>
+<p>Theo định nghĩa của Ernst &amp; Young, dữ liệu lớn là tập hợp dữ liệu có kích thước lớn, tốc độ sinh dữ liệu nhanh, đến từ nhiều nguồn khác nhau và có mức độ phức tạp cao.
+Các tổ chức cần đến các công nghệ có tính đổi mới và có khả năng mở rộng để lưu trữ, xử lý và khai phá dữ liệu nhằm phục vụ các mục tiêu kinh doanh theo thời gian thực.</p>
+<p>Có năm đặc trưng cốt lõi giúp phân biệt dữ liệu lớn với các tập dữ liệu truyền thống, được gọi là nguyên tắc <strong>5V</strong>:</p>
+<ul class="simple">
+<li><p><strong>Volume</strong>: dữ liệu lớn bao gồm khối lượng dữ liệu khổng lồ phát sinh từ thiết bị di động, cảm biến IoT, mạng xã hội, giao dịch trực tuyến, video và các nguồn số hóa khác. Ví dụ, mỗi ngày thế giới tạo ra khoảng 2.5 quintillion byte dữ liệu, tương đương với hàng triệu đĩa Blu-ray.</p></li>
+<li><p><strong>Velocity</strong>: dữ liệu được tạo ra, xử lý và truyền tải với tốc độ rất cao. Công nghệ truyền phát dữ liệu theo thời gian thực (real-time streaming) như Apache Kafka hoặc Amazon Kinesis cho phép xử lý tức thì các dòng dữ liệu mới sinh.</p></li>
+<li><p><strong>Variety</strong>: dữ liệu có thể ở nhiều định dạng: có cấu trúc (structured), bán cấu trúc (semi-structured) và phi cấu trúc (unstructured). Các loại dữ liệu bao gồm văn bản, hình ảnh, video, âm thanh, dữ liệu vị trí, và dữ liệu cảm biến.</p></li>
+<li><p><strong>Veracity</strong>: dữ liệu lớn có thể chứa nhiều thông tin gây nhiễu, thiếu chính xác hoặc không nhất quán. Do đó, cần có các cơ chế kiểm soát chất lượng, đánh giá độ tin cậy và chuẩn hóa dữ liệu để đảm bảo kết quả phân tích chính xác.</p></li>
+<li><p><strong>Value</strong>: giá trị cuối cùng của dữ liệu lớn được thể hiện thông qua khả năng chuyển hóa dữ liệu thô thành thông tin có ích cho ra quyết định, tối ưu hóa hiệu suất, phát hiện xu hướng, hoặc cung cấp dịch vụ thông minh.</p></li>
+</ul>
+<p>Để xử lý dữ liệu lớn, các tổ chức sử dụng một hệ sinh thái công nghệ được thiết kế dành riêng cho khả năng lưu trữ phân tán, tính toán song song và phân tích quy mô lớn.
+Dưới đây là ba công nghệ mã nguồn mở nổi bật:</p>
+<ul class="simple">
+<li><p><strong>Apache Hadoop</strong> là một hệ sinh thái phần mềm mã nguồn mở hỗ trợ lưu trữ và xử lý dữ liệu lớn trên một cụm các máy tính phổ thông. Thành phần cốt lõi là Hadoop Distributed File System – một hệ thống tập tin phân tán, cho phép chia nhỏ tập dữ liệu lớn và lưu trữ chúng trên nhiều nút. Dữ liệu được nhân bản tự động nhằm đảm bảo tính sẵn sàng và khả năng chịu lỗi.</p></li>
+<li><p><strong>Hadoop</strong> cung cấp nền tảng lưu trữ linh hoạt cho cả dữ liệu có cấu trúc và không có cấu trúc, hỗ trợ mô hình xử lý song song, giúp tối ưu hiệu suất và giảm tải trên hệ thống mạng thông qua chiến lược đưa tính toán đến gần dữ liệu.</p></li>
+<li><p><strong>Apache Hive</strong> là một hệ thống kho dữ liệu được xây dựng trên nền Hadoop, cung cấp giao diện giống như SQL để truy vấn và phân tích dữ liệu lớn lưu trữ trong HDFS.<br />
+Hive thích hợp cho các tác vụ phân tích mang tính tổng hợp như báo cáo định kỳ, ETL và trực quan hóa dữ liệu, nhưng không phù hợp với các truy vấn thời gian thực hoặc các giao dịch phức tạp.</p></li>
+<li><p><strong>Apache Spark</strong> là một nền tảng xử lý dữ liệu phân tán có hiệu năng cao, hỗ trợ cả xử lý hàng loạt và dữ liệu thời gian thực. Spark sử dụng kỹ thuật tính toán trong bộ nhớ để cải thiện tốc độ xử lý, đặc biệt hữu ích trong các tác vụ học máy, phân tích thời gian thực và xử lý dòng dữ liệu. Spark hỗ trợ đa ngôn ngữ lập trình (Scala, Python, Java, R, SQL) và có thể tích hợp với Hadoop, Hive, và các hệ thống lưu trữ khác, cho phép người dùng xây dựng các pipeline phân tích linh hoạt và hiệu quả.</p></li>
+</ul>
+<p>Dữ liệu lớn đã trở thành công cụ không thể thiếu và đặc biệt hiệu quả trong các lĩnh vực:</p>
+<ul class="simple">
+<li><p>Phân tích hành vi người tiêu dùng qua dữ liệu mạng xã hội, mua sắm trực tuyến;</p></li>
+<li><p>Dự báo bảo trì trong công nghiệp thông qua dữ liệu cảm biến;</p></li>
+<li><p>Phân tích y tế và hệ gen với dữ liệu sức khỏe lớn và phức tạp;</p></li>
+<li><p>Phát hiện gian lận trong tài chính thông qua phân tích thời gian thực và học máy);</p></li>
+<li><p>Ra quyết định trong quản trị công dựa trên dữ liệu từ thiết bị IoT, camera, và nền tảng số.</p></li>
+</ul>
+</section>
+</section>
+<section id="cac-vi-tri-cong-viec-trong-khoa-hoc-du-lieu">
+<h2><span class="section-number">1.4. </span>Các vị trí công việc trong khoa học dữ liệu<a class="headerlink" href="#cac-vi-tri-cong-viec-trong-khoa-hoc-du-lieu" title="Link to this heading">#</a></h2>
+<hr><section id="chuyen-gia-phan-tich-du-lieu">
+<h3><span class="section-number">1.4.1. </span>Chuyên gia phân tích dữ liệu<a class="headerlink" href="#chuyen-gia-phan-tich-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Nghề nghiệp trong lĩnh vực phân tích dữ liệu đang phát triển mạnh mẽ trên toàn cầu, với nhu cầu tuyển dụng ngày càng tăng trong cả khu vực công nghiệp, chính phủ và học thuật.
+Từ tài chính – ngân hàng, bảo hiểm, y tế, bán lẻ đến công nghệ thông tin, mọi ngành đều cần đến những nhà phân tích dữ liệu có chuyên môn.
+Không chỉ các tập đoàn lớn mà cả các công ty khởi nghiệp và doanh nghiệp đổi mới sáng tạo cũng ngày càng tìm kiếm nhân sự có kỹ năng dữ liệu.</p>
+<p>Theo báo cáo của Forbes, thị trường phân tích dữ liệu lớn toàn cầu đạt 37,34 tỷ USD năm 2018, và dự kiến tăng trưởng với tốc độ kép hàng năm (CAGR) là 12,3% trong giai đoạn 2019–2027, đạt 105,08 tỷ USD vào năm 2027.
+Trong bối cảnh đó, nguồn cung nhân lực chưa đáp ứng được nhu cầu thị trường, dẫn đến việc nhiều doanh nghiệp sẵn sàng trả mức đãi ngộ cao để thu hút nhân sự có năng lực phân tích dữ liệu.</p>
+<p>Lộ trình nghề nghiệp trong phân tích dữ liệu có thể được chia thành ba nhóm chính:</p>
+<ul class="simple">
+<li><p>Nhà phân tích dữ liệu chuyên sâu (Data Analyst Specialist)</p></li>
+<li><p>Chuyên gia phân tích theo ứng dụng (Domain/Functional Analyst)</p></li>
+<li><p>Các vị trí công việc được tăng cường bởi dữ liệu (Analytics-enabled roles)</p></li>
+</ul>
+<p><strong>Nhà phân tích dữ liệu chuyên sâu</strong> là con đường dành cho những người mong muốn phát triển chuyên môn sâu về kỹ thuật và quy trình phân tích.
+Một lộ trình điển hình bắt đầu từ Associate / Junior Data Analyst, tiếp tục qua các cấp độ Analyst → Senior Analyst → Lead Analyst → Principal Analyst.
+Trong các tổ chức nhỏ, một nhà phân tích thường đảm nhận toàn bộ chu trình từ thu thập đến trực quan hóa dữ liệu, điều này giúp họ tích lũy kinh nghiệm đa chiều nhanh chóng.
+Trong tổ chức lớn, công việc thường được phân chia theo giai đoạn, giúp người phân tích có thể chuyên sâu từng kỹ năng trước khi mở rộng sang giai đoạn khác.
+Khi thăng tiến lên các cấp độ cao hơn, nhà phân tích cần phát triển năng lực ở nhiều khía cạnh:</p>
+<ul class="simple">
+<li><p><strong>Kỹ thuật</strong>: Làm chủ nhiều ngôn ngữ lập trình, công cụ truy vấn (SQL), nền tảng dữ liệu (relational, NoSQL, cloud) và phần mềm trực quan hóa.</p></li>
+<li><p><strong>Kỹ năng mềm</strong>: Kỹ năng giao tiếp, trình bày, quản lý dự án và làm việc với các bên liên quan (stakeholders).</p></li>
+<li><p><strong>Năng lực quản lý</strong>: Thiết lập quy trình, đề xuất công nghệ, huấn luyện nhóm, và mở rộng đội ngũ.</p></li>
+</ul>
+<p><strong>Chuyên gia phân tích theo ứng dụng</strong> yêu cầu kiến thức sâu về lĩnh vực ứng dụng cụ thể như: y tế, tài chính, tiếp thị, bán hàng, mạng xã hội…
+Các vị trí điển hình bao gồm: Healthcare Analyst, Marketing Analyst, Sales Analyst, hoặc Social Media Analyst.
+Dù có thể không quá chuyên sâu về kỹ thuật, các nhà phân tích theo miền thường được đánh giá cao nhờ khả năng kết nối phân tích với bối cảnh thực tế và quyết định nghiệp vụ.</p>
+<p><strong>Các vị trí công việc được tăng cường bởi dữ liệu</strong> là các vị trí truyền thống như Quản lý dự án, giám đốc tiếp thị, quản lý nhân sự, được tăng cường hiệu quả nhờ năng lực phân tích.
+Ngày càng nhiều doanh nghiệp đòi hỏi năng lực phân tích dữ liệu như một phần của bộ kỹ năng thiết yếu, dẫn đến sự mở rộng mạnh mẽ của các vị trí như vậy..</p>
+<p>Nhìn chung, nghề phân tích dữ liệu là một lĩnh vực rộng lớn, năng động và có tính liên ngành cao.
+Lộ trình phát triển sự nghiệp trong ngành này không mang tính tuyến tính mà cho phép di chuyển ngang, đi sâu theo chuyên môn hoặc mở rộng theo chiều rộng nghiệp vụ.
+Điều quan trọng là bạn cần liên tục học hỏi, sẵn sàng thích nghi với công nghệ mới, và tích lũy kinh nghiệm thực tiễn thông qua dự án và thực hành.
+Với lượng tài nguyên đào tạo khổng lồ và cộng đồng hỗ trợ sôi động, mọi cá nhân đều có cơ hội bước vào ngành phân tích dữ liệu – bất kể nền tảng xuất phát.
+Sự kết hợp giữa tư duy phân tích, khả năng kỹ thuật, hiểu biết nghiệp vụ và giao tiếp hiệu quả chính là chìa khóa dẫn đến thành công bền vững trong nghề nghiệp này.</p>
+</section>
+<section id="ky-su-du-lieu">
+<h3><span class="section-number">1.4.2. </span>Kỹ sư dữ liệu<a class="headerlink" href="#ky-su-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Kỹ sư dữ liệu là một trong những vai trò then chốt trong hệ sinh thái dữ liệu hiện đại, chịu trách nhiệm xây dựng, tối ưu hóa và duy trì các hệ thống lưu trữ, xử lý và truyền dẫn dữ liệu phục vụ cho các hoạt động phân tích và ra quyết định.
+Trong bối cảnh mà dữ liệu ngày càng trở nên phong phú, đa dạng và có tốc độ sinh ra cao, kỹ sư dữ liệu đóng vai trò là người thiết kế hạ tầng, đảm bảo dữ liệu đến đúng nơi, đúng lúc và ở đúng định dạng.</p>
+<p>Nhu cầu về kỹ sư dữ liệu tăng mạnh song song với sự phát triển của các hệ thống dữ liệu lớn, phân tích thời gian thực, và mô hình học máy triển khai ở quy mô lớn.
+Các tổ chức hiện đại ngày càng đầu tư vào việc xây dựng pipeline dữ liệu tự động, ổn định và có khả năng mở rộng, khiến vai trò của kỹ sư dữ liệu trở thành yếu tố không thể thiếu trong mọi chiến lược dữ liệu nghiêm túc.</p>
+<p>Tương tự như nhà phân tích dữ liệu, kỹ sư dữ liệu có thể bắt đầu sự nghiệp từ các vị trí cơ bản như:</p>
+<ul class="simple">
+<li><p>Junior Data Engineer</p></li>
+<li><p>Data Engineer</p></li>
+<li><p>Senior Data Engineer</p></li>
+<li><p>Principal Data Engineer</p></li>
+<li><p>Data Engineering Manager/Architect</p></li>
+</ul>
+<p>Quá trình thăng tiến thường gắn liền với việc nắm vững các nền tảng hạ tầng dữ liệu, mở rộng phạm vi hệ thống phụ trách, khả năng thiết kế pipeline phức tạp hơn, và năng lực phối hợp với các nhóm khác như chuyên gia dữ liệu, chuyên gia an toàn thông tin.</p>
+<p>Ở cấp độ cao hơn, kỹ sư dữ liệu không chỉ thực thi mà còn định hình chiến lược hạ tầng dữ liệu, đề xuất kiến trúc tổng thể, lựa chọn công nghệ phù hợp, và dẫn dắt nhóm kỹ thuật đảm bảo tính ổn định và bảo mật của toàn bộ chu trình xử lý dữ liệu.</p>
+<p>Kỹ năng của một kỹ sư dữ liệu bao gồm ba nhóm chính:</p>
+<ul class="simple">
+<li><p><strong>Kỹ thuật nền tảng</strong>:</p>
+<ul>
+<li><p>Làm việc với cơ sở dữ liệu quan hệ (SQL Server, PostgreSQL, MySQL) và phi quan hệ (MongoDB, Cassandra).</p></li>
+<li><p>Thiết kế pipeline xử lý dữ liệu sử dụng các công cụ như Apache Spark, Kafka, Airflow, DBT.</p></li>
+<li><p>Làm việc với hệ thống phân tán: Hadoop, Hive, EMR.</p></li>
+<li><p>Kỹ năng lập trình mạnh mẽ với các ngôn ngữ như Python, Scala, Java.</p></li>
+</ul>
+</li>
+<li><p><strong>Kiến trúc dữ liệu và hệ thống</strong>:</p>
+<ul>
+<li><p>Thiết kế hệ thống ETL/ELT bền vững và có khả năng mở rộng.</p></li>
+<li><p>Làm việc với data warehouse (Redshift, Snowflake, BigQuery) và data lake.</p></li>
+<li><p>Hiểu biết về hạ tầng cloud (AWS, Azure, GCP) và triển khai dữ liệu trên cloud-native architecture.</p></li>
+</ul>
+</li>
+<li><p><strong>Kỹ năng liên ngành và phối hợp</strong>:</p>
+<ul>
+<li><p>Khả năng làm việc với nhóm phân tích dữ liệu, khoa học dữ liệu và nghiệp vụ để hiểu yêu cầu dữ liệu đầu cuối.</p></li>
+<li><p>Kỹ năng quản lý phiên bản dữ liệu, lập lịch pipeline, kiểm thử và giám sát chất lượng dữ liệu.</p></li>
+<li><p>Kiến thức về bảo mật, kiểm soát truy cập, và tuân thủ các quy định về dữ liệu (GDPR, HIPAA…).</p></li>
+</ul>
+</li>
+</ul>
+<p>Trong bối cảnh dữ liệu trở thành tài sản chiến lược, kỹ sư dữ liệu chính là người xây dựng nền móng cho các hoạt động phân tích, ra quyết định, học máy và AI.
+Dù ít xuất hiện trong các bản trình bày trực tiếp như nhà phân tích hoặc nhà khoa học dữ liệu, kỹ sư dữ liệu là người bảo đảm chất lượng và tính sẵn sàng của dữ liệu – yếu tố quyết định sự thành công của bất kỳ dự án dữ liệu nào.
+Sự phát triển nhanh chóng của công nghệ, đặc biệt là hệ sinh thái dữ liệu đám mây, kiến trúc hướng dịch vụ, và phân tích thời gian thực, đang mở ra nhiều cơ hội mới cho những kỹ sư dữ liệu có năng lực và khát vọng vươn xa.</p>
+</section>
+<section id="chuyen-gia-du-lieu">
+<h3><span class="section-number">1.4.3. </span>Chuyên gia dữ liệu<a class="headerlink" href="#chuyen-gia-du-lieu" title="Link to this heading">#</a></h3>
+<hr><p>Chuyên gia dữ liệu là một trong những vị trí có ảnh hưởng lớn nhất trong hệ sinh thái dữ liệu hiện đại, đóng vai trò chuyển hóa dữ liệu phức tạp thành thông tin có thể hành động được thông qua sự kết hợp giữa lập trình, thống kê, mô hình học máy và hiểu biết nghiệp vụ.
+Họ là người kết nối giữa dữ liệu và ra quyết định chiến lược, đồng thời đóng vai trò trung gian giữa kỹ thuật và kinh doanh.</p>
+<p>Khác với kỹ sư dữ liệu – người xây dựng hạ tầng và pipeline dữ liệu – và nhà phân tích dữ liệu – người diễn giải dữ liệu hiện có để tạo báo cáo, chuyên gia dữ liệu là người đặt ra câu hỏi, xây dựng mô hình dự đoán, khám phá mối quan hệ ẩn và đề xuất giải pháp dựa trên dữ liệu.
+Vì vậy, họ thường được kỳ vọng có tư duy phản biện, khả năng phân tích sâu sắc, và năng lực xây dựng mô hình phức tạp phục vụ cho các mục tiêu như tối ưu hóa, phân đoạn khách hàng, phát hiện gian lận, dự báo nhu cầu…</p>
+<p>Con đường nghề nghiệp của chuyên gia dữ liệu thường bao gồm:</p>
+<ul class="simple">
+<li><p>Junior Data Scientis</p></li>
+<li><p>Applied Data Scientist</p></li>
+<li><p>Senior / Lead Data Scientist</p></li>
+<li><p>Principal Data Scientist / AI Scientist</p></li>
+<li><p>Data Science Manager / Director of Data Science</p></li>
+</ul>
+<p>Khác với nhiều nghề kỹ thuật khác, lộ trình phát triển của chuyên gia dữ liệu đòi hỏi sự tiến hóa cả về chiều sâu kỹ thuật, mức độ mô hình hóa, và tầm nhìn nghiệp vụ.
+Ở các cấp bậc cao hơn, chuyên gia dữ liệu không chỉ tập trung vào thuật toán mà còn dẫn dắt chiến lược dữ liệu, đóng góp vào định hướng sản phẩm và chính sách ra quyết định của tổ chức.</p>
+<p>Năng lực cốt lõi của chuyên gia dữ liệu bao gồm có</p>
+<ul class="simple">
+<li><p><strong>Năng lực phân tích và mô hình hóa</strong>: làm chủ các kỹ thuật học máy có giám sát và không giám sát: hồi quy, phân loại, phân cụm, cây quyết định, random forest, boosting, SVM, deep learning…
+Đồng thời có khả năng ưng dụng thống kê suy luận để thiết lập kiểm định, tính xác suất, ước lượng sai số, và chọn mô hình.</p></li>
+<li><p><strong>Kỹ năng kỹ thuật và công cụ</strong>:</p>
+<ul>
+<li><p>Sử dụng thành thạo Python hoặc R, cùng với các thư viện như Scikit-learn, TensorFlow, Keras, PyTorch, Pandas, NumPy.</p></li>
+<li><p>Trực quan hóa dữ liệu với Matplotlib, Seaborn, Plotly hoặc ggplot2.</p></li>
+<li><p>Thành thạo SQL và thao tác với dữ liệu lớn (Spark, Hadoop).</p></li>
+<li><p>Khả năng xây dựng pipeline phân tích, tái sử dụng mô hình và triển khai mô hình (MLOps).</p></li>
+</ul>
+</li>
+<li><p><strong>Năng lực kinh doanh và truyền thông</strong>:</p>
+<ul>
+<li><p>Hiểu biết sâu về lĩnh vực ứng dụng: tài chính, chăm sóc sức khỏe, tiếp thị, logistics, công nghiệp…</p></li>
+<li><p>Kỹ năng giải thích mô hình cho người không chuyên và đưa ra khuyến nghị dựa trên dữ liệu.</p></li>
+<li><p>Kỹ năng kể chuyện bằng dữ liệu (data storytelling) và truyền đạt thông tin rõ ràng, thuyết phục.</p></li>
+</ul>
+</li>
+</ul>
+<p>Chuyên gia dữ liệu ngày nay không chỉ là “kỹ sư thống kê” hiện đại, mà là người định hình quyết định chiến lược dựa trên dữ liệu, là cầu nối giữa trí tuệ nhân tạo (AI) và ứng dụng thực tiễn.
+Trong các tổ chức đổi mới, chuyên gia dữ liệu tham gia cả vào quy trình phát triển sản phẩm, cải tiến vận hành, thiết kế hệ thống khuyến nghị, và dự báo hành vi người dùng.
+Theo báo cáo của LinkedIn và Harvard Business Review, Data Scientist liên tục nằm trong top những nghề nghiệp được săn đón và có mức thu nhập cao nhất trong kỷ nguyên số.
+Với sự phát triển của các lĩnh vực như AI, phân tích dự báo, tối ưu hóa vận hành, và sản phẩm thông minh, triển vọng nghề nghiệp cho chuyên gia dữ liệu tiếp tục mở rộng và đa dạng hóa.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Khoa học dữ liệu trong Kinh tế và Kinh doanh</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nguyen-ly-phan-tich-du-lieu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Nguyên lý phân tích dữ liệu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-chung">1.1. Giới thiệu chung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khai-niem-ve-khoa-hoc-du-lieu">1.1.1. Khái niệm về Khoa học dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh">1.1.2. Khoa học dữ liệu trong Kinh tế và Kinh doanh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#su-phat-trien-cua-he-sinh-thai-du-lieu-hien-dai">1.1.3. Sự phát triển của hệ sinh thái dữ liệu hiện đại</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phan-tich-du-lieu-hay-khoa-hoc-du-lieu">1.1.4. Phân tích dữ liệu hay khoa học dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#du-lieu-la-gi">1.2. Dữ liệu là gì ?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phan-loai-du-lieu">1.2.1. Phân loại dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dinh-dang-tep-chua-du-lieu">1.2.2. Định dạng tệp chứa dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nguon-du-lieu">1.2.3. Nguồn dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ngon-ngu-may-tinh-cho-chuyen-gia-du-lieu">1.2.4. Ngôn ngữ máy tính cho chuyên gia dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kho-luu-tru-du-lieu">1.3. Kho lưu trữ dữ liệu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-so-du-lieu-quan-he">1.3.1. Cơ sở dữ liệu quan hệ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-so-du-lieu-phi-quan-he">1.3.2. Cơ sở dữ liệu phi quan hệ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mart-data-lake-quy-trinh-etl-va-data-pipelines">1.3.3. Data mart, data lake, quy trình ETL và data pipelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nen-tang-du-lieu-lon">1.3.4. Nền tảng dữ liệu lớn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-vi-tri-cong-viec-trong-khoa-hoc-du-lieu">1.4. Các vị trí công việc trong khoa học dữ liệu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chuyen-gia-phan-tich-du-lieu">1.4.1. Chuyên gia phân tích dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ky-su-du-lieu">1.4.2. Kỹ sư dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chuyen-gia-du-lieu">1.4.3. Chuyên gia dữ liệu</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

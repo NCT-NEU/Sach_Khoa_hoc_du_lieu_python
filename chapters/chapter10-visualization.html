@@ -1,0 +1,1930 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Trực quan hóa dữ liệu &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/chapter10-visualization';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/chapters/chapter10-visualization.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Các mô hình học máy có giám sát" href="chapter12-Supervised.html" />
+    <link rel="prev" title="9. Sắp xếp và biến đổi dữ liệu" href="chapter9-transform.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gioi-thieu-ve-khoa-hoc-du-lieu.html">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7-Import-data.html">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/Pandas_Exercise.html">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_linear_softmax_models.html">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/main?urlpath=tree/chapters/chapter10-visualization.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/blob/main/chapters/chapter10-visualization.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2Fchapters/chapter10-visualization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/chapter10-visualization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Trực quan hóa dữ liệu</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ve-do-thi-co-ban-voi-matplotlib">10.1. Vẽ đồ thị cơ bản với matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hinh-figures-va-do-thi-con-subplots">10.1.1. Hình (figures) và đồ thị con (subplots)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dieu-chinh-khoang-cach-xung-quanh-cac-subplot">10.1.2. Điều chỉnh khoảng cách xung quanh các subplot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mau-sac-diem-danh-dau-kieu-line">10.1.3. Màu sắc, điểm đánh dấu, kiểu line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ticks-labels-va-legends">10.1.4. Ticks, labels, và legends</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dat-tieu-de-nhan-truc-vach-chia-va-nhan-vach-chia">10.1.4.1. Đặt tiêu đề, nhãn trục, vạch chia và nhãn vạch chia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#them-chu-giai">10.1.4.2. Thêm chú giải</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chu-thich-ve-tren-mot-do-thi-con">10.1.5. Chú thích vẽ trên một đồ thị con</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-do-thi-vao-may-tinh">10.1.6. Lưu đồ thị vào máy tính</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-hinh-matplotlib">10.1.7. Cấu hình matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ve-do-thi-voi-pandas-va-seaborn">10.2. Vẽ đồ thị với pandas và seaborn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-duong">10.2.1. Đồ thị đường</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-cot">10.2.2. Đồ thị cột</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bieu-do-tan-suat-va-do-thi-ham-mat-do">10.2.3. Biểu đồ tần suất và đồ thị hàm mật độ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-phan-tan">10.2.4. Đồ thị phân tán</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luoi-da-diem-va-du-lieu-phan-loai">10.2.5. Lưới đa điểm và dữ liệu phân loại</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="" src="../_images/banner.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="truc-quan-hoa-du-lieu">
+<h1><span class="section-number">10. </span>Trực quan hóa dữ liệu<a class="headerlink" href="#truc-quan-hoa-du-lieu" title="Link to this heading">#</a></h1>
+<hr><p>Việc tạo ra các hình ảnh trực quan chứa đựng thông tin, thường được gọi là đồ thị, là một trong những nhiệm vụ quan trọng nhất trong phân tích dữ liệu. Trực quan hóa có thể đóng vai trò là một phần của quá trình khám phá dữ liệu – ví dụ, nhằm xác định các điểm ngoại lai hoặc gợi ý những phép biến đổi cần thiết cho dữ liệu đầu vào, hoặc đơn giản là nhằm tìm kiếm ý tưởng cho việc xây dựng mô hình phân tích. Trong một số tình huống khác, mục tiêu cuối cùng có thể là xây dựng một hình ảnh trực quan có tính tương tác để trình bày trên nền tảng web.</p>
+<p>Python cung cấp nhiều thư viện hỗ trợ trực quan hóa dữ liệu, cả dưới dạng biểu đồ tĩnh lẫn biểu đồ động. Tuy nhiên, trong phạm vi cuốn sách này, chúng ta sẽ tập trung chủ yếu vào thư viện <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> và các thư viện được xây dựng trên nền tảng của nó.</p>
+<p><strong>matplotlib</strong> là một thư viện phần mềm vẽ đồ thị trên máy tính để bàn, được thiết kế để tạo ra các biểu đồ chất lượng cao phù hợp cho việc công bố và in ấn. Dự án này được khởi xướng bởi John Hunter vào năm 2002 với mục tiêu xây dựng một giao diện vẽ đồ thị tương tự như MATLAB trong ngôn ngữ Python. Nhờ sự hợp tác chặt chẽ giữa cộng đồng phát triển matplotlib và IPython, việc tạo ra các biểu đồ tương tác từ môi trường IPython shell, và hiện nay là Jupyter notebook, đã trở nên dễ dàng hơn rất nhiều.</p>
+<p>matplotlib hỗ trợ nhiều giao diện người dùng trên tất cả các hệ điều hành chính, và cho phép xuất đồ thị sang nhiều định dạng đồ họa phổ biến, cả dạng vector và raster, bao gồm: PDF, SVG, JPG, PNG, BMP, GIF, v.v.. Ngoại trừ một số sơ đồ minh họa đặc biệt, hầu hết các biểu đồ trong cuốn sách này đều được tạo bằng matplotlib.</p>
+<p>Theo thời gian, matplotlib đã trở thành nền tảng cho nhiều thư viện bổ trợ khác nhằm mở rộng khả năng trực quan hóa. Một trong những thư viện nổi bật đó là <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, mà chúng ta sẽ khám phá trong phần sau của chương này.</p>
+<p>Cách đơn giản nhất để theo dõi các ví dụ minh họa trong chương là hiển thị đồ thị ngay trong Jupyter notebook. Để thực hiện điều đó, hãy chạy lệnh sau trong một ô của notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Lưu ý</strong></p>
+<p>Nhiều thư viện trực quan hóa dữ liệu tận dụng công nghệ web hiện đại để tạo ra các hình ảnh trực quan tương tác tích hợp tốt với Jupyter notebook. Thay vì sử dụng nhiều công cụ trực quan hóa trong cuốn sách này, chúng tôi quyết định gắn bó với matplotlib để dạy các nguyên tắc cơ bản, đặc biệt là vì pandas có tích hợp tốt với matplotlib. Bạn cũng có thể điều chỉnh các nguyên tắc từ chương này để học cách sử dụng các thư viện trực quan hóa khác.</p>
+<section id="ve-do-thi-co-ban-voi-matplotlib">
+<h2><span class="section-number">10.1. </span>Vẽ đồ thị cơ bản với matplotlib<a class="headerlink" href="#ve-do-thi-co-ban-voi-matplotlib" title="Link to this heading">#</a></h2>
+<hr><p>Với matplotlib, chúng ta sử dụng quy ước import sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau khi chạy <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">notebook</span></code> trong Jupyter (hoặc đơn giản là <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> trong IPython), chúng ta có thể thử tạo một đồ thị đơn giản. Nếu mọi thứ được thiết lập đúng, một đồ thị đường như <em>Đồ thị đường đơn giản</em> sẽ xuất hiện:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+       51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67,
+       68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84,
+       85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x178e3221590&gt;]
+</pre></div>
+</div>
+<img alt="../_images/03a15798199f15bc9646a606b48cc98375fbe8d563c6034fc362425137946091.png" src="../_images/03a15798199f15bc9646a606b48cc98375fbe8d563c6034fc362425137946091.png" />
+</div>
+</div>
+<p>Trong khi các thư viện như <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> và các hàm vẽ đồ thị tích hợp sẵn của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> sẽ xử lý nhiều chi tiết thông thường của việc tạo đồ thị, nếu bạn muốn tùy chỉnh chúng vượt ra ngoài các tùy chọn hàm được cung cấp, bạn sẽ cần học một chút về API matplotlib.</p>
+<section id="hinh-figures-va-do-thi-con-subplots">
+<h3><span class="section-number">10.1.1. </span>Hình (figures) và đồ thị con (subplots)<a class="headerlink" href="#hinh-figures-va-do-thi-con-subplots" title="Link to this heading">#</a></h3>
+<hr><p>Các đồ thị trong <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> nằm trong một đối tượng được gọi là <code class="docutils literal notranslate"><span class="pre">Figure</span></code>. Bạn có thể tạo một hình mới bằng <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Trong IPython, nếu bạn chạy <code class="docutils literal notranslate"><span class="pre">%matplotlib</span></code> trước để thiết lập tích hợp matplotlib, một cửa sổ đồ thị trống sẽ xuất hiện, nhưng trong Jupyter sẽ không có gì được hiển thị cho đến khi chúng ta sử dụng thêm một vài lệnh.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> có một số tùy chọn, chẳng hạn như <code class="docutils literal notranslate"><span class="pre">figsize</span></code> sẽ đảm bảo hình có kích thước và tỷ lệ khung hình nhất định nếu được lưu vào máy.</p>
+<p>Bạn không thể tạo một đồ thị với một hình trống. Bạn phải tạo một đồ thị hoặc nhiều đồ thị con hoặc bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Điều này có nghĩa là tạo ra khung hình 2 × 2 (tức là tối đa bốn đồ thị), và chúng ta đang chọn subplot đầu tiên trong số bốn subplot (được đánh số từ 1). Nếu bạn tạo hai subplot tiếp theo, bạn sẽ có một hình trực quan trống với ba đồ thị con như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># Phải tạo lại fig vì cell trước có thể đã được thực thi riêng</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># Để hiển thị hình</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2beefdc35592575ddeed3662fa0037690fa2ccee07e920e06e72571a2c762b21.png" src="../_images/2beefdc35592575ddeed3662fa0037690fa2ccee07e920e06e72571a2c762b21.png" />
+</div>
+</div>
+<p><strong>Lưu ý</strong></p>
+<p>Khi sử dụng Jupyter notebooks là các đồ thị được đặt lại sau mỗi ô, vì vậy bạn phải đặt tất cả các lệnh vẽ đồ thị vào một ô notebook duy nhất.</p>
+<p>Ở trên chúng ta đã chạy tất cả các lệnh này trong cùng một ô:</p>
+<p>Các đối tượng trục đồ thị này có nhiều phương thức khác nhau để tạo ra các loại đồ thị khác nhau, và ưu tiên sử dụng các phương thức trục hơn là các hàm vẽ đồ thị cấp cao nhất như <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>. Ví dụ, chúng ta có thể tạo một đồ thị dạng đường bằng phương thức <code class="docutils literal notranslate"><span class="pre">plot</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9e63791f32ae5005b08f51359a24dc16f0e03761d807c41e61c61af2d6fc0a0c.png" src="../_images/9e63791f32ae5005b08f51359a24dc16f0e03761d807c41e61c61af2d6fc0a0c.png" />
+</div>
+</div>
+<p>Các đối tượng được trả về bởi <code class="docutils literal notranslate"><span class="pre">fig.add_subplot</span></code> ở trên, bao gồm <code class="docutils literal notranslate"><span class="pre">ax1</span></code>, <code class="docutils literal notranslate"><span class="pre">ax2</span></code>, và <code class="docutils literal notranslate"><span class="pre">ax3</span></code> còn được gọi là các đối tượng <code class="docutils literal notranslate"><span class="pre">AxesSubplot</span></code>. Trên các đối tượng này bạn có thể vẽ trực tiếp trên các subplot trống khác bằng cách gọi phương thức khác nhau của mỗi subplot. Bạn đọc tham khảo phần tiếp theo của chương để biết về các phương thức này:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span>  <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fd5afac3fd0041b4de66e8164d57166a66a1f272a23aef1d5b4ea9781fbf2b7f.png" src="../_images/fd5afac3fd0041b4de66e8164d57166a66a1f272a23aef1d5b4ea9781fbf2b7f.png" />
+</div>
+</div>
+<p>Tùy chọn <code class="docutils literal notranslate"><span class="pre">alpha=0.5</span></code> sử dụng trong <code class="docutils literal notranslate"><span class="pre">ax1</span></code> chỉ định độ trong suốt của đồ thị.</p>
+<p>Bạn có thể tìm thấy một danh mục toàn diện các loại đồ thị trong tài liệu <a class="reference external" href="https://matplotlib.org/">matplotlib</a></p>
+<p>Để tạo một lưới các subplot thuận tiện hơn, matplotlib bao gồm một phương thức <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code> tạo một hình mới và trả về một mảng NumPy chứa các đối tượng subplot đã tạo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c08113d19cd09f564c7b39b258d9a8564bf70bb85ec03e13813a13479c3d1323.png" src="../_images/c08113d19cd09f564c7b39b258d9a8564bf70bb85ec03e13813a13479c3d1323.png" />
+</div>
+</div>
+<p>Mảng <code class="docutils literal notranslate"><span class="pre">axes</span></code> sau đó có thể được lập chỉ mục giống như một mảng hai chiều; ví dụ, <code class="docutils literal notranslate"><span class="pre">axes[0,</span> <span class="pre">1]</span></code> tham chiếu đến subplot ở hàng trên cùng ở giữa. Bạn đọc cũng có thể chỉ ra rằng các subplot nên có cùng trục x hoặc y tương ứng bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">sharex</span></code> và <code class="docutils literal notranslate"><span class="pre">sharey</span></code>. Điều này có thể hữu ích khi bạn đang so sánh dữ liệu trên cùng một thang đo; nếu không, matplotlib sẽ tự động điều chỉnh giới hạn đồ thị một cách độc lập. Xem bảng … để biết thêm về phương thức này.</p>
+<p><strong>Bảng … Các tùy chọn matplotlib.pyplot.subplots</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Đối số</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nrows</span></code></p></td>
+<td><p>Số hàng của các subplot</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ncols</span></code></p></td>
+<td><p>Số cột của các subplot</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sharex</span></code></p></td>
+<td><p>Tất cả các subplot nên sử dụng cùng một vạch chia trục x (điều chỉnh <code class="docutils literal notranslate"><span class="pre">xlim</span></code> sẽ ảnh hưởng đến tất cả các subplot)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sharey</span></code></p></td>
+<td><p>Tất cả các subplot nên sử dụng cùng một vạch chia trục y (điều chỉnh <code class="docutils literal notranslate"><span class="pre">ylim</span></code> sẽ ảnh hưởng đến tất cả các subplot)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subplot_kw</span></code></p></td>
+<td><p>Từ điển các từ khóa được truyền cho lệnh gọi <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code> được sử dụng để tạo mỗi subplot</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">**fig_kw</span></code></p></td>
+<td><p>Các từ khóa bổ sung cho <code class="docutils literal notranslate"><span class="pre">subplots</span></code> được sử dụng khi tạo hình, chẳng hạn như <code class="docutils literal notranslate"><span class="pre">plt.subplots(2,</span> <span class="pre">2,</span> <span class="pre">figsize=(8,</span> <span class="pre">6))</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="dieu-chinh-khoang-cach-xung-quanh-cac-subplot">
+<h3><span class="section-number">10.1.2. </span>Điều chỉnh khoảng cách xung quanh các subplot<a class="headerlink" href="#dieu-chinh-khoang-cach-xung-quanh-cac-subplot" title="Link to this heading">#</a></h3>
+<hr><p>Theo mặc định, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> để lại một khoảng đệm nhất định xung quanh bên ngoài các subplot và khoảng cách giữa các subplot. Khoảng cách này đều được chỉ định tương đối với chiều cao và chiều rộng của đồ thị, do đó nếu bạn thay đổi kích thước đồ thị theo chương trình hoặc thủ công bằng cửa sổ GUI, đồ thị sẽ tự động điều chỉnh. Bạn có thể thay đổi khoảng cách bằng phương thức <code class="docutils literal notranslate"><span class="pre">subplots_adjust</span></code> trên các đối tượng <code class="docutils literal notranslate"><span class="pre">Figure</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">subplots_adjust(left=None,</span> <span class="pre">bottom=None,</span> <span class="pre">right=None,</span> <span class="pre">top=None,</span> <span class="pre">wspace=None,</span> <span class="pre">hspace=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">wspace</span></code> và <code class="docutils literal notranslate"><span class="pre">hspace</span></code> kiểm soát phần trăm chiều rộng và chiều cao của hình, tương ứng, để sử dụng làm khoảng cách giữa các subplot. Đây là một ví dụ nhỏ bạn có thể thực thi trong Jupyter, nơi chúng tôi thu nhỏ khoảng cách giữa các đồ thị con xuống bằng không:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5bb3b962b6a492758a2c326772fb5c67c59f7dd7a9e2fb1ed17ee74faf35150a.png" src="../_images/5bb3b962b6a492758a2c326772fb5c67c59f7dd7a9e2fb1ed17ee74faf35150a.png" />
+</div>
+</div>
+<p>Bạn có thể nhận thấy rằng các nhãn trục chồng chéo lên nhau. matplotlib không kiểm tra xem các nhãn có chồng chéo hay không, vì vậy trong trường hợp như thế này, bạn sẽ cần tự sửa các nhãn bằng cách chỉ định các vị trí vạch chia và nhãn vạch chia rõ ràng (chúng ta sẽ xem xét cách thực hiện điều này trong phần sau <em>Vạch chia, Nhãn và Chú giải</em>).</p>
+</section>
+<section id="mau-sac-diem-danh-dau-kieu-line">
+<h3><span class="section-number">10.1.3. </span>Màu sắc, điểm đánh dấu, kiểu line<a class="headerlink" href="#mau-sac-diem-danh-dau-kieu-line" title="Link to this heading">#</a></h3>
+<hr><p>Hàm vẽ đồ thị đường của matplotlib chấp nhận các mảng tọa độ x và y và các tùy chọn tạo kiểu màu tùy chọn. Ví dụ, để vẽ x và y bằng các đường gạch ngang màu xanh dương, bạn sẽ thực thi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Giả sử x và y đã được định nghĩa</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/996e1e3fa8f38c9447df2a3243b7fdd46a3726471a0056d6d8fb9802a421d106.png" src="../_images/996e1e3fa8f38c9447df2a3243b7fdd46a3726471a0056d6d8fb9802a421d106.png" />
+</div>
+</div>
+<p>Một số tên màu được cung cấp cho các màu thường được sử dụng, nhưng bạn có thể sử dụng bất kỳ màu nào trên phổ màu bằng cách chỉ định mã hex, ví dụ: <code class="docutils literal notranslate"><span class="pre">&quot;#640000&quot;</span></code>. Bạn có thể xem một số kiểu đường được hỗ trợ bằng cách xem docstring cho <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>. Bạn đọc sử dụng <code class="docutils literal notranslate"><span class="pre">plt.plot?</span></code> trong IPython hoặc Jupyter để xem docstring.</p>
+<p>Các đồ thị đường có thể có thêm các điểm đánh dấu để làm nổi bật các điểm dữ liệu thực tế. Vì hàm <code class="docutils literal notranslate"><span class="pre">plot</span></code> của matplotlib tạo ra một đồ thị đường liên tục, nội suy giữa các điểm, đôi khi có thể không rõ ràng vị trí các điểm nằm ở đâu. Điểm đánh dấu có thể được cung cấp dưới dạng một tùy chọn tạo kiểu bổ sung:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># Cần tạo figure mới</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fe7750e2541d4ef50d51c1cc180b2d3f345ac4a68ca04ad54d9401861018d1d0.png" src="../_images/fe7750e2541d4ef50d51c1cc180b2d3f345ac4a68ca04ad54d9401861018d1d0.png" />
+</div>
+</div>
+<p>Đối với các đồ thị đường, bạn sẽ nhận thấy rằng các điểm tiếp theo được nội suy tuyến tính theo mặc định. Điều này có thể được thay đổi bằng tùy chọn <code class="docutils literal notranslate"><span class="pre">drawstyle</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Default&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc8097287419aaaed7a545cb4e92928fc03086aa9eca70a38f2d96e9009a0e95.png" src="../_images/bc8097287419aaaed7a545cb4e92928fc03086aa9eca70a38f2d96e9009a0e95.png" />
+</div>
+</div>
+<p>Ở đây, vì chúng ta đã sử dụng các tham số <code class="docutils literal notranslate"><span class="pre">label</span></code> cho <code class="docutils literal notranslate"><span class="pre">plot</span></code>, chúng ta có thể tạo một chú giải đồ thị để xác định mỗi dòng bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">ax.legend</span></code>. Chúng ta sẽ thảo luận thêm về chú giải trong phần <em>Vạch chia (ticks), nhãn (labels) và chú giải (legends)</em>.</p>
+<p><strong>Lưu ý</strong></p>
+<p>Bạn phải gọi <code class="docutils literal notranslate"><span class="pre">ax.legend</span></code> để tạo chú giải, cho dù bạn có truyền các tùy chọn <code class="docutils literal notranslate"><span class="pre">label</span></code> khi vẽ dữ liệu hay không.</p>
+</section>
+<section id="ticks-labels-va-legends">
+<h3><span class="section-number">10.1.4. </span>Ticks, labels, và legends<a class="headerlink" href="#ticks-labels-va-legends" title="Link to this heading">#</a></h3>
+<hr><p>Hầu hết các kiểu trang trí đồ thị có thể được truy cập thông qua các phương thức trên các đối tượng trục matplotlib. Điều này bao gồm các phương thức như <code class="docutils literal notranslate"><span class="pre">xlim</span></code>, <code class="docutils literal notranslate"><span class="pre">xticks</span></code>, và <code class="docutils literal notranslate"><span class="pre">xticklabels</span></code>. Chúng kiểm soát phạm vi đồ thị, vị trí vạch chia và nhãn vạch chia, tương ứng. Chúng có thể được sử dụng theo hai cách:</p>
+<ul class="simple">
+<li><p>Gọi không có đối số trả về giá trị tham số hiện tại (ví dụ: <code class="docutils literal notranslate"><span class="pre">ax.xlim()</span></code> trả về phạm vi vẽ trục x hiện tại)</p></li>
+<li><p>Gọi với các tham số đặt giá trị tham số (ví dụ: <code class="docutils literal notranslate"><span class="pre">ax.xlim([0,</span> <span class="pre">10])</span></code> đặt phạm vi trục x thành 0 đến 10)</p></li>
+</ul>
+<p>Tất cả các phương thức như vậy đều hoạt động trên <code class="docutils literal notranslate"><span class="pre">AxesSubplot</span></code> đang hoạt động hoặc được tạo gần đây nhất. Mỗi phương thức tương ứng với hai phương thức trên chính đối tượng subplot; trong trường hợp <code class="docutils literal notranslate"><span class="pre">xlim</span></code>, đó là <code class="docutils literal notranslate"><span class="pre">ax.get_xlim</span></code> và <code class="docutils literal notranslate"><span class="pre">ax.set_xlim</span></code>.</p>
+<section id="dat-tieu-de-nhan-truc-vach-chia-va-nhan-vach-chia">
+<h4><span class="section-number">10.1.4.1. </span>Đặt tiêu đề, nhãn trục, vạch chia và nhãn vạch chia<a class="headerlink" href="#dat-tieu-de-nhan-truc-vach-chia-va-nhan-vach-chia" title="Link to this heading">#</a></h4>
+<p>Để minh họa việc tùy chỉnh các trục, tôi sẽ tạo một hình đơn giản và đồ thị của một bước đi ngẫu nhiên:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">());</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5d53d421ddc643cd49887d00f822c6222f88c5fa838edc1ea0a4bbd8a1d12882.png" src="../_images/5d53d421ddc643cd49887d00f822c6222f88c5fa838edc1ea0a4bbd8a1d12882.png" />
+</div>
+</div>
+<p>Để thay đổi các vạch chia trục x, cách dễ nhất là sử dụng <code class="docutils literal notranslate"><span class="pre">set_xticks</span></code> và <code class="docutils literal notranslate"><span class="pre">set_xticklabels</span></code>. Lệnh đầu tiên hướng dẫn matplotlib đặt các vạch chia ở đâu dọc theo phạm vi dữ liệu; theo mặc định, các vị trí này cũng sẽ là các nhãn. Nhưng chúng ta có thể đặt bất kỳ giá trị nào khác làm nhãn bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">set_xticklabels</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">());</span>
+
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7688a3d045400ad13928b5beaa71d23fb15137bf21e9de5c545c0db4c341b602.png" src="../_images/7688a3d045400ad13928b5beaa71d23fb15137bf21e9de5c545c0db4c341b602.png" />
+</div>
+</div>
+<p>Tùy chọn <code class="docutils literal notranslate"><span class="pre">rotation</span></code> đặt các nhãn vạch chia x ở một góc xoay 30 độ. Cuối cùng, <code class="docutils literal notranslate"><span class="pre">set_xlabel</span></code> đặt tên cho trục x và <code class="docutils literal notranslate"><span class="pre">set_title</span></code> là tiêu đề subplot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">());</span>
+
+<span class="n">ticks</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Stages&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Đồ thị bước ngẫu nhiên&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3c7cb529b5feab09c81f711b8aa032321971148678e1de06f707ffe9e3ed3240.png" src="../_images/3c7cb529b5feab09c81f711b8aa032321971148678e1de06f707ffe9e3ed3240.png" />
+</div>
+</div>
+<p>Việc sửa đổi trục y bao gồm quy trình tương tự, thay thế y bằng x trong ví dụ này. Lớp <code class="docutils literal notranslate"><span class="pre">axes</span></code> có một phương thức <code class="docutils literal notranslate"><span class="pre">set</span></code> cho phép đặt hàng loạt các thuộc tính đồ thị. Từ ví dụ trước, chúng ta cũng có thể viết:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ax.set(title=&quot;My</span> <span class="pre">first</span> <span class="pre">matplotlib</span> <span class="pre">plot&quot;,</span> <span class="pre">xlabel=&quot;Stages&quot;)</span></code></p>
+</section>
+<section id="them-chu-giai">
+<h4><span class="section-number">10.1.4.2. </span>Thêm chú giải<a class="headerlink" href="#them-chu-giai" title="Link to this heading">#</a></h4>
+<p>Chú giải là một yếu tố quan trọng khác để xác định các thành phần của đồ thị. Có một vài cách để thêm một chú giải. Cách dễ nhất là truyền tham số  <code class="docutils literal notranslate"><span class="pre">label</span></code> khi thêm mỗi phần của đồ thị:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;one&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;two&quot;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;three&quot;</span><span class="p">);</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/18de028d0cab0d6af81233aa94308fae5bb9d90f1e3932ac9cd07ef7b35ab646.png" src="../_images/18de028d0cab0d6af81233aa94308fae5bb9d90f1e3932ac9cd07ef7b35ab646.png" />
+</div>
+</div>
+<p>Phương thức <code class="docutils literal notranslate"><span class="pre">legend</span></code> có một số lựa chọn khác cho đối số vị trí <code class="docutils literal notranslate"><span class="pre">loc</span></code>. Bạn đọc có thể xem docstring với <code class="docutils literal notranslate"><span class="pre">ax.legend?</span></code> để biết thêm thông tin.</p>
+<p>Tùy chọn <code class="docutils literal notranslate"><span class="pre">loc</span></code> của chú giải cho matplotlib biết vị trí đặt đồ thị. Mặc định là <code class="docutils literal notranslate"><span class="pre">&quot;best&quot;</span></code>, nghĩa là cố gắng chọn một vị trí ít bị cản trở nhất. Để loại trừ một hoặc nhiều yếu tố khỏi chú giải, bạn đọc không sử dụng tham số <code class="docutils literal notranslate"><span class="pre">label</span></code> hoặc sử dụng tham số như sau <code class="docutils literal notranslate"><span class="pre">label=&quot;_nolegend_&quot;</span></code>.</p>
+</section>
+</section>
+<section id="chu-thich-ve-tren-mot-do-thi-con">
+<h3><span class="section-number">10.1.5. </span>Chú thích vẽ trên một đồ thị con<a class="headerlink" href="#chu-thich-ve-tren-mot-do-thi-con" title="Link to this heading">#</a></h3>
+<hr><p>Ngoài các loại đồ thị tiêu chuẩn, bạn có thể muốn vẽ các chú thích đồ thị của riêng mình, có thể bao gồm văn bản, mũi tên hoặc các hình dạng khác. Bạn có thể thêm chú thích và văn bản bằng các hàm <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">arrow</span></code>, và <code class="docutils literal notranslate"><span class="pre">annotate</span></code>. Hàm <code class="docutils literal notranslate"><span class="pre">text</span></code> vẽ văn bản tại các tọa độ (x, y) đã cho trên đồ thị với kiểu tùy chỉnh tùy chọn:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ax.text(x,</span> <span class="pre">y,</span> <span class="pre">&quot;Hello</span> <span class="pre">world!&quot;,</span> <span class="pre">family=&quot;monospace&quot;,</span> <span class="pre">fontsize=10)</span></code></p>
+<p>Chú thích có thể vẽ cả văn bản và mũi tên được sắp xếp phù hợp. Ví dụ, hãy vẽ đồ thị giá đóng cửa của chỉ số S&amp;P 500 kể từ năm 2007 (lấy từ Yahoo! Finance) và chú thích nó với một số ngày quan trọng từ cuộc khủng hoảng tài chính 2008–2009. Bạn có thể chạy ví dụ mã này trong một ô duy nhất trong Jupyter notebook. Xem <em>Các ngày quan trọng trong cuộc khủng hoảng tài chính 2008–2009</em> cho kết quả:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="c1"># Create spx.csv file for the example</span>
+<span class="n">spx_csv_content</span> <span class="o">=</span> <span class="s2">&quot;date,SPX</span><span class="se">\n</span><span class="s2">2003-01-02,909.03</span><span class="se">\n</span><span class="s2">2007-05-04,1499.26</span><span class="se">\n</span><span class="s2">2007-10-11,1554.41</span><span class="se">\n</span><span class="s2">2008-03-12,1290.35</span><span class="se">\n</span><span class="s2">2008-09-15,1172.22</span><span class="se">\n</span><span class="s2">2010-12-31,1257.64</span><span class="se">\n</span><span class="s2">2011-01-03,1271.87&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">spx_csv_content</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># Tăng kích thước để dễ nhìn hơn</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">spx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">]</span>
+
+<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">crisis_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="s2">&quot;Peak of bull market&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="s2">&quot;Bear Stearns Fails&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;Lehman Bankruptcy&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">crisis_data</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
+                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+
+<span class="c1"># Zoom in on 2007-2010</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="s2">&quot;1/1/2007&quot;</span><span class="p">,</span> <span class="s2">&quot;1/1/2011&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Important dates in the 2008–2009 financial crisis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/565a23eeb238d4c61415fbb0183a6e5f0adc2545f59e6762407ba8bc3d8e8fc7.png" src="../_images/565a23eeb238d4c61415fbb0183a6e5f0adc2545f59e6762407ba8bc3d8e8fc7.png" />
+</div>
+</div>
+<p>Có một vài điểm quan trọng cần làm nổi bật trong đồ thị này. Phương thức <code class="docutils literal notranslate"><span class="pre">ax.annotate</span></code> có thể vẽ các nhãn tại các tọa độ x và y được chỉ định. Chúng ta sử dụng các phương thức <code class="docutils literal notranslate"><span class="pre">set_xlim</span></code> và <code class="docutils literal notranslate"><span class="pre">set_ylim</span></code> để đặt thủ công các ranh giới bắt đầu và kết thúc cho đồ thị thay vì sử dụng mặc định của matplotlib. Cuối cùng, <code class="docutils literal notranslate"><span class="pre">ax.set_title</span></code> thêm một tiêu đề chính cho đồ thị.</p>
+<p>Bạn đọc có thể xem thư viện matplotlib trực tuyến để biết nhiều ví dụ chú thích khác.</p>
+<p>Việc vẽ các hình dạng đòi hỏi sự cẩn thận và tỉ mỉ hơn. <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> có các đối tượng đại diện cho nhiều hình dạng phổ biến, được gọi là các <code class="docutils literal notranslate"><span class="pre">patches</span></code>. Một số trong số này, như <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> và <code class="docutils literal notranslate"><span class="pre">Circle</span></code>, được tìm thấy trong <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, nhưng thông tin đầy đủ nằm trong <code class="docutils literal notranslate"><span class="pre">matplotlib.patches</span></code>.</p>
+<p>Để thêm một hình dạng vào đồ thị, bạn tạo đối tượng <code class="docutils literal notranslate"><span class="pre">patches</span></code> và thêm nó vào một đồ thị con <code class="docutils literal notranslate"><span class="pre">ax</span></code> bằng cách truyền đối tượng <code class="docutils literal notranslate"><span class="pre">patches</span></code> cho <code class="docutils literal notranslate"><span class="pre">ax.add_patch</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">rect</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">circ</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">pgon</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]],</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">pgon</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c3552b3c6aaf4687732db656fc6f593877f3f8f89663496713e0f238ed4587f4.png" src="../_images/c3552b3c6aaf4687732db656fc6f593877f3f8f89663496713e0f238ed4587f4.png" />
+</div>
+</div>
+<p>Nếu bạn xem xét việc triển khai nhiều loại đồ thị quen thuộc, bạn sẽ thấy rằng chúng được lắp ráp từ nhiều <code class="docutils literal notranslate"><span class="pre">patches</span></code> khác nhau.</p>
+</section>
+<section id="luu-do-thi-vao-may-tinh">
+<h3><span class="section-number">10.1.6. </span>Lưu đồ thị vào máy tính<a class="headerlink" href="#luu-do-thi-vao-may-tinh" title="Link to this heading">#</a></h3>
+<hr><p>Bạn đọc có thể lưu hình đang hoạt động vào tệp bằng phương thức <code class="docutils literal notranslate"><span class="pre">savefig</span></code> của đối tượng này. Ví dụ, để lưu một hình dưới định dạng <code class="docutils literal notranslate"><span class="pre">.svg</span></code>, bạn chỉ cần nhập:</p>
+<p><code class="docutils literal notranslate"><span class="pre">fig.savefig(&quot;figpath.svg&quot;)</span></code></p>
+<p>Loại tệp được suy ra từ phần mở rộng của tệp. Vì vậy, nếu bạn sử dụng <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> thay vào đó, bạn sẽ nhận được một tệp PDF. Một tùy chọn quan trọng mà chúng tôi thường xuyên sử dụng để xuất bản đồ họa là <code class="docutils literal notranslate"><span class="pre">dpi</span></code>, kiểm soát độ phân giải điểm trên mỗi inch. Để có được cùng một đồ thị dưới dạng PNG ở 400 DPI, bạn sẽ làm:</p>
+<p><code class="docutils literal notranslate"><span class="pre">fig.savefig(&quot;figpath.png&quot;,</span> <span class="pre">dpi=400)</span></code></p>
+<p>Xem bảng … để biết danh sách một số tùy chọn khác cho <code class="docutils literal notranslate"><span class="pre">savefig</span></code>. Để có danh sách đầy đủ, hãy tham khảo docstring trong IPython hoặc Jupyter.</p>
+<p><strong>Bảng …: một số tùy chọn fig.savefig</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Đối số</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fname</span></code></p></td>
+<td><p>Chuỗi ký tự chứa đường dẫn tệp hoặc đối tượng giống tệp Python. Định dạng hình được suy ra từ phần mở rộng của tệp (ví dụ: <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> cho PDF hoặc <code class="docutils literal notranslate"><span class="pre">.png</span></code> cho PNG).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dpi</span></code></p></td>
+<td><p>Độ phân giải của hình tính bằng điểm trên mỗi inch; mặc định là 100 trong IPython hoặc 72 trong Jupyter nhưng có thể được cấu hình.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">facecolor</span></code>, <code class="docutils literal notranslate"><span class="pre">edgecolor</span></code></p></td>
+<td><p>Màu của nền hình bên ngoài các subplot; <code class="docutils literal notranslate"><span class="pre">&quot;w&quot;</span></code> (trắng), theo mặc định.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></td>
+<td><p>Định dạng tệp rõ ràng để sử dụng (<code class="docutils literal notranslate"><span class="pre">&quot;png&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pdf&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;svg&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ps&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;eps&quot;</span></code>, …).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ví dụ lưu file, không tạo hình ảnh trực tiếp trong notebook output</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">);</span>
+<span class="c1"># fig.savefig(&quot;figpath.svg&quot;) </span>
+<span class="c1"># fig.savefig(&quot;figpath.png&quot;, dpi=400)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c14a2a794e5a92e24019daf5ba413d1ba5510787f9b96b5d75f1dcd41b276cd9.png" src="../_images/c14a2a794e5a92e24019daf5ba413d1ba5510787f9b96b5d75f1dcd41b276cd9.png" />
+</div>
+</div>
+</section>
+<section id="cau-hinh-matplotlib">
+<h3><span class="section-number">10.1.7. </span>Cấu hình matplotlib<a class="headerlink" href="#cau-hinh-matplotlib" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> đi kèm với các lược đồ màu và các giá trị mặc định hướng đến việc chuẩn bị cho các hình sẵn sàng lưu vào máy. Hầu như tất cả các tham số mặc định đều có thể được tùy chỉnh thông qua các tham số toàn cục quy định kích thước hình, khoảng cách subplot, màu sắc, kích thước phông chữ, kiểu lưới, v.v. Một cách để sửa đổi cấu hình theo chương trình từ Python là sử dụng phương thức <code class="docutils literal notranslate"><span class="pre">rc</span></code>; ví dụ, để đặt kích thước hình mặc định toàn cục là 10 × 10, bạn có thể nhập:</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.rc(&quot;figure&quot;,</span> <span class="pre">figsize=(10,</span> <span class="pre">10))</span></code></p>
+<p>Tất cả các cài đặt cấu hình hiện tại được tìm thấy trong từ điển <code class="docutils literal notranslate"><span class="pre">plt.rcParams</span></code>, và chúng có thể được khôi phục về giá trị mặc định bằng cách gọi hàm <code class="docutils literal notranslate"><span class="pre">plt.rcdefaults()</span></code>.</p>
+<p>Đối số đầu tiên cho <code class="docutils literal notranslate"><span class="pre">rc</span></code> là thành phần bạn muốn tùy chỉnh, chẳng hạn như <code class="docutils literal notranslate"><span class="pre">&quot;figure&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;axes&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;xtick&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ytick&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;grid&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;legend&quot;</span></code>, hoặc nhiều thành phần khác. Sau đó có thể là một chuỗi các tham số từ khóa cho biết các tham số mới. Một cách thuận tiện để viết các tùy chọn trong chương trình của bạn là dưới dạng một từ điển:</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.rc(&quot;font&quot;,</span> <span class="pre">family=&quot;monospace&quot;,</span> <span class="pre">weight=&quot;bold&quot;,</span> <span class="pre">size=8)</span></code></p>
+<p>Để tùy chỉnh rộng hơn và xem danh sách tất cả các tùy chọn, matplotlib đi kèm với một tệp cấu hình <code class="docutils literal notranslate"><span class="pre">matplotlibrc</span></code> trong thư mục <code class="docutils literal notranslate"><span class="pre">matplotlib/mpl-data</span></code>. Nếu bạn tùy chỉnh tệp này và đặt nó trong thư mục chính của mình với tên <code class="docutils literal notranslate"><span class="pre">.matplotlibrc</span></code>, nó sẽ được tải mỗi khi bạn sử dụng matplotlib.</p>
+<p>Như chúng ta sẽ thấy trong phần tiếp theo, thư viện <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> có một số chủ đề hoặc kiểu đồ thị tích hợp sẵn sử dụng hệ thống cấu hình của matplotlib bên trong.</p>
+</section>
+</section>
+<section id="ve-do-thi-voi-pandas-va-seaborn">
+<h2><span class="section-number">10.2. </span>Vẽ đồ thị với pandas và seaborn<a class="headerlink" href="#ve-do-thi-voi-pandas-va-seaborn" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> là một công cụ trực quan hóa dữ liệu ở mức độ khá cơ bản. Giống như bạn đang <em>lắp ráp</em> một đồ thị từ các thành phần cơ bản của nó bao gồm: hiển thị dữ liệu, chú giải, tiêu đề, nhãn vạch chia và các chú thích khác.</p>
+<p>Trong <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, chúng ta có thể có nhiều cột dữ liệu, cùng với các chỉ số tên hàng và tên cột. Bản thân <code class="docutils literal notranslate"><span class="pre">pandas</span></code> có các phương thức tích hợp sẵn giúp đơn giản hóa việc tạo hình trực quan từ các đối tượng <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> và <code class="docutils literal notranslate"><span class="pre">Series</span></code>. Một thư viện khác là <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, một thư viện đồ họa thống kê cấp cao được xây dựng trên <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. Ưu điểm của seaborn là đơn giản hóa việc tạo nhiều loại hình trực quan phổ biến.</p>
+<section id="do-thi-duong">
+<h3><span class="section-number">10.2.1. </span>Đồ thị đường<a class="headerlink" href="#do-thi-duong" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">Series</span></code> và <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> có một thuộc tính <code class="docutils literal notranslate"><span class="pre">plot</span></code> để tạo một số loại đồ thị cơ bản. Theo mặc định, <code class="docutils literal notranslate"><span class="pre">plot()</span></code> tạo đồ thị đường:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6083b0c4f9b91a420c5d65094a4db0deb878eaab966d5f5b7066515cdc2f276a.png" src="../_images/6083b0c4f9b91a420c5d65094a4db0deb878eaab966d5f5b7066515cdc2f276a.png" />
+</div>
+</div>
+<p>Chỉ số của đối tượng <code class="docutils literal notranslate"><span class="pre">Series</span></code> được truyền cho <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> để vẽ trên trục x. Bạn đọc có thể vô hiệu hóa điều này bằng cách truyền <code class="docutils literal notranslate"><span class="pre">use_index=False</span></code>. Các vạch chia và giới hạn trục x có thể được điều chỉnh bằng các tùy chọn <code class="docutils literal notranslate"><span class="pre">xticks</span></code> và <code class="docutils literal notranslate"><span class="pre">xlim</span></code>, và trục y tương ứng với <code class="docutils literal notranslate"><span class="pre">yticks</span></code> và <code class="docutils literal notranslate"><span class="pre">ylim</span></code>. Bạn đọc xem bảng … để biết danh sách một phần các tùy chọn <code class="docutils literal notranslate"><span class="pre">plot</span></code>. Chúng tôi sẽ giải thích thêm về một vài tùy chọn trong số đó và để lại phần còn lại cho bạn đọc khám phá.</p>
+<p><strong>Bảng … các tham số phương thức Series.plot</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Đối số</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p>Nhãn cho chú giải đồ thị</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ax</span></code></p></td>
+<td><p>Đối tượng subplot matplotlib để vẽ trên đó; nếu không có gì được truyền, sử dụng subplot matplotlib đang hoạt động</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">style</span></code></p></td>
+<td><p>Chuỗi kiểu, như <code class="docutils literal notranslate"><span class="pre">&quot;ko--&quot;</span></code>, được truyền cho matplotlib</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code></p></td>
+<td><p>Độ trong suốt của phần tô màu đồ thị (từ 0 đến 1)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kind</span></code></p></td>
+<td><p>Có thể là <code class="docutils literal notranslate"><span class="pre">&quot;area&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;bar&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;barh&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;density&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hist&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;kde&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;line&quot;</span></code>, hoặc <code class="docutils literal notranslate"><span class="pre">&quot;pie&quot;</span></code>; mặc định là <code class="docutils literal notranslate"><span class="pre">&quot;line&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">figsize</span></code></p></td>
+<td><p>Kích thước của đối tượng hình để tạo</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logx</span></code></p></td>
+<td><p>Truyền <code class="docutils literal notranslate"><span class="pre">True</span></code> để chia tỷ lệ logarit trên trục x; truyền <code class="docutils literal notranslate"><span class="pre">&quot;sym&quot;</span></code> cho logarit đối xứng cho phép các giá trị âm</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logy</span></code></p></td>
+<td><p>Truyền <code class="docutils literal notranslate"><span class="pre">True</span></code> để chia tỷ lệ logarit trên trục y; truyền <code class="docutils literal notranslate"><span class="pre">&quot;sym&quot;</span></code> cho logarit đối xứng cho phép các giá trị âm</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>Tiêu đề để sử dụng cho đồ thị</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">use_index</span></code></p></td>
+<td><p>Sử dụng chỉ mục đối tượng cho các nhãn vạch chia</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rot</span></code></p></td>
+<td><p>Xoay các nhãn vạch chia (0 đến 360)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xticks</span></code></p></td>
+<td><p>Các giá trị để sử dụng cho các vạch chia trục x</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">yticks</span></code></p></td>
+<td><p>Các giá trị để sử dụng cho các vạch chia trục y</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xlim</span></code></p></td>
+<td><p>Giới hạn trục x (ví dụ: <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">10]</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ylim</span></code></p></td>
+<td><p>Giới hạn trục y</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grid</span></code></p></td>
+<td><p>Hiển thị lưới trục (tắt theo mặc định)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Hầu hết các phương thức vẽ đồ thị của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> đều chấp nhận một tham số <code class="docutils literal notranslate"><span class="pre">ax</span></code> tùy chọn, có thể là một đối tượng đồ thị con. Điều này mang lại cho chúng ta sự linh hoạt hơn trong việc bố trí các đồ thị con trong một bố cục.</p>
+<p>Phương thức <code class="docutils literal notranslate"><span class="pre">plot</span></code> của <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> vẽ từng cột dưới dạng một đường khác nhau trên cùng một đồ thị con đồng thời tự động tạo chú giải:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+                  <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;styles/bluestyle.txt&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1f9ee50a12e4636b1d44c6ed8d11937156e6f430461ab43f495570e08dd168fe.png" src="../_images/1f9ee50a12e4636b1d44c6ed8d11937156e6f430461ab43f495570e08dd168fe.png" />
+</div>
+</div>
+<p><strong>Lưu ý</strong></p>
+<p>Ở đây chúng tôi đã sử dụng <code class="docutils literal notranslate"><span class="pre">plt.style.use('grayscale')</span></code> để chuyển sang một lược đồ màu phù hợp hơn cho in bản đen trắng.</p>
+<p>Thuộc tính <code class="docutils literal notranslate"><span class="pre">plot</span></code> chứa một “họ” các phương thức cho các loại đồ thị khác nhau. Ví dụ, <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code> tương đương với <code class="docutils literal notranslate"><span class="pre">df.plot.line()</span></code>. Chúng ta sẽ khám phá một số phương thức này tiếp theo.</p>
+<p><strong>Lưu ý</strong></p>
+<p>Các tham số từ khóa bổ sung cho <code class="docutils literal notranslate"><span class="pre">plot</span></code> được truyền qua hàm vẽ đồ thị <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> tương ứng, vì vậy bạn có thể tùy chỉnh thêm các đồ thị này bằng cách tìm hiểu thêm về API matplotlib.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> có một số tùy chọn cho phép một số linh hoạt về cách xử lý các cột, ví dụ, có vẽ tất cả chúng trên cùng một đồ thị con hay tạo các đồ thị con riêng biệt. Xem bảng … để biết thêm về những điều này.</p>
+<p><strong>Bảng … các tham số plot cụ thể của DataFrame</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Đối số</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subplots</span></code></p></td>
+<td><p>Vẽ mỗi cột DataFrame trong một subplot riêng biệt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">layouts</span></code></p></td>
+<td><p>Tuple 2 chiều (hàng, cột) cung cấp bố cục của các subplot</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sharex</span></code></p></td>
+<td><p>Nếu <code class="docutils literal notranslate"><span class="pre">subplots=True</span></code>, chia sẻ cùng một trục x, liên kết các vạch chia và giới hạn</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sharey</span></code></p></td>
+<td><p>Nếu <code class="docutils literal notranslate"><span class="pre">subplots=True</span></code>, chia sẻ cùng một trục y</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">legend</span></code></p></td>
+<td><p>Thêm chú giải subplot (Mặc định là <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sort_columns</span></code></p></td>
+<td><p>Vẽ các cột theo thứ tự bảng chữ cái; theo mặc định sử dụng thứ tự cột hiện có</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="do-thi-cot">
+<h3><span class="section-number">10.2.2. </span>Đồ thị cột<a class="headerlink" href="#do-thi-cot" title="Link to this heading">#</a></h3>
+<hr><p><code class="docutils literal notranslate"><span class="pre">plot.bar()</span></code> và <code class="docutils literal notranslate"><span class="pre">plot.barh()</span></code> tạo các đồ thị cột dọc và cột ngang. Trong trường hợp này, chỉ số của <code class="docutils literal notranslate"><span class="pre">Series</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> sẽ được sử dụng làm các vạch chia x (<code class="docutils literal notranslate"><span class="pre">bar</span></code>) hoặc y (<code class="docutils literal notranslate"><span class="pre">barh</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdefghijklmnop&quot;</span><span class="p">))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Để các subplot không bị chồng chéo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b9452d5e1cbe87ba2663c4ad043c5527841ab3598437ee0a18ba6b415f75ed9f.png" src="../_images/b9452d5e1cbe87ba2663c4ad043c5527841ab3598437ee0a18ba6b415f75ed9f.png" />
+</div>
+</div>
+<p>Với một DataFrame, các đồ thị cột nhóm các giá trị trong mỗi hàng thành các cột, đặt cạnh nhau, cho mỗi giá trị:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
+                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">,</span> <span class="s2">&quot;five&quot;</span><span class="p">,</span> <span class="s2">&quot;six&quot;</span><span class="p">],</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Genus&quot;</span><span class="p">))</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Genus</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>0.156701</td>
+      <td>0.764848</td>
+      <td>0.009916</td>
+      <td>0.776621</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.039638</td>
+      <td>0.089562</td>
+      <td>0.893626</td>
+      <td>0.718535</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>0.976138</td>
+      <td>0.549947</td>
+      <td>0.021580</td>
+      <td>0.760795</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>0.688176</td>
+      <td>0.897081</td>
+      <td>0.733193</td>
+      <td>0.888310</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>0.430283</td>
+      <td>0.385142</td>
+      <td>0.580047</td>
+      <td>0.735883</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>0.197530</td>
+      <td>0.086922</td>
+      <td>0.174330</td>
+      <td>0.664633</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/08ac8f91244e7e7e7686c56a7edaa1361e0899b35d20a9e2482cbd390ecad2df.png" src="../_images/08ac8f91244e7e7e7686c56a7edaa1361e0899b35d20a9e2482cbd390ecad2df.png" />
+</div>
+</div>
+<p>Lưu ý rằng tên “Genus” trên các cột của <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> được sử dụng để đặt tiêu đề cho chú giải.</p>
+<p>Chúng ta tạo các đồ thị cột xếp chồng từ một <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">stacked=True</span></code>, dẫn đến giá trị trong mỗi hàng được xếp chồng lên nhau theo chiều ngang:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/35de1aefced6350ac28857ca5f353ef402d33e7425889a81154139531bf48157.png" src="../_images/35de1aefced6350ac28857ca5f353ef402d33e7425889a81154139531bf48157.png" />
+</div>
+</div>
+<p><strong>Lưu ý</strong></p>
+<p>Một công thức hữu ích cho các đồ thị cột là trực quan hóa tần suất giá trị của một <code class="docutils literal notranslate"><span class="pre">Series</span></code> bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>: <code class="docutils literal notranslate"><span class="pre">s.value_counts().plot.bar()</span></code>.</p>
+<p>Hãy xem một ví dụ về tập dữ liệu tiền boa nhà hàng. Giả sử chúng ta muốn tạo một đồ thị cột xếp chồng hiển thị tỷ lệ phần trăm các điểm dữ liệu cho mỗi quy mô bữa tiệc cho mỗi ngày. Chúng ta tải dữ liệu bằng <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> và tạo một bảng chéo theo ngày và quy mô bữa tiệc. Hàm <code class="docutils literal notranslate"><span class="pre">pandas.crosstab</span></code> là một cách thuận tiện để tính toán một bảng tần suất đơn giản từ hai cột DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span>
+<span class="n">tips</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>29.03</td>
+      <td>5.92</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>283</th>
+      <td>27.18</td>
+      <td>2.00</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>284</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>285</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>286</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>287 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">])</span>
+<span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Thur&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span><span class="p">,</span> <span class="s2">&quot;Sat&quot;</span><span class="p">,</span> <span class="s2">&quot;Sun&quot;</span><span class="p">])</span>
+<span class="n">party_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Thur</th>
+      <td>2</td>
+      <td>75</td>
+      <td>7</td>
+      <td>8</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Fri</th>
+      <td>0</td>
+      <td>20</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>3</td>
+      <td>60</td>
+      <td>21</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>1</td>
+      <td>36</td>
+      <td>17</td>
+      <td>14</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Vì có không nhiều bữa tiệc một và sáu người, chúng ta loại bỏ các giá trị này:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tiếp tục từ cell trước</span>
+<span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">party_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Thur</th>
+      <td>75</td>
+      <td>7</td>
+      <td>8</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Fri</th>
+      <td>20</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>60</td>
+      <td>21</td>
+      <td>14</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>36</td>
+      <td>17</td>
+      <td>14</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Sau đó, để thuận tiện cho trực quan hóa, chúng ta sẽ chuẩn hóa để mỗi hàng có tổng bằng 1 trước khi tạo đồ thị:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tiếp tục từ cell trước</span>
+<span class="n">party_pcts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">party_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0c2f35c4d319a3f6eaae09d0f6d9f8a262eaf26ef34191ee6ac7409097edbc46.png" src="../_images/0c2f35c4d319a3f6eaae09d0f6d9f8a262eaf26ef34191ee6ac7409097edbc46.png" />
+</div>
+</div>
+<p>Như vậy, bạn có thể thấy rằng quy mô bữa tiệc tăng vào cuối tuần trong tập dữ liệu.</p>
+<p>Với dữ liệu yêu cầu tổng hợp hoặc tóm tắt trước khi tạo đồ thị, việc sử dụng thư viện <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> có thể làm cho mọi thứ đơn giản hơn nhiều. Hãy xem xét tỷ lệ phần trăm tiền boa theo ngày với <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span> <span class="c1"># Tải lại dữ liệu gốc tips</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aeec3e526412e6ddb706d69ab02942d959b0117e0e16db47483de0f337fd7fbe.png" src="../_images/aeec3e526412e6ddb706d69ab02942d959b0117e0e16db47483de0f337fd7fbe.png" />
+</div>
+</div>
+<p>Các hàm vẽ đồ thị trong seaborn nhận một tham số <code class="docutils literal notranslate"><span class="pre">data</span></code>, có thể là một <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> của <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Các tham số khác tham chiếu đến tên cột. Bởi vì có nhiều quan sát cho mỗi giá trị trong <code class="docutils literal notranslate"><span class="pre">day</span></code>, các thanh là giá trị trung bình của <code class="docutils literal notranslate"><span class="pre">tip_pct</span></code>. Các đường màu đen được vẽ trên các thanh biểu thị khoảng tin cậy 95% của giá trị trung bình.</p>
+<p><code class="docutils literal notranslate"><span class="pre">seaborn.barplot</span></code> có một tùy chọn <code class="docutils literal notranslate"><span class="pre">hue</span></code> cho phép chúng ta chia nhỏ theo một giá trị phân loại bổ sung:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span> <span class="c1"># Tải lại dữ liệu gốc tips</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f497b597680a3041a324079582e1bb474a21c5519bfc13feb4f04662a0e5ca4.png" src="../_images/8f497b597680a3041a324079582e1bb474a21c5519bfc13feb4f04662a0e5ca4.png" />
+</div>
+</div>
+<p>Lưu ý rằng seaborn đã tự động thay đổi tính thẩm mỹ của đồ thị: bảng màu mặc định, nền đồ thị và màu đường lưới. Bạn đọc có thể chuyển đổi giữa các giao diện đồ thị khác nhau bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">seaborn.set_style</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="c1"># sns.set_palette(&quot;Greys_r&quot;) # Dòng này được đề cập trong text nhưng không có hình minh họa cụ thể sau khi chạy</span>
+<span class="c1"># Để thấy hiệu ứng, bạn có thể chạy lại một trong các đồ thị seaborn ở trên sau khi chạy dòng này.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Khi tạo đồ thị cho các bản in đen trắng, bạn đọc có thể thấy hữu ích khi đặt bảng màu thang độ xám, như sau:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sns.set_palette(&quot;Greys_r&quot;)</span></code></p>
+</section>
+<section id="bieu-do-tan-suat-va-do-thi-ham-mat-do">
+<h3><span class="section-number">10.2.3. </span>Biểu đồ tần suất và đồ thị hàm mật độ<a class="headerlink" href="#bieu-do-tan-suat-va-do-thi-ham-mat-do" title="Link to this heading">#</a></h3>
+<hr><p>Biểu đồ tần suất, hay histogram, là một loại đồ thị cột hiển thị tần suất giá trị một cách rời rạc. Các điểm dữ liệu được chia vào các miền rời rạc, cách đều nhau và số lượng điểm dữ liệu trong mỗi miền được vẽ bằng 1 thanh có chiều cao tương đương với số lượng điểm. Sử dụng dữ liệu tiền boa từ phần trước, chúng ta có thể tạo biểu đồ tần suất tỷ lệ phần trăm tiền boa của tổng hóa đơn bằng phương thức <code class="docutils literal notranslate"><span class="pre">plot.hist</span></code> trên Series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span> <span class="c1"># Tải lại dữ liệu gốc tips</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/06012c81b7c5189f2ed3101223517283dbd5297538123ccb7bfedda06a9b5c1e.png" src="../_images/06012c81b7c5189f2ed3101223517283dbd5297538123ccb7bfedda06a9b5c1e.png" />
+</div>
+</div>
+<p>Một loại đồ thị liên quan là đồ thị hàm mật độ, được hình thành bằng cách tính toán ước tính của một phân phối xác suất liên tục có thể đã tạo ra dữ liệu quan sát được. Quy trình thông thường là xấp xỉ phân phối này dưới dạng hỗn hợp (mixed) của các kernel - là các phân phối đơn giản hơn như phân phối chuẩn. Do đó, các đồ thị mật độ còn được gọi là đồ thị ước tính mật độ theo kernel (KDE). Sử dụng <code class="docutils literal notranslate"><span class="pre">plot.density</span></code> tạo một đồ thị mật độ bằng cách sử dụng ước tính hỗn hợp các phân phối chuẩn thông thường như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span> <span class="c1"># Tải lại dữ liệu gốc tips</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/92d0de746f46b58e268ba8e2667dcf5e8f85134e6edb099e0d9fbbe2cfce25d3.png" src="../_images/92d0de746f46b58e268ba8e2667dcf5e8f85134e6edb099e0d9fbbe2cfce25d3.png" />
+</div>
+</div>
+<p>Thư viện <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> giúp việc tạo biểu đồ tần suất và đồ thị mật độ trở nên dễ dàng hơn thông qua phương thức <code class="docutils literal notranslate"><span class="pre">histplot</span></code> của nó, có thể vẽ cả biểu đồ tần suất và ước tính hàm mật độ liên tục đồng thời. Ví dụ, hãy xem xét một phân phối hai mode bao gồm các lần rút từ hai phân phối chuẩn tiêu chuẩn khác nhau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">comp2</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">comp1</span><span class="p">,</span> <span class="n">comp2</span><span class="p">]))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3c09a18aadbd203b68b6ecb07d7aef0308271c5285062875b79001770b64c001.png" src="../_images/3c09a18aadbd203b68b6ecb07d7aef0308271c5285062875b79001770b64c001.png" />
+</div>
+</div>
+</section>
+<section id="do-thi-phan-tan">
+<h3><span class="section-number">10.2.4. </span>Đồ thị phân tán<a class="headerlink" href="#do-thi-phan-tan" title="Link to this heading">#</a></h3>
+<hr><p>Đồ thị rải điểm hoặc đồ thị phân tán là một công cụ hữu ích để kiểm tra mối quan hệ giữa hai chuỗi dữ liệu. Giả sử bạn đọc muốn mô tả mối liên hệ giữa chi phí quảng cáo qua truyền hình với doanh thu của các cửa hàng trên toàn quốc từ dữ liệu <code class="docutils literal notranslate"><span class="pre">Sales</span></code>, chúng ta có thể sử dụng đồ thị phân tán như sau</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dữ liệu</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/nguyenquanghuy85/Khdl-ktkd-python/refs/heads/main/Sales</span><span class="si">%20d</span><span class="s1">ataset.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sales</th>
+      <th>TV</th>
+      <th>Social_Media</th>
+      <th>Flyer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>8.41</td>
+      <td>148.12</td>
+      <td>23.99</td>
+      <td>46.24</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8.95</td>
+      <td>147.50</td>
+      <td>25.71</td>
+      <td>50.78</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.03</td>
+      <td>141.21</td>
+      <td>23.28</td>
+      <td>44.57</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9.00</td>
+      <td>150.16</td>
+      <td>27.70</td>
+      <td>52.46</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>8.66</td>
+      <td>150.19</td>
+      <td>27.44</td>
+      <td>52.37</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Sau đó, chúng ta có thể sử dụng phương thức <code class="docutils literal notranslate"><span class="pre">regplot</span></code> của <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> để tạo một đồ thị phân tán và khớp một đường hồi quy tuyến tính:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;TV&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">df</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Mối liên hệ giữa chi phí quảng cáo truyền hình và doanh thu&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/69069e6cec32a5cb10473016198a8ccb6bf0be2e0310905241617703b4896e09.png" src="../_images/69069e6cec32a5cb10473016198a8ccb6bf0be2e0310905241617703b4896e09.png" />
+</div>
+</div>
+<p>Trong phân tích khai phá dữ liệu, việc có thể xem tất cả các đồ thị phân tán giữa một nhóm các biến là cần thiết. Biểu đồ thể hiện các mối liên hệ này được gọi là đồ thị cặp hoặc ma trận đồ thị phân tán. Việc tạo một đồ thị như vậy từ Python sẽ cần viết vòng lặp. Thư viện <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> có hàm <code class="docutils literal notranslate"><span class="pre">pairplot</span></code> tiện lợi hỗ trợ đặt biểu đồ tần suất hoặc ước tính mật độ của mỗi biến dọc theo đường chéo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ma trận đồ thị phân tán</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3bac759804e6a5115d46dfa42dae0075a7c860f986bd6820e7be097361eca2b5.png" src="../_images/3bac759804e6a5115d46dfa42dae0075a7c860f986bd6820e7be097361eca2b5.png" />
+</div>
+</div>
+<p>Bạn đọc có thể nhận thấy tham số <code class="docutils literal notranslate"><span class="pre">plot_kws</span></code> cho phép chúng ta truyền các tùy chọn cấu hình xuống các lệnh gọi vẽ đồ thị riêng lẻ trên các phần tử ngoài đường chéo. Bạn đọc xem docstring của <code class="docutils literal notranslate"><span class="pre">seaborn.pairplot</span></code> để biết các tùy chọn cấu hình chi tiết hơn.</p>
+</section>
+<section id="luoi-da-diem-va-du-lieu-phan-loai">
+<h3><span class="section-number">10.2.5. </span>Lưới đa điểm và dữ liệu phân loại<a class="headerlink" href="#luoi-da-diem-va-du-lieu-phan-loai" title="Link to this heading">#</a></h3>
+<hr><p>Một cách để trực quan hóa dữ liệu với nhiều biến phân loại là sử dụng lưới đa diện - một bố cục hai chiều của các đồ thị trong đó dữ liệu được chia trên các đồ thị trên mỗi trục dựa trên các giá trị riêng biệt của một biến nhất định. <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> có một hàm tích hợp hữu ích <code class="docutils literal notranslate"><span class="pre">catplot</span></code> giúp đơn giản hóa việc tạo nhiều loại đồ thị đa diện được chia theo các biến phân loại:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/tips.csv&quot;</span><span class="p">)</span> <span class="c1"># Tải lại dữ liệu gốc tips</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="o">.</span><span class="n">tip_pct</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f9ff29872321b6df2efe09bd4f53d6f658bbeca78f4abf4c50a733f033fae75e.png" src="../_images/f9ff29872321b6df2efe09bd4f53d6f658bbeca78f4abf4c50a733f033fae75e.png" />
+</div>
+</div>
+<p>Thay vì nhóm theo <code class="docutils literal notranslate"><span class="pre">&quot;time&quot;</span></code> bằng các màu cột khác nhau trong một facet, chúng ta cũng có thể mở rộng lưới facet bằng cách thêm một hàng cho mỗi giá trị <code class="docutils literal notranslate"><span class="pre">time</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+            <span class="n">col</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="o">.</span><span class="n">tip_pct</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/22e2341b76bad4481ba45cfe7c2934031fb57bd570569cb2a63cd08d97fbd221.png" src="../_images/22e2341b76bad4481ba45cfe7c2934031fb57bd570569cb2a63cd08d97fbd221.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">catplot</span></code> hỗ trợ các loại đồ thị khác có thể hữu ích tùy thuộc vào những gì bạn đang cố gắng hiển thị. Ví dụ, đồ thị hộp có thể là một loại hình trực quan hiệu quả:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;box&quot;</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">[</span><span class="n">tips</span><span class="o">.</span><span class="n">tip_pct</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ff1e18f37c4a601d046e01c406e8a858b238d7a3c2d873a32d4d2c220876217e.png" src="../_images/ff1e18f37c4a601d046e01c406e8a858b238d7a3c2d873a32d4d2c220876217e.png" />
+</div>
+</div>
+<p>Bạn có thể tạo các đồ thị lưới của riêng mình bằng cách sử dụng lớp <code class="docutils literal notranslate"><span class="pre">seaborn.FacetGrid</span></code> tổng quát hơn.</p>
+<p>Python là một ngôn ngữ lập trình mã nguồn mở, vì vậy có rất nhiều lựa chọn phong phú cho việc tạo ra các biểu đồ và đồ họa. Kể từ năm 2010, cộng đồng phát triển đã đầu tư đáng kể vào việc xây dựng các công cụ cho phép tạo ra đồ họa tương tác có thể hiển thị trực tiếp trên trình duyệt web. Các thư viện tiêu biểu cho mục tiêu này bao gồm <strong>Altair</strong>, <strong>Bokeh</strong> và <strong>Plotly</strong>. Nhờ những công cụ này, người dùng Python có thể dễ dàng xây dựng các biểu diễn dữ liệu động và có tính tương tác cao, phục vụ tốt cho các ứng dụng web hiện đại.</p>
+<p>Đối với các nhu cầu tạo đồ họa tĩnh — chẳng hạn như hình minh họa cho tài liệu in ấn hoặc xuất bản trên web — các thư viện như <strong><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></strong> cùng với các thư viện mở rộng như <strong><code class="docutils literal notranslate"><span class="pre">pandas</span></code></strong> và <strong><code class="docutils literal notranslate"><span class="pre">seaborn</span></code></strong> được khuyến nghị sử dụng. Đây là những công cụ mạnh mẽ, linh hoạt và đã được kiểm chứng qua thời gian cho các mục đích trực quan hóa dữ liệu trong khoa học, kinh tế và kỹ thuật.</p>
+<p>Tuy nhiên, hệ sinh thái các công cụ trực quan hóa trong Python không ngừng phát triển và đổi mới. Vì vậy, việc tìm hiểu thêm các công cụ mới và đa dạng hóa phương pháp trực quan hóa có thể giúp bạn mở rộng khả năng phân tích và trình bày dữ liệu hiệu quả hơn.</p>
+<p>Một tài liệu tham khảo đáng chú ý trong lĩnh vực này là cuốn sách <em>Fundamentals of Data Visualization</em> của tác giả <strong>Claus O. Wilke</strong>, được xuất bản bởi O’Reilly. Cuốn sách này hiện có sẵn dưới dạng bản in, đồng thời có thể truy cập miễn phí tại trang web của tác giả: <a class="reference external" href="https://clauswilke.com/dataviz">https://clauswilke.com/dataviz</a>.</p>
+<p>Mục tiêu của chương này là cung cấp cho người học những kiến thức cơ bản ban đầu về trực quan hóa dữ liệu trong Python thông qua việc sử dụng các thư viện phổ biến như <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> và <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. Những công cụ này cho phép người dùng xây dựng các biểu đồ, đồ họa và hình ảnh hóa dữ liệu phục vụ cho việc khám phá, phân tích và trình bày kết quả một cách trực quan và dễ hiểu.</p>
+<p>Trong bối cảnh ngày càng nhiều lĩnh vực ứng dụng dữ liệu trong nghiên cứu và thực tiễn, việc truyền đạt kết quả phân tích thông qua trực quan hóa hiệu quả là một kỹ năng thiết yếu. Nếu công việc của bạn đòi hỏi khả năng diễn giải dữ liệu một cách trực quan, bạn nên đầu tư thời gian tìm hiểu thêm về các nguyên tắc thiết kế và công cụ trực quan hóa dữ liệu tiên tiến. Đây là một lĩnh vực đang phát triển mạnh mẽ, với nhiều tài nguyên học tập phong phú có sẵn trên Internet và dưới dạng sách chuyên khảo.</p>
+<p>Trong chương tiếp theo, chúng ta sẽ tập trung vào các kỹ thuật xây dựng mô hình trên dữ liệu, từ những phương pháp cơ bản đến các kỹ thuật nâng cao. Nội dung chương sẽ bao gồm việc lựa chọn mô hình phù hợp, huấn luyện mô hình trên dữ liệu, đánh giá hiệu quả dự đoán, và tối ưu hóa hiệu suất thông qua các công cụ trong hệ sinh thái Python. Đây là bước quan trọng trong quy trình phân tích dữ liệu, cho phép chuyển hóa dữ liệu thành tri thức có khả năng dự đoán và hỗ trợ ra quyết định.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter9-transform.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Sắp xếp và biến đổi dữ liệu</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter12-Supervised.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Các mô hình học máy có giám sát</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ve-do-thi-co-ban-voi-matplotlib">10.1. Vẽ đồ thị cơ bản với matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hinh-figures-va-do-thi-con-subplots">10.1.1. Hình (figures) và đồ thị con (subplots)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dieu-chinh-khoang-cach-xung-quanh-cac-subplot">10.1.2. Điều chỉnh khoảng cách xung quanh các subplot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mau-sac-diem-danh-dau-kieu-line">10.1.3. Màu sắc, điểm đánh dấu, kiểu line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ticks-labels-va-legends">10.1.4. Ticks, labels, và legends</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dat-tieu-de-nhan-truc-vach-chia-va-nhan-vach-chia">10.1.4.1. Đặt tiêu đề, nhãn trục, vạch chia và nhãn vạch chia</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#them-chu-giai">10.1.4.2. Thêm chú giải</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chu-thich-ve-tren-mot-do-thi-con">10.1.5. Chú thích vẽ trên một đồ thị con</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-do-thi-vao-may-tinh">10.1.6. Lưu đồ thị vào máy tính</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cau-hinh-matplotlib">10.1.7. Cấu hình matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ve-do-thi-voi-pandas-va-seaborn">10.2. Vẽ đồ thị với pandas và seaborn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-duong">10.2.1. Đồ thị đường</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-cot">10.2.2. Đồ thị cột</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bieu-do-tan-suat-va-do-thi-ham-mat-do">10.2.3. Biểu đồ tần suất và đồ thị hàm mật độ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-thi-phan-tan">10.2.4. Đồ thị phân tán</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#luoi-da-diem-va-du-lieu-phan-loai">10.2.5. Lưới đa điểm và dữ liệu phân loại</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

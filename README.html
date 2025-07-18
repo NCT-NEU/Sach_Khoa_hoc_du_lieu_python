@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Khoa học dữ liệu trong Kinh tế và Kinh doanh &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/README.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Các khái niệm cơ bản trong khoa học dữ liệu" href="chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter7-Import-data.html">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter10-visualization.html">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/Pandas_Exercise.html">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/50_bai_tap_linear_softmax_models.html">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practice-exercises/50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/README.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Khoa học dữ liệu trong Kinh tế và Kinh doanh</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noi-dung-chinh-cua-cuon-sach">Nội dung chính của cuốn sách</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tai-sao-cuon-sach-lai-su-dung-ngon-ngu-python">Tại sao cuốn sách lại sử dụng ngôn ngữ Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-python-bang-anaconda">Cài đặt Python bằng Anaconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-python-thu-cong-va-cai-jupyter-notebook">Cài đặt Python thủ công và cài Jupyter Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tap-du-lieu-duoc-su-dung-thuong-xuyen-trong-cuon-sach">Các tập dữ liệu được sử dụng thường xuyên trong cuốn sách</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh">
+<h1>Khoa học dữ liệu trong Kinh tế và Kinh doanh<a class="headerlink" href="#khoa-hoc-du-lieu-trong-kinh-te-va-kinh-doanh" title="Link to this heading">#</a></h1>
+<p><strong>Các tác giả: <a class="reference external" href="https://nct.neu.edu.vn/giang-vien/ts-nguyen-quang-huy">TS. Nguyễn Quang Huy</a>, <a class="reference internal" href="#"><span class="xref myst">TS. Nguyễn Trung Thành</span></a>, <a class="reference internal" href="#"><span class="xref myst">PGS. TS. Trần Thị Bích</span></a>, <a class="reference internal" href="#"><span class="xref myst">TS. Phạm Xuan Lâm</span></a>, <a class="reference internal" href="#"><span class="xref myst">TS. Nguyễn Thị Bạch Tuyết</span></a>, <a class="reference internal" href="#"><span class="xref myst">TS. Nguyễn Mạnh Thế</span></a>    🚀</strong></p>
+<p>Khoa học dữ liệu (KHDL) là ngành khoa học kết hợp giữa toán học - xác suất - thống kê với khoa học máy tính và kiến thức chuyên môn trong một lĩnh vực cụ thể như kinh tế, tài chính, y học, giáo dục, thể thao, v.v. để khám phá những thông tin hữu ích và có giá trị nằm trong dữ liệu liên quan đến lĩnh vực chuyên môn đó. Những thông tin hữu ích này được sử dụng để hướng dẫn việc ra quyết định và lập kế hoạch chiến lược cho các cơ quan, tổ chức, doanh nghiệp và các cá nhân hoạt động trong lĩnh vực này.</p>
+<a class="reference internal image-reference" href="_images/logo.png"><img alt="_images/logo.png" class="align-center" src="_images/logo.png" style="width: 200px;" />
+</a>
+<p>Cuốn sách <em>Khoa học dữ liệu trong Kinh tế và Kinh doanh</em> được viết xuất phát từ nhu cầu học tập và tìm hiểu về KHDL của những bạn đọc đang học tập, nghiên cứu và làm việc trong lĩnh vực kinh tế, quản lý, quản trị kinh doanh. Cuốn sách ít tập trung vào các khái niệm mang tính kỹ thuật trong toán học hay khoa học máy tính, mà tập trung nhiều hơn vào việc mô tả và áp dụng các phương pháp trên những vấn đề cụ thể. Trong mỗi chương đều sẽ có phần thực hành sử dụng phần mềm thống kê R để minh họa cách triển khai các phương pháp kỹ thuật. Những phần thực hành này sẽ cung cấp cho bạn đọc những trải nghiệm thực tiễn có giá trị.</p>
+<blockquote>
+<div><p>Nếu có câu hỏi về nội dung của cuốn sách, bạn đọc có thể liên hệ với nhóm tác giả từ website của <a class="reference external" href="https://nct.neu.edu.vn/">Trường Công nghệ</a> hoặc liên lạc qua địa chỉ email của chúng tôi <a class="reference internal" href="#truongcongnghe&#64;neu.edu.vn"><span class="xref myst">truongcongnghe&#64;neu.edu.vn</span></a></p>
+</div></blockquote>
+<section id="noi-dung-chinh-cua-cuon-sach">
+<h2>Nội dung chính của cuốn sách<a class="headerlink" href="#noi-dung-chinh-cua-cuon-sach" title="Link to this heading">#</a></h2>
+<p>Cuốn sách <em>Khoa học dữ liệu trong Kinh tế và Kinh doanh – Ứng dụng với Python</em> được thiết kế nhằm cung cấp nền tảng cơ bản về khoa học dữ liệu, tập trung vào các ứng dụng thực tiễn trong lĩnh vực kinh tế và kinh doanh. Nội dung sách được tổ chức thành các chương với cấu trúc logic, bám sát quy trình phân tích và mô hình hóa dữ liệu.</p>
+<ul class="simple">
+<li><p>Các chương 1, 2 và 3 trình bày tổng quan về khoa học dữ liệu, vai trò và ứng dụng của khoa học dữ liệu trong bối cảnh kinh tế – kinh doanh hiện đại. Đồng thời, các chương này giới thiệu các nguyên lý cơ bản trong phân tích dữ liệu và xây dựng mô hình dữ liệu.</p></li>
+<li><p>Các chương 4,5, và 6 giới thiệu ngôn ngữ lập trình Python và các thư viện phổ biến được sử dụng trong phân tích dữ liệu, tạo nền tảng kỹ thuật cho các nội dung chuyên sâu hơn ở các chương sau.</p></li>
+<li><p>Các chương 7, 8, 9 và 10 tập trung vào các kỹ thuật tiền xử lý dữ liệu, bao gồm: nhập liệu, làm sạch dữ liệu, biến đổi và tổ chức lại dữ liệu, cũng như trực quan hóa dữ liệu phục vụ cho phân tích và ra quyết định.</p></li>
+<li><p>Chương 11 trình bày các kỹ thuật xây dựng mô hình học máy có giám sát, bao gồm: mô hình hồi quy tuyến tính cho các bài toán dự báo biến liên tục; mô hình tuyến tính cho phân loại, chẳng hạn như hồi quy logistic; các phương pháp chính quy hóa như hồi quy Ridge và Lasso nhằm giảm thiểu hiện tượng quá khớp và cải thiện khả năng tổng quát hóa của mô hình; bên cạnh đó là mô hình cây quyết định và các phương pháp tập hợp cây như rừng ngẫu nhiên và học tăng cường, giúp nâng cao độ chính xác của mô hình thông qua việc kết hợp nhiều cây.</p></li>
+</ul>
+<p>Phần thực hành được thiết kế song song với nội dung lý thuyết của từng chương, cung cấp các bài tập và ví dụ thực tế nhằm tăng cường khả năng vận dụng kiến thức và rèn luyện kỹ năng phân tích dữ liệu bằng Python.</p>
+</section>
+<section id="tai-sao-cuon-sach-lai-su-dung-ngon-ngu-python">
+<h2>Tại sao cuốn sách lại sử dụng ngôn ngữ Python<a class="headerlink" href="#tai-sao-cuon-sach-lai-su-dung-ngon-ngu-python" title="Link to this heading">#</a></h2>
+<p>Python là một ngôn ngữ lập trình bậc cao, có cú pháp rõ ràng và dễ học, được thiết kế để nhấn mạnh vào khả năng đọc hiểu. Trong lĩnh vực Khoa học dữ liệu, Python được xem là một trong những ngôn ngữ phổ biến và hiệu quả nhất, nhờ vào hệ sinh thái phong phú gồm các thư viện hỗ trợ phân tích dữ liệu (như <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>), trực quan hóa dữ liệu (như <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">plotly</span></code>), mô hình học máy (như <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, <code class="docutils literal notranslate"><span class="pre">xgboost</span></code>, <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>) và trí tuệ nhân tạo (như <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code>, <code class="docutils literal notranslate"><span class="pre">pytorch</span></code>).</p>
+<p>Ưu điểm nổi bật của Python trong Khoa học dữ liệu không chỉ nằm ở tính đơn giản và khả năng biểu đạt cao, mà còn ở cộng đồng sử dụng rộng lớn, tài nguyên học tập dồi dào và khả năng tích hợp dễ dàng với các hệ thống và ngôn ngữ khác (như R, SQL, C/C++).</p>
+<p>Bên cạnh Python, vẫn tồn tại một số lựa chọn thay thế và bổ sung hữu ích. Ngôn ngữ R được đánh giá cao trong các bài toán thống kê truyền thống và trực quan hóa dữ liệu chuyên sâu, đặc biệt trong lĩnh vực xã hội và kinh tế lượng. Julia là một ngôn ngữ mới nổi, có tốc độ thực thi cao, phù hợp với các tác vụ tính toán hiệu năng lớn. Ngoài ra, SQL là công cụ không thể thiếu để truy vấn dữ liệu từ hệ quản trị cơ sở dữ liệu quan hệ, trong khi các phần mềm như Excel, Tableau hay Power BI có thể được sử dụng như công cụ bổ trợ trực quan và phân tích đơn giản trong môi trường doanh nghiệp.</p>
+<p>Để cài đặt Python, bạn đọc có nhiều lựa chọn. Chúng tôi giới thiệu hai lựa chọn phổ biến nhất</p>
+<section id="cai-dat-python-bang-anaconda">
+<h3>Cài đặt Python bằng Anaconda<a class="headerlink" href="#cai-dat-python-bang-anaconda" title="Link to this heading">#</a></h3>
+<p>Anaconda là một bộ phân phối Python chuyên dụng cho Khoa học dữ liệu, đi kèm sẵn các thư viện như numpy, pandas, matplotlib, scikit-learn, và đặc biệt là Jupyter Notebook.</p>
+<ul class="simple">
+<li><p>Bước 1: Truy cập trang web <a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a></p></li>
+<li><p>Bước 2: Chọn hệ điều hành phù hợp (Windows, macOS, Linux) và tải về bản cài đặt</p></li>
+<li><p>Bước 3: Cài đặt theo hướng dẫn mặc định của hệ điều hành</p></li>
+<li><p>Bước 4: Sau khi cài đặt xong, mở Anaconda Navigator hoặc dùng terminal/command prompt chạy:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+<p>để mở giao diện Jupyter Notebook trong trình duyệt</p>
+</section>
+<section id="cai-dat-python-thu-cong-va-cai-jupyter-notebook">
+<h3>Cài đặt Python thủ công và cài Jupyter Notebook<a class="headerlink" href="#cai-dat-python-thu-cong-va-cai-jupyter-notebook" title="Link to this heading">#</a></h3>
+<p>Nếu không dùng Anaconda, bạn có thể cài riêng Python và Jupyter theo các bước sau:</p>
+<ul class="simple">
+<li><p>Bước 1: Truy cập địa chỉ <a class="reference external" href="https://www.python.org/downloads">https://www.python.org/downloads</a> và tải phiên bản mới nhất</p></li>
+<li><p>Bước 2: Trong quá trình cài đặt, đảm bảo tích chọn “Add Python to PATH”</p></li>
+<li><p>Bước 3: Mở Command Prompt (Windows) hoặc Terminal (macOS/Linux), kiểm tra phiên bản Python:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Bước 4: Cài đặt Jupyter Notebook bằng lệnh:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>notebook
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Bước 5: Khởi động Jupyter Notebook:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>notebook
+</pre></div>
+</div>
+<p>Giao diện sẽ tự động mở trong trình duyệt web.</p>
+<p>Lưu ý:</p>
+<ul class="simple">
+<li><p>Jupyter Notebook cho phép viết mã Python kết hợp với văn bản trình bày, rất phù hợp để học tập, giảng dạy và phân tích dữ liệu có giải thích.</p></li>
+<li><p>Các file notebook có định dạng <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> và có thể được mở lại để tiếp tục thực hành hoặc chia sẻ.</p></li>
+<li><p>Ngoài ra, bạn cũng có thể thử <a class="reference external" href="https://colab.research.google.com">Google Colab</a> để chạy Jupyter Notebook trực tuyến mà không cần cài đặt, miễn là có tài khoản Google.</p></li>
+</ul>
+</section>
+<section id="cac-tap-du-lieu-duoc-su-dung-thuong-xuyen-trong-cuon-sach">
+<h3>Các tập dữ liệu được sử dụng thường xuyên trong cuốn sách<a class="headerlink" href="#cac-tap-du-lieu-duoc-su-dung-thuong-xuyen-trong-cuon-sach" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>STT</p></th>
+<th class="head"><p>Tên dữ liệu</p></th>
+<th class="head"><p>Miêu tả dữ liệu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Dữ liệu Iris</p></td>
+<td><p>Bộ dữ liệu cổ điển trong học máy, gồm 150 quan sát về ba loài hoa Iris (Setosa, Versicolor, Virginica) với các đặc trưng như chiều dài và chiều rộng của cánh và đài hoa.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Dữ liệu giá nhà Boston</p></td>
+<td><p>Dữ liệu chứa thông tin về giá nhà tại các vùng ngoại ô Boston, gồm 506 quan sát với 13 biến đầu vào (ví dụ: tỷ lệ tội phạm, chất lượng trường học, v.v.) và giá nhà trung bình.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Dữ liệu giá nhà Hà Nội</p></td>
+<td><p>Dữ liệu thực tế thu thập từ các nguồn bất động sản tại Hà Nội, bao gồm các thông tin như diện tích, số phòng, địa điểm và giá nhà theo đơn vị triệu đồng/m² hoặc tỷ đồng.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Dữ liệu ung thư Wisconsin</p></td>
+<td><p>Dữ liệu y tế với 569 mẫu tế bào, phục vụ phân loại khối u là lành tính hay ác tính, gồm nhiều đặc trưng về hình dạng, kết cấu và kích thước tế bào.</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Dữ liệu chiến dịch marketing của ngân hàng</p></td>
+<td><p>Dữ liệu từ các chiến dịch marketing trực tiếp của một ngân hàng Bồ Đào Nha, gồm thông tin khách hàng (tuổi, nghề nghiệp, tình trạng hôn nhân, v.v.) và kết quả chiến dịch (có đăng ký tiền gửi hay không).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><a class="reference internal" href="#"><span class="xref myst"><strong>Đôi lời từ các tác giả:</strong></span></a> <em>“Cuốn sách này dành cho bất kỳ ai quan tâm đến việc sử dụng Khoa học dữ liệu và các phương pháp thống kê hiện đại để giải quyết các vấn đề trong học tập và công việc hàng ngày.</em>
+<em>Độc giả có thể là bất kỳ ai, từ các nhà khoa học, kỹ sư, nhà phân tích dữ liệu, nhà nghiên cứu định lượng, cho đến những cá nhân có nền tảng kỹ thuật ít hơn như sinh viên, học viên cao học trong các lĩnh vực không định lượng như khoa học xã hội hoặc kinh doanh.</em>
+<em>Mặc dù không bắt buộc, chúng tôi kỳ vọng rằng bạn đọc đã từng học ít nhất một khóa cơ bản về xác suất thống kê và một khóa về lập trình.”</em></p>
+</div></blockquote>
+<blockquote>
+<div><p><a class="reference internal" href="#"><span class="xref myst"><strong>Lời cảm ơn:</strong></span></a> <em>“Xin chân thành cảm ơn các đồng nghiệp tại Trường Công nghệ và Đại học Kinh tế Quốc dân nói chung đã đồng hành cùng với chúng tôi trong suốt quá trình hoàn thành cuốn sách này. Nhóm tác giả xin bày tỏ lòng biết ơn sâu sắc tới cộng đồng phát triển Python và dự án Jupyter Book – những người đã không ngừng nỗ lực xây dựng, duy trì và chia sẻ các nền tảng mã nguồn mở mạnh mẽ, linh hoạt và dễ tiếp cận cho cộng đồng học thuật và công nghệ. Chính nhờ các công cụ tuyệt vời như Python, Jupyter Notebook, và Jupyter Book, quá trình xây dựng, trình bày và xuất bản nội dung cuốn sách này dưới dạng trực tuyến trở nên vô cùng thuận tiện và hiệu quả!”</em></p>
+</div></blockquote>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Các khái niệm cơ bản trong khoa học dữ liệu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noi-dung-chinh-cua-cuon-sach">Nội dung chính của cuốn sách</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tai-sao-cuon-sach-lai-su-dung-ngon-ngu-python">Tại sao cuốn sách lại sử dụng ngôn ngữ Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-python-bang-anaconda">Cài đặt Python bằng Anaconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cai-dat-python-thu-cong-va-cai-jupyter-notebook">Cài đặt Python thủ công và cài Jupyter Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-tap-du-lieu-duoc-su-dung-thuong-xuyen-trong-cuon-sach">Các tập dữ liệu được sử dụng thường xuyên trong cuốn sách</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

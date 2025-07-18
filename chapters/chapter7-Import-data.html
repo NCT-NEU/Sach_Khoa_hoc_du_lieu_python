@@ -1,0 +1,3322 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Nhập và lưu trữ dữ liệu &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/chapter7-Import-data';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/chapters/chapter7-Import-data.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Làm sạch và chuẩn bị dữ liệu" href="chapter8-prepare.html" />
+    <link rel="prev" title="6. Giới thiệu về pandas" href="chapter6-pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gioi-thieu-ve-khoa-hoc-du-lieu.html">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter10-visualization.html">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/Pandas_Exercise.html">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_linear_softmax_models.html">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../practice-exercises/50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/main?urlpath=tree/chapters/chapter7-Import-data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/blob/main/chapters/chapter7-Import-data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2Fchapters/chapter7-Import-data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/chapter7-Import-data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nhập và lưu trữ dữ liệu</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-va-luu-du-lieu-o-dinh-dang-van-ban">7.1. Đọc và lưu dữ liệu ở định dạng văn bản</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-du-lieu-van-ban-theo-tung-phan">7.1.1. Đọc dữ liệu văn bản theo từng phần</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ghi-du-lieu-vao-van-ban">7.1.2. Ghi dữ liệu vào văn bản</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#du-lieu-json">7.1.3. Dữ liệu JSON</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thu-thap-du-lieu-web">7.2. Thu thập dữ liệu web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-du-lieu-tu-microsoft-excel">7.3. Đọc dữ liệu từ Microsoft Excel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuong-tac-voi-api-web">7.4. Tương tác với API Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuong-tac-voi-co-so-du-lieu">7.5. Tương tác với cơ sở dữ liệu</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="" src="../_images/banner.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="nhap-va-luu-tru-du-lieu">
+<h1><span class="section-number">7. </span>Nhập và lưu trữ dữ liệu<a class="headerlink" href="#nhap-va-luu-tru-du-lieu" title="Link to this heading">#</a></h1>
+<hr><p>Truy cập dữ liệu là bước khởi đầu thiết yếu trong hầu hết các quy trình làm việc của nhà khoa học dữ liệu. Đây là một chủ đề có phạm vi rộng, đủ để phát triển thành một hoặc nhiều môn học riêng. Trong khuôn khổ chương này, nội dung sẽ tập trung vào các thao tác đọc và ghi dữ liệu bằng thư viện pandas, mặc dù trong thực tiễn có nhiều công cụ bổ trợ khác có thể được sử dụng tùy theo ngữ cảnh và yêu cầu cụ thể của bài toán. Để khai thác đầy đủ các tính năng của pandas liên quan đến nhập xuất dữ liệu, bạn đọc được khuyến khích tham khảo thêm tài liệu chính thức từ thư viện này.</p>
+<p>Các hoạt động nhập và xuất dữ liệu thường được phân loại thành một số nhóm chính như sau:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Đọc dữ liệu từ các tệp văn bản và các định dạng văn bản tối ưu hơn trên đĩa cứng;
+* Tải dữ liệu từ các hệ quản trị cơ sở dữ liệu;
+* Tương tác với các nguồn dữ liệu qua mạng, chẳng hạn như thông qua các API web.
+</pre></div>
+</div>
+<section id="doc-va-luu-du-lieu-o-dinh-dang-van-ban">
+<h2><span class="section-number">7.1. </span>Đọc và lưu dữ liệu ở định dạng văn bản<a class="headerlink" href="#doc-va-luu-du-lieu-o-dinh-dang-van-ban" title="Link to this heading">#</a></h2>
+<p>Thư viện pandas cung cấp một số hàm để dễ dàng đọc dữ liệu dạng bảng và lưu trữ dưới dạng đối tượng <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Bảng … tóm tắt khá đầy đủ, mặc dù một vài trong số đó, như <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> và <code class="docutils literal notranslate"><span class="pre">read_table</span></code> có lẽ là những hàm bạn đọc sẽ sử dụng nhiều nhất.</p>
+<p>Bảng … các hàm đọc dữ liệu trong pandas</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Hàm</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p></td>
+<td><p>Tải dữ liệu được phân tách từ một tệp, URL, hoặc đối tượng tương tự tệp; dấu phân tách mặc định là dấu phẩy</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_table</span></code></p></td>
+<td><p>Tải dữ liệu được phân tách từ một tệp, URL, hoặc đối tượng tương tự tệp; dấu phân tách mặc định là ký tự tab (‘\t’)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_fwf</span></code></p></td>
+<td><p>Đọc dữ liệu ở định dạng cột có độ rộng cố định (tức là, không có dấu phân tách)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_clipboard</span></code></p></td>
+<td><p>Phiên bản của <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> đọc dữ liệu từ clipboard; hữu ích để chuyển đổi bảng từ các trang web thành DataFrame</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_excel</span></code></p></td>
+<td><p>Đọc dữ liệu dạng bảng từ tệp Excel XLS hoặc XLSX</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_hdf</span></code></p></td>
+<td><p>Đọc các tệp HDF5 được viết bằng pandas</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_html</span></code></p></td>
+<td><p>Đọc tất cả các bảng tìm thấy trong tài liệu HTML đã cho</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_json</span></code></p></td>
+<td><p>Đọc dữ liệu từ một chuỗi biểu diễn JSON (JavaScript Object Notation)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_feather</span></code></p></td>
+<td><p>Đọc định dạng tệp nhị phân Feather</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_orc</span></code></p></td>
+<td><p>Đọc định dạng tệp nhị phân Apache ORC</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_parquet</span></code></p></td>
+<td><p>Đọc định dạng tệp nhị phân Apache Parquet</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_pickle</span></code></p></td>
+<td><p>Đọc một đối tượng Python tùy ý được lưu trữ ở định dạng pickle của Python</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_sas</span></code></p></td>
+<td><p>Đọc một tập dữ liệu SAS được lưu trữ ở một trong các định dạng tùy chỉnh của hệ thống SAS</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_spss</span></code></p></td>
+<td><p>Đọc một tệp dữ liệu được tạo bởi SPSS</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_sql_query</span></code></p></td>
+<td><p>Đọc kết quả của một truy vấn SQL (sử dụng SQLAlchemy) dưới dạng DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_sql_table</span></code></p></td>
+<td><p>Đọc toàn bộ bảng SQL (sử dụng SQLAlchemy) dưới dạng DataFrame</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">read_stata</span></code></p></td>
+<td><p>Đọc một tập dữ liệu từ định dạng tệp Stata</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_xml</span></code></p></td>
+<td><p>Đọc một tập hợp các bảng tìm thấy trong một tệp XML đã cho</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Trong phần này, chúng ta sẽ cung cấp một cái nhìn tổng quan về cơ chế hoạt động của các hàm nhập dữ liệu, đặc biệt là khi làm việc với các tệp văn bản. Việc xử lý dữ liệu từ tệp văn bản thường tiềm ẩn nhiều thách thức do tính không đồng nhất của cấu trúc dữ liệu thực tế. Do đó, các hàm phân tích cú pháp trong pandas như <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">read_table</span></code>, v.v. được thiết kế với nhiều tham số linh hoạt nhằm hỗ trợ người dùng xử lý các tình huống ngoại lệ một cách hiệu quả.</p>
+<p>Mặc dù nhiều tham số trong số này là tùy chọn và có thể bỏ qua trong các tình huống đơn giản, nhưng để làm chủ công cụ, người học cần hiểu rõ một số tham số quan trọng thường xuyên được sử dụng.</p>
+<p>Một số hàm như <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> còn hỗ trợ cơ chế suy luận kiểu dữ liệu. Điều này đặc biệt hữu ích vì định dạng tệp không cung cấp thông tin rõ ràng về kiểu dữ liệu của từng cột. Do đó, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> sẽ cố gắng tự động xác định xem một cột có chứa số thực, số nguyên, giá trị logical, hay chuỗi ký tự. Tuy nhiên, trong một số trường hợp đặc biệt — như dữ liệu ngày tháng, hoặc các kiểu dữ liệu do người dùng định nghĩa — việc suy luận tự động có thể không chính xác, và người dùng cần chỉ định rõ kiểu mong muốn để đảm bảo quá trình xử lý dữ liệu diễn ra đúng đắn.</p>
+<p>Để minh họa, chúng ta sẽ bắt đầu với một ví dụ đơn giản: đọc một tệp CSV nhỏ bằng hàm <code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mô phỏng output:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a,b,c,d,message</span><span class="se">\n</span><span class="s2">1,2,3,4,hello</span><span class="se">\n</span><span class="s2">5,6,7,8,world</span><span class="se">\n</span><span class="s2">9,10,11,12,foo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a,b,c,d,message
+1,2,3,4,hello
+5,6,7,8,world
+9,10,11,12,foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do đây là dữ liệu được phân tách bằng dấu phẩy, chúng ta có thể sử dụng <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> để đọc nó vào một DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex1.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>hello</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Hàm đọc dữ liệu của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> luôn mặc định hiểu dòng đầu tiên trong tệp chứa dữ liệu là tên các cột. Như vậy, trong trường hợp dòng đầu tiên là dữ liệu chứ không phải tên cột, chúng ta sử dụng tham số <code class="docutils literal notranslate"><span class="pre">header=None</span></code>. Ví dụ chúng ta có dữ liệu như sau</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Để mô phỏng output:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1,2,3,4,hello</span><span class="se">\n</span><span class="s2">5,6,7,8,world</span><span class="se">\n</span><span class="s2">9,10,11,12,foo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1,2,3,4,hello
+5,6,7,8,world
+9,10,11,12,foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Giả sử dữ liệu được lưu trong một file .csv là “ex2.csv”. Câu lệnh để đọc dữ liệu như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex2.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>hello</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Hoặc</span> <span class="n">chúng</span> <span class="n">ta</span> <span class="n">có</span> <span class="n">thể</span> <span class="n">gán</span> <span class="n">trực</span> <span class="n">tiếp</span> <span class="n">tên</span> <span class="n">cột</span> <span class="n">dữ</span> <span class="n">liệu</span> <span class="n">bằng</span> <span class="n">tham</span> <span class="n">số</span> <span class="err">`</span><span class="n">names</span><span class="err">`</span> <span class="n">trong</span> <span class="n">hàm</span> <span class="err">`</span><span class="n">read_csv</span><span class="err">`</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">Hoặc</span> <span class="n">chúng</span> <span class="n">ta</span> <span class="n">có</span> <span class="n">thể</span> <span class="n">gán</span> <span class="n">trực</span> <span class="n">tiếp</span> <span class="n">tên</span> <span class="n">cột</span> <span class="n">dữ</span> <span class="n">liệu</span> <span class="n">bằng</span> <span class="n">tham</span> <span class="n">số</span> <span class="err">`</span><span class="n">names</span><span class="err">`</span> <span class="n">trong</span> <span class="n">hàm</span> <span class="err">`</span><span class="n">read_csv</span><span class="err">`</span>
+         <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex2.csv&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>hello</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Trong trường hợp bạn đọc muốn một cột, chẳng hạn cột <code class="docutils literal notranslate"><span class="pre">message</span></code> là chỉ số hàng của <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, hãy sử dụng tham số <code class="docutils literal notranslate"><span class="pre">index_col</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex2.csv&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+    <tr>
+      <th>message</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>hello</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>world</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Trong trường hợp bạn muốn tạo một chỉ số được phân cấp qua nhiều cột, hãy khởi tạo một danh sách các số hoặc tên cột:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/csv_mindex.csv</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;key1,key2,value1,value2</span><span class="se">\n</span><span class="s2">one,a,1,2</span><span class="se">\n</span><span class="s2">one,b,3,4</span><span class="se">\n</span><span class="s2">one,c,5,6</span><span class="se">\n</span><span class="s2">one,d,7,8</span><span class="se">\n</span><span class="s2">two,a,9,10</span><span class="se">\n</span><span class="s2">two,b,11,12</span><span class="se">\n</span><span class="s2">two,c,13,14</span><span class="se">\n</span><span class="s2">two,d,15,16&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tạo tệp csv_mindex.csv giả lập</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/csv_mindex.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;key1,key2,value1,value2</span><span class="se">\n</span><span class="s2">one,a,1,2</span><span class="se">\n</span><span class="s2">one,b,3,4</span><span class="se">\n</span><span class="s2">one,c,5,6</span><span class="se">\n</span><span class="s2">one,d,7,8</span><span class="se">\n</span><span class="s2">two,a,9,10</span><span class="se">\n</span><span class="s2">two,b,11,12</span><span class="se">\n</span><span class="s2">two,c,13,14</span><span class="se">\n</span><span class="s2">two,d,15,16&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1,key2,value1,value2
+one,a,1,2
+one,b,3,4
+one,c,5,6
+one,d,7,8
+two,a,9,10
+two,b,11,12
+two,c,13,14
+two,d,15,16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parsed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/csv_mindex.csv&quot;</span><span class="p">,</span>
+                       <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span>
+<span class="n">parsed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>value1</th>
+      <th>value2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">one</th>
+      <th>a</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">two</th>
+      <th>a</th>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>11</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>13</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>15</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Trong nhiều trường hợp, một bảng có thể không sử dụng dấu phân tách cố định, mà sử dụng khoảng trắng hoặc một ký tự khác khác để tách các cột. Hãy xem xét một tệp văn bản như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/ex3.txt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            A         B         C</span><span class="se">\n</span><span class="s2">aaa -0.264438 -1.026059 -0.619500</span><span class="se">\n</span><span class="s2">bbb  0.927272  0.302904 -0.032399</span><span class="se">\n</span><span class="s2">ccc -0.264273 -0.386314 -0.217601</span><span class="se">\n</span><span class="s2">ddd -0.871858 -0.348382  1.100491&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tạo tệp ex3.txt giả lập</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/ex3.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> 
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;            A         B         C</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;aaa -0.264438 -1.026059 -0.619500</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;bbb  0.927272  0.302904 -0.032399</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;ccc -0.264273 -0.386314 -0.217601</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;ddd -0.871858 -0.348382  1.100491</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            A         B         C
+aaa -0.264438 -1.026059 -0.619500
+bbb  0.927272  0.302904 -0.032399
+ccc -0.264273 -0.386314 -0.217601
+ddd -0.871858 -0.348382  1.100491
+</pre></div>
+</div>
+</div>
+</div>
+<p>Trong trường hợp này, chúng ta có thể sử dụng một <strong>biểu thức chính quy</strong> làm dấu phân tách cho <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>. Khi phân tách giữa các cột là một hay một số khoảng trắng, biểu thức chính quy biểu thị là <code class="docutils literal notranslate"><span class="pre">\s+</span></code>. Do đó, hàm đọc dữ liệu sẽ như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex3.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>aaa</th>
+      <td>-0.264438</td>
+      <td>-1.026059</td>
+      <td>-0.619500</td>
+    </tr>
+    <tr>
+      <th>bbb</th>
+      <td>0.927272</td>
+      <td>0.302904</td>
+      <td>-0.032399</td>
+    </tr>
+    <tr>
+      <th>ccc</th>
+      <td>-0.264273</td>
+      <td>-0.386314</td>
+      <td>-0.217601</td>
+    </tr>
+    <tr>
+      <th>ddd</th>
+      <td>-0.871858</td>
+      <td>-0.348382</td>
+      <td>1.100491</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Trong trường hợp số lượng giá trị trong dòng chứa tên cột nhỏ hơn số lượng giá trị trong các dòng dữ liệu khác, hàm <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> sẽ suy luận rằng cột đầu tiên không thuộc về dữ liệu chính mà đóng vai trò là chỉ số của đối tượng <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Đây là một cơ chế mặc định của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> khi xử lý các tệp dữ liệu có cấu trúc không chuẩn.</p>
+<p>Các hàm phân tích cú pháp trong <code class="docutils literal notranslate"><span class="pre">pandas</span></code> được thiết kế với nhiều tham số linh hoạt nhằm hỗ trợ người dùng xử lý các tình huống ngoại lệ có thể phát sinh trong thực tiễn. Ví dụ, nếu muốn loại bỏ một số dòng cụ thể khỏi quá trình đọc dữ liệu, người dùng có thể sử dụng tham số <code class="docutils literal notranslate"><span class="pre">skiprows</span></code>. Ví dụ chúng ta có một file .csv như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/ex4.csv</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# hey!</span><span class="se">\n</span><span class="s2">a,b,c,d,message</span><span class="se">\n</span><span class="s2"># just wanted to make things more difficult for you</span><span class="se">\n</span><span class="s2"># who reads CSV files with computers, anyway?</span><span class="se">\n</span><span class="s2">1,2,3,4,hello</span><span class="se">\n</span><span class="s2">5,6,7,8,world</span><span class="se">\n</span><span class="s2">9,10,11,12,foo&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tạo tệp ex4.csv giả lập</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/ex4.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# hey!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;a,b,c,d,message</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# just wanted to make things more difficult for you</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# who reads CSV files with computers, anyway?</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;1,2,3,4,hello</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;5,6,7,8,world</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;9,10,11,12,foo</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># hey!
+a,b,c,d,message
+# just wanted to make things more difficult for you
+# who reads CSV files with computers, anyway?
+1,2,3,4,hello
+5,6,7,8,world
+9,10,11,12,foo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Chúng</span> <span class="n">ta</span> <span class="n">loại</span> <span class="n">các</span> <span class="n">dòng</span> <span class="n">không</span> <span class="n">cần</span> <span class="n">thiết</span> <span class="n">khi</span> <span class="n">đọc</span> <span class="n">dữ</span> <span class="n">liệu</span> <span class="n">như</span> <span class="n">sau</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex4.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Việc xử lý các giá trị không quan sát được là một vấn đề quan trọng và phức tạp. Dữ liệu không quan sát được thường được đánh dấu bằng một số giá trị sentinel. Theo mặc định, pandas sử dụng một tập hợp các giá trị sentinel phổ biến, bao gồm <code class="docutils literal notranslate"><span class="pre">NA</span></code>, <code class="docutils literal notranslate"><span class="pre">NaN,</span></code> và <code class="docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/ex5.csv</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;something,a,b,c,d,message</span><span class="se">\n</span><span class="s2">one,1,2,3,4,NA</span><span class="se">\n</span><span class="s2">two,5,6,,8,world</span><span class="se">\n</span><span class="s2">three,9,10,11,12,foo&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tạo tệp ex5.csv giả lập</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/ex5.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;something,a,b,c,d,message</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;one,1,2,3,4,NA</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;two,5,6,,8,world</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;three,9,10,11,12,foo</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>something,a,b,c,d,message
+one,1,2,3,4,NA
+two,5,6,,8,world
+three,9,10,11,12,foo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex5.csv&quot;</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>something</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>two</td>
+      <td>5</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>three</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11.0</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Bạn đọc có thể thấy rằng có hai giá trị không quán sát được trong <code class="docutils literal notranslate"><span class="pre">result</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>something</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Tham số <code class="docutils literal notranslate"><span class="pre">na_values</span></code> được sử dụng khi đọc dữ liệu để gán giá trị cho các vị trí không quan sát được:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex5.csv&quot;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NULL&quot;</span><span class="p">])</span> <span class="c1"># Sẽ không thay đổi gì ở đây vì NULL không có trong ex5.csv và NA đã là mặc định</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>something</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>two</td>
+      <td>5</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>three</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11.0</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Mặc dù hiếm khi xảy ra, nhưng đôi khi dữ liệu từ các hệ thống khác nhau sử dụng các giá trị có ý nghĩa thay cho giá trị không quan sát được. Do đó chúng ta cần chuyển đổi các giá trị này thành <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Phương pháp để thực hiện việc này là sử dụng một từ điển để gán giá trị cho tham số <code class="docutils literal notranslate"><span class="pre">na_values</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;NA&quot;</span><span class="p">],</span> <span class="s2">&quot;something&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">]}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex5.csv&quot;</span><span class="p">,</span> <span class="n">na_values</span> <span class="o">=</span> <span class="n">vals</span><span class="p">,</span>
+              <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Thêm keep_default_na=False để NA mặc định không được dùng</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>something</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>5</td>
+      <td>6</td>
+      <td></td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Có thể thấy rằng giá trị <code class="docutils literal notranslate"><span class="pre">foo</span></code> trong cột <code class="docutils literal notranslate"><span class="pre">message</span></code> và các giá trị <code class="docutils literal notranslate"><span class="pre">two</span></code>, <code class="docutils literal notranslate"><span class="pre">three</span></code> trong cột <code class="docutils literal notranslate"><span class="pre">something</span></code> đã được đổi thành <code class="docutils literal notranslate"><span class="pre">NaN</span></code></p>
+<p>Bảng …. liệt kê một số tùy chọn thường được sử dụng trong <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code>.</p>
+<p>Bảng … một số tham số của hàm <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tham số</p></th>
+<th class="head"><p>Mô tả</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p>Chuỗi chỉ ra vị trí hệ thống tệp, URL, hoặc đối tượng tương tự tệp.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sep</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">delimiter</span></code></p></td>
+<td><p>Chuỗi ký tự hoặc biểu thức chính quy được sử dụng để tách các trường trong mỗi hàng.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">header</span></code></p></td>
+<td><p>Số hàng để sử dụng làm tên cột; mặc định là 0 (dòng đầu tiên), nhưng nên là <code class="docutils literal notranslate"><span class="pre">None</span></code> nếu không có dòng tiêu đề.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">index_col</span></code></p></td>
+<td><p>Số cột hoặc tên cột để sử dụng làm chỉ số hàng trong kết quả; có thể là một tên/số duy nhất hoặc một danh sách chúng cho một chỉ mục phân cấp.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">names</span></code></p></td>
+<td><p>Danh sách tên cột cho kết quả.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">skiprows</span></code></p></td>
+<td><p>Số dòng ở đầu tệp cần bỏ qua hoặc danh sách các số dòng (bắt đầu từ 0) cần bỏ qua.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">na_values</span></code></p></td>
+<td><p>Chuỗi các giá trị cần thay thế bằng NA. Chúng được thêm vào danh sách mặc định trừ khi <code class="docutils literal notranslate"><span class="pre">keep_default_na=False</span></code> được truyền.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code></p></td>
+<td><p>Có sử dụng danh sách giá trị NA mặc định hay không (<code class="docutils literal notranslate"><span class="pre">True</span></code> theo mặc định).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">comment</span></code></p></td>
+<td><p>Ký tự để tách các nhận xét khỏi cuối các dòng.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parse_dates</span></code></p></td>
+<td><p>Cố gắng phân tích cú pháp dữ liệu thành <code class="docutils literal notranslate"><span class="pre">datetime</span></code>; <code class="docutils literal notranslate"><span class="pre">False</span></code> theo mặc định. Nếu <code class="docutils literal notranslate"><span class="pre">True</span></code>, sẽ cố gắng phân tích cú pháp tất cả các cột. Nếu không, có thể chỉ định một danh sách các số cột hoặc tên cột để phân tích cú pháp. Nếu một phần tử của danh sách là tuple hoặc danh sách, nó sẽ kết hợp nhiều cột lại với nhau và phân tích cú pháp thành ngày (ví dụ, nếu ngày/giờ được tách ra làm hai cột).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">keep_date_col</span></code></p></td>
+<td><p>Nếu nối các cột để phân tích cú pháp ngày, giữ lại các cột đã nối; <code class="docutils literal notranslate"><span class="pre">False</span></code> theo mặc định.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">converters</span></code></p></td>
+<td><p>Từ điển chứa ánh xạ số cột hoặc tên cột tới các hàm (ví dụ, <code class="docutils literal notranslate"><span class="pre">{&quot;foo&quot;:</span> <span class="pre">f}</span></code> sẽ áp dụng hàm <code class="docutils literal notranslate"><span class="pre">f</span></code> cho tất cả các giá trị trong cột “foo”).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dayfirst</span></code></p></td>
+<td><p>Khi phân tích cú pháp các ngày không rõ ràng, coi như định dạng quốc tế (ví dụ, <code class="docutils literal notranslate"><span class="pre">7/6/2012</span></code> -&gt; 7 tháng 6, 2012); <code class="docutils literal notranslate"><span class="pre">False</span></code> theo mặc định.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">date_parser</span></code></p></td>
+<td><p>Hàm để sử dụng để phân tích cú pháp ngày.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nrows</span></code></p></td>
+<td><p>Số dòng cần đọc từ đầu tệp (không tính tiêu đề).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iterator</span></code></p></td>
+<td><p>Trả về một đối tượng <code class="docutils literal notranslate"><span class="pre">TextFileReader</span></code> để đọc tệp theo từng phần. Đối tượng này cũng có thể được sử dụng với câu lệnh <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">chunksize</span></code></p></td>
+<td><p>Đối với lặp lại, kích thước của các phần tệp.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">skip_footer</span></code></p></td>
+<td><p>Số dòng cần bỏ qua ở cuối tệp.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">verbose</span></code></p></td>
+<td><p>In thông tin phân tích cú pháp khác nhau, như thời gian dành cho mỗi giai đoạn của quá trình chuyển đổi tệp và thông tin sử dụng bộ nhớ.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">encoding</span></code></p></td>
+<td><p>Mã hóa văn bản (ví dụ, <code class="docutils literal notranslate"><span class="pre">&quot;utf-8&quot;</span></code> cho văn bản mã hóa UTF-8). Mặc định là <code class="docutils literal notranslate"><span class="pre">&quot;utf-8&quot;</span></code> nếu <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">squeeze</span></code></p></td>
+<td><p>Nếu dữ liệu được phân tích cú pháp chỉ chứa một cột, trả về một Series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">thousands</span></code></p></td>
+<td><p>Dấu phân tách hàng nghìn (ví dụ, <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code>); mặc định là <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">decimal</span></code></p></td>
+<td><p>Dấu phân tách thập phân trong số (ví dụ, <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>); mặc định là <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">engine</span></code></p></td>
+<td><p>Công cụ phân tích cú pháp và chuyển đổi CSV để sử dụng; có thể là <code class="docutils literal notranslate"><span class="pre">&quot;c&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;python&quot;</span></code>, hoặc <code class="docutils literal notranslate"><span class="pre">&quot;pyarrow&quot;</span></code>. Mặc định là <code class="docutils literal notranslate"><span class="pre">&quot;c&quot;</span></code>, mặc dù công cụ <code class="docutils literal notranslate"><span class="pre">&quot;pyarrow&quot;</span></code> mới hơn có thể phân tích một số tệp nhanh hơn nhiều. Công cụ <code class="docutils literal notranslate"><span class="pre">&quot;python&quot;</span></code> chậm hơn nhưng hỗ trợ một số tính năng mà các công cụ khác không có.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="doc-du-lieu-van-ban-theo-tung-phan">
+<h3><span class="section-number">7.1.1. </span>Đọc dữ liệu văn bản theo từng phần<a class="headerlink" href="#doc-du-lieu-van-ban-theo-tung-phan" title="Link to this heading">#</a></h3>
+<hr><p>Khi xử lý các tệp dữ liệu rất lớn hoặc bạn đọc muốn tìm ra các tham số chính xác để xử lý một tệp lớn đúng cách, bạn có thể muốn chỉ đọc một phần nhỏ của tệp hoặc đọc lần lượt qua các phần nhỏ của tệp. Để tránh hiển thị dữ liệu bị tràn dòng, trước khi xem xét một tệp lớn, chúng ta sẽ hạn chế số dòng hiển thị của <code class="docutils literal notranslate"><span class="pre">pandas</span></code> như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau khi thiết lập số dòng hiển thị tối đa, hãy quan sát dữ liệu giả lập sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tạo tệp ex6.csv giả lập lớn với 10000 dòng</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">num_rows</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">data_ex6</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_rows</span><span class="p">),</span>
+    <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_rows</span><span class="p">),</span>
+    <span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_rows</span><span class="p">),</span>
+    <span class="s1">&#39;four&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_rows</span><span class="p">),</span>
+    <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><span class="p">),</span> <span class="n">num_rows</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">data_ex6</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/ex6.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex6.csv&quot;</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+      <th>key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.356175</td>
+      <td>-0.482113</td>
+      <td>-0.507278</td>
+      <td>-0.934626</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.585085</td>
+      <td>1.841935</td>
+      <td>-1.042228</td>
+      <td>-1.025426</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.640408</td>
+      <td>-1.066684</td>
+      <td>0.278641</td>
+      <td>-0.414255</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.326434</td>
+      <td>-0.458086</td>
+      <td>-1.372874</td>
+      <td>0.171574</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.287408</td>
+      <td>0.321350</td>
+      <td>-0.128788</td>
+      <td>0.991900</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>0.543649</td>
+      <td>-1.251549</td>
+      <td>-1.158379</td>
+      <td>-1.034230</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>0.053509</td>
+      <td>-0.202851</td>
+      <td>-1.475204</td>
+      <td>0.834955</td>
+      <td>G</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>0.695790</td>
+      <td>0.317303</td>
+      <td>1.993931</td>
+      <td>-1.062276</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>0.010298</td>
+      <td>-1.610878</td>
+      <td>1.664979</td>
+      <td>-1.200185</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>-0.185866</td>
+      <td>-0.593253</td>
+      <td>-0.162879</td>
+      <td>0.312306</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Dấu ba chấm <code class="docutils literal notranslate"><span class="pre">...</span></code> trong hiển thị cho biết các hàng ở giữa DataFrame đã bị bỏ qua.</p>
+<p>Nếu bạn muốn chỉ đọc một số lượng nhỏ các hàng (mà không đọc toàn bộ tệp), hãy sử dụng tham số <code class="docutils literal notranslate"><span class="pre">nrows</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex6.csv&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+      <th>key</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.356175</td>
+      <td>-0.482113</td>
+      <td>-0.507278</td>
+      <td>-0.934626</td>
+      <td>W</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.585085</td>
+      <td>1.841935</td>
+      <td>-1.042228</td>
+      <td>-1.025426</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.640408</td>
+      <td>-1.066684</td>
+      <td>0.278641</td>
+      <td>-0.414255</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.326434</td>
+      <td>-0.458086</td>
+      <td>-1.372874</td>
+      <td>0.171574</td>
+      <td>Z</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.287408</td>
+      <td>0.321350</td>
+      <td>-0.128788</td>
+      <td>0.991900</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Để đọc một tệp dữ liệu theo từng phần, hay còn được gọi là đọc theo từng “chunk”, hãy chỉ định cho <code class="docutils literal notranslate"><span class="pre">chunksize</span></code> số lượng dòng mỗi lần đọc:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex6.csv&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">chunker</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.io.parsers.readers.TextFileReader
+</pre></div>
+</div>
+</div>
+</div>
+<p>Đối tượng <code class="docutils literal notranslate"><span class="pre">TextFileReader</span></code> được trả về bởi <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> cho phép bạn lặp qua các phần của tệp theo kích thước <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>. Ví dụ, chúng ta có thể lặp qua <code class="docutils literal notranslate"><span class="pre">ex6.csv</span></code>, tổng hợp các giá trị trong cột “key” như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunker</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex6.csv&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">chunker</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">piece</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau đó, chúng ta có:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key
+M    430.0
+O    413.0
+U    413.0
+A    409.0
+J    408.0
+C    404.0
+V    401.0
+D    398.0
+R    395.0
+S    392.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">TextFileReader</span></code> cũng được trang bị phương thức <code class="docutils literal notranslate"><span class="pre">get_chunk</span></code> cho phép bạn đọc các phần có kích thước tùy ý.</p>
+</section>
+<section id="ghi-du-lieu-vao-van-ban">
+<h3><span class="section-number">7.1.2. </span>Ghi dữ liệu vào văn bản<a class="headerlink" href="#ghi-du-lieu-vao-van-ban" title="Link to this heading">#</a></h3>
+<hr><p>Dữ liệu sau khi được xử lý cũng có thể được xuất ra một định dạng văn bản được phân tách. Ví dụ với data đã được tạo ở trên chúng ta có thể lưu vào một file .csv như sau</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/ex5.csv&quot;</span><span class="p">)</span> <span class="c1"># Đọc file</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>something</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>two</td>
+      <td>5</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>world</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>three</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11.0</td>
+      <td>12</td>
+      <td>foo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Phương thức <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> của <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> được dùng để ghi dữ liệu ra một tệp được phân tách bằng dấu phẩy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/out.csv&quot;</span><span class="p">)</span> <span class="c1"># lưu file vào đường dẫn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/out.csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/out.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|something|a|b|c|d|message
+0|one|1|2|3.0|4|
+1|two|5|6||8|world
+2|three|9|10|11.0|12|foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Các ký tự phân tách khác dấy phẩy cũng có thể được sử dụng bằng cách sử dụng tham số <code class="docutils literal notranslate"><span class="pre">sep</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/out.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/out.csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/out.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Các giá trị bị thiếu xuất hiện dưới dạng rỗng trong văn bản đầu ra. Bạn có thể muốn biểu thị chúng bằng một số giá trị khác bằng cách sử dụng tham số <code class="docutils literal notranslate"><span class="pre">na_rep</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/out1.csv&quot;</span><span class="p">,</span> <span class="n">na_rep</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nếu không có các tùy chọn khác được chỉ định, cả chỉ số hàng và cột đều được ghi. Nếu bạn đọc không muốn ghi chỉ số hàng và cột, hãy sửa dụng các tham số <code class="docutils literal notranslate"><span class="pre">index</span></code> và <code class="docutils literal notranslate"><span class="pre">header</span></code> và gán bằng <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="du-lieu-json">
+<h3><span class="section-number">7.1.3. </span>Dữ liệu JSON<a class="headerlink" href="#du-lieu-json" title="Link to this heading">#</a></h3>
+<hr><p>Định dạng JavaScript Object Notation (JSON) là một chuẩn biểu diễn dữ liệu nhẹ, được thiết kế nhằm hỗ trợ trao đổi thông tin giữa các hệ thống phân tán, điển hình như kết nối giữa trình duyệt web và máy chủ qua giao thức HTTP. JSON cho phép mô tả cấu trúc dữ liệu dạng đối tượng một cách linh hoạt, dễ đọc và dễ xử lý tự động, đồng thời tương thích với hầu hết các ngôn ngữ lập trình hiện đại. So với định dạng bảng thuần túy như CSV, JSON vượt trội ở khả năng biểu diễn dữ liệu lồng nhau (nested structures), mảng (arrays) và các kiểu dữ liệu phức hợp, từ đó mở rộng phạm vi ứng dụng trong các kịch bản trao đổi dữ liệu phức tạp hơn. Dưới đây là một ví dụ minh họa cấu trúc JSON:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
+<span class="s2">    &quot;name&quot;: &quot;Wes&quot;,</span>
+<span class="s2">    &quot;cities_lived&quot;: [&quot;Akron&quot;, &quot;Nashville&quot;, &quot;New York&quot;, &quot;San Francisco&quot;],</span>
+<span class="s2">    &quot;pet&quot;: null,</span>
+<span class="s2">    &quot;siblings&quot;: [{</span>
+<span class="s2">        &quot;name&quot;: &quot;Scott&quot;,</span>
+<span class="s2">        &quot;age&quot;: 34, </span>
+<span class="s2">        &quot;hobbies&quot;: [&quot;guitars&quot;, &quot;soccer&quot;]</span>
+<span class="s2">    }, {</span>
+<span class="s2">        &quot;name&quot;: &quot;Katie&quot;,</span>
+<span class="s2">        &quot;age&quot;: 42,</span>
+<span class="s2">        &quot;hobbies&quot;: [&quot;diving&quot;, &quot;art&quot;]</span>
+<span class="s2">    }]</span>
+<span class="s2">} &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cấu trúc dữ liệu JSON có cú pháp gần giống với ngôn ngữ Python, ngoại trừ một số khác biệt về mặt cú pháp và quy ước. Cụ thể, giá trị <code class="docutils literal notranslate"><span class="pre">null</span></code> trong JSON tương ứng với <code class="docutils literal notranslate"><span class="pre">None</span></code> trong Python, và JSON không cho phép dấu phẩy đứng sau phần tử cuối cùng trong một danh sách hoặc đối tượng.</p>
+<p>JSON hỗ trợ các kiểu dữ liệu cơ bản bao gồm: đối tượng - tương đương với kiểu từ điển trong Python, mảng tương ứng với danh sách, chuỗi ký tự, số bao gồm cả số nguyên và số thực, giá trị logical, và giá trị rỗng. Một yêu cầu quan trọng trong JSON là tất cả các khóa (keys) trong đối tượng phải được biểu diễn dưới dạng chuỗi.</p>
+<p>Trong Python, có nhiều thư viện hỗ trợ thao tác với dữ liệu JSON, bao gồm cả các thư viện bên ngoài và các mô-đun có sẵn. Trong phạm vi cuốn sách này, chúng ta sẽ sử dụng <code class="docutils literal notranslate"><span class="pre">json</span></code>, vốn là một phần của thư viện chuẩn Python, để thực hiện việc đọc và ghi dữ liệu JSON một cách hiệu quả và thuận tiện.</p>
+<p>Để chuyển đổi một chuỗi JSON thành dạng Python, hãy sử dụng <code class="docutils literal notranslate"><span class="pre">json.loads</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;Wes&#39;,
+ &#39;cities_lived&#39;: [&#39;Akron&#39;, &#39;Nashville&#39;, &#39;New York&#39;, &#39;San Francisco&#39;],
+ &#39;pet&#39;: None,
+ &#39;siblings&#39;: [{&#39;name&#39;: &#39;Scott&#39;, &#39;age&#39;: 34, &#39;hobbies&#39;: [&#39;guitars&#39;, &#39;soccer&#39;]},
+  {&#39;name&#39;: &#39;Katie&#39;, &#39;age&#39;: 42, &#39;hobbies&#39;: [&#39;diving&#39;, &#39;art&#39;]}]}
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">json.dumps</span></code>, ngược lại, chuyển đổi một đối tượng Python trở lại thành JSON:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asjson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="n">asjson</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;name&quot;: &quot;Wes&quot;, &quot;cities_lived&quot;: [&quot;Akron&quot;, &quot;Nashville&quot;, &quot;New York&quot;, &quot;San Francisco&quot;], &quot;pet&quot;: null, &quot;siblings&quot;: [{&quot;name&quot;: &quot;Scott&quot;, &quot;age&quot;: 34, &quot;hobbies&quot;: [&quot;guitars&quot;, &quot;soccer&quot;]}, {&quot;name&quot;: &quot;Katie&quot;, &quot;age&quot;: 42, &quot;hobbies&quot;: [&quot;diving&quot;, &quot;art&quot;]}]}&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cách bạn chuyển đổi một đối tượng JSON hoặc danh sách các đối tượng thành <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> hoặc một cấu trúc dữ liệu khác cho phân tích sẽ tùy thuộc vào bạn. Một cách thuận tiện là truyền một danh sách các từ điển cho hàm tạo DataFrame và chọn một tập hợp con các trường dữ liệu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">siblings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;siblings&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">])</span>
+<span class="n">siblings</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Scott</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Katie</td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Hàm <code class="docutils literal notranslate"><span class="pre">pandas.read_json</span></code> có thể tự động chuyển đổi các tập dữ liệu JSON theo một số cách sắp xếp cụ thể thành Series hoặc DataFrame. Ví dụ:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !cat examples/example.json</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3},</span><span class="se">\n</span><span class="s1"> {&quot;a&quot;: 4, &quot;b&quot;: 5, &quot;c&quot;: 6},</span><span class="se">\n</span><span class="s1"> {&quot;a&quot;: 7, &quot;b&quot;: 8, &quot;c&quot;: 9}]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tạo tệp example.json giả lập</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/example.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;[{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3},</span><span class="se">\n</span><span class="s1"> {&quot;a&quot;: 4, &quot;b&quot;: 5, &quot;c&quot;: 6},</span><span class="se">\n</span><span class="s1"> {&quot;a&quot;: 7, &quot;b&quot;: 8, &quot;c&quot;: 9}]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3},
+ {&quot;a&quot;: 4, &quot;b&quot;: 5, &quot;c&quot;: 6},
+ {&quot;a&quot;: 7, &quot;b&quot;: 8, &quot;c&quot;: 9}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Các tùy chọn mặc định cho <code class="docutils literal notranslate"><span class="pre">pandas.read_json</span></code> giả định rằng mỗi đối tượng trong mảng JSON là một hàng trong bảng:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;data/example.json&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Chúng ta sẽ thực hành nhiều hơn với dữ liệu dạng JSON trong phần phân tích dữ liệu của cuốn sách này.</p>
+</section>
+</section>
+<section id="thu-thap-du-lieu-web">
+<h2><span class="section-number">7.2. </span>Thu thập dữ liệu web<a class="headerlink" href="#thu-thap-du-lieu-web" title="Link to this heading">#</a></h2>
+<hr><p>Trong bối cảnh phân tích dữ liệu hiện đại, các nguồn dữ liệu ngày càng đa dạng và phức tạp. Bên cạnh các định dạng phổ biến như CSV, JSON hay Excel, nhiều dữ liệu có cấu trúc hiện nay được trình bày dưới dạng tài liệu HTML hoặc XML, đặc biệt là trong các ứng dụng thu thập dữ liệu từ web (web scraping) và khai thác dịch vụ web (web APIs).</p>
+<p>HTML là viết tắt của <em>HyperText Markup Language</em> là ngôn ngữ đánh dấu tiêu chuẩn được sử dụng để xây dựng và trình bày nội dung trên các trang web. Dữ liệu HTML có cấu trúc dạng cây, trong đó mỗi phần tử được biểu diễn bằng các cặp thẻ đánh dấu (tags). Các phần tử này có thể lồng nhau và chứa thuộc tính nhằm điều khiển cách hiển thị hoặc tương tác.</p>
+<p>HTML không được thiết kế để lưu trữ hoặc trao đổi dữ liệu, mà chủ yếu phục vụ cho mục tiêu <strong>hiển thị nội dung trực quan</strong> cho người dùng. Tuy nhiên, trong lĩnh vực phân tích dữ liệu, việc trích xuất thông tin từ các trang HTML, chẳng hạn như tiêu đề bài viết, bảng dữ liệu, liên kết hoặc hình ảnh, là một nhiệm vụ quan trọng.</p>
+<p>XML là viết tắt của <em>eXtensible Markup Language</em>, hay <strong>ngôn ngữ đánh dấu mở rộng</strong> là một định dạng dữ liệu có cấu trúc, được thiết kế để lưu trữ và trao đổi dữ liệu giữa các hệ thống một cách linh hoạt và có thể mở rộng. Không giống như HTML, XML không có tập hợp thẻ cố định, mà cho phép người dùng định nghĩa các thẻ (tags) và cấu trúc dữ liệu phù hợp với ngữ cảnh ứng dụng. Ví dụ:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xml</span>
+<span class="o">&lt;</span><span class="n">product</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">Máy</span> <span class="n">tính</span> <span class="n">xách</span> <span class="n">tay</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">price</span><span class="o">&gt;</span><span class="mi">15000000</span><span class="o">&lt;/</span><span class="n">price</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">available</span><span class="o">&gt;</span><span class="n">true</span><span class="o">&lt;/</span><span class="n">available</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">product</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python có nhiều thư viện để đọc và ghi dữ liệu ở các định dạng HTML và XML phổ biến. Điển hình có thể kể đến <code class="docutils literal notranslate"><span class="pre">lxml</span></code>, <code class="docutils literal notranslate"><span class="pre">Beautiful</span> <span class="pre">Soup</span></code> và <code class="docutils literal notranslate"><span class="pre">html5lib</span></code>. Trong khi <code class="docutils literal notranslate"><span class="pre">lxml</span></code> thường nhanh hơn đáng kể trong việc phân tích cú pháp các tệp XML và HTML rất lớn, các thư viện khác như <code class="docutils literal notranslate"><span class="pre">Beautiful</span> <span class="pre">Soup</span></code> và <code class="docutils literal notranslate"><span class="pre">html5lib</span></code> có thể xử lý tốt hơn các tệp HTML hoặc XML có lỗi.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> sử dụng hàm <code class="docutils literal notranslate"><span class="pre">pandas.read_html</span></code> để tự động phân tích cú pháp các bảng từ các tệp HTML và cố gắng chuyển thành các đối tượng <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Trước  tiên, bạn đọc phải cài đặt một số thư viện bổ sung được sử dụng bởi <code class="docutils literal notranslate"><span class="pre">read_html</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install lxml beautifulsoup4 html5lib</span>
+<span class="c1"># Nếu bạn không dùng conda, pip install lxml beautifulsoup4 html5lib cũng sẽ hoạt động.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hàm <code class="docutils literal notranslate"><span class="pre">pandas.read_html</span></code> có một số tùy chọn, nhưng hàm sẽ mặc định tìm kiếm và cố gắng phân tích cú pháp tất cả dữ liệu dạng bảng chứa trong các thẻ <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code>. Hãy quan sát ví dụ sau, khi chúng ta muốn lấy dữ liệu về số lượng huy chương của các quốc gia trên thế giới khi tham dự các thế vận hội mùa hè và thế vận hội mùa đông từ trang web wikipedia:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table&quot;</span>
+<span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<p>Đối tượng <code class="docutils literal notranslate"><span class="pre">tables</span></code> là kết quả của hàm <code class="docutils literal notranslate"><span class="pre">pd.read_html</span></code> chứa 55 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> khác nhau có thể tìm thấy trên địa chỉ web kể trên. Bảng chúng ta cần lấy dữ liệu nằm ở vị trí thứ hai:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Team</th>
+      <th colspan="5" halign="left">Summer Olympic Games</th>
+      <th colspan="5" halign="left">Winter Olympic Games</th>
+      <th colspan="5" halign="left">Combined total</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Team (IOC code)</th>
+      <th>No.</th>
+      <th>Unnamed: 2_level_1</th>
+      <th>Unnamed: 3_level_1</th>
+      <th>Unnamed: 4_level_1</th>
+      <th>Unnamed: 5_level_1</th>
+      <th>No.</th>
+      <th>Unnamed: 7_level_1</th>
+      <th>Unnamed: 8_level_1</th>
+      <th>Unnamed: 9_level_1</th>
+      <th>Unnamed: 10_level_1</th>
+      <th>No.</th>
+      <th>Unnamed: 12_level_1</th>
+      <th>Unnamed: 13_level_1</th>
+      <th>Unnamed: 14_level_1</th>
+      <th>Unnamed: 15_level_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>15</td>
+      <td>7</td>
+      <td>4</td>
+      <td>9</td>
+      <td>20</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>18</td>
+      <td>7</td>
+      <td>4</td>
+      <td>9</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Argentina</td>
+      <td>26</td>
+      <td>22</td>
+      <td>27</td>
+      <td>31</td>
+      <td>80</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>46</td>
+      <td>22</td>
+      <td>27</td>
+      <td>31</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Armenia</td>
+      <td>8</td>
+      <td>2</td>
+      <td>11</td>
+      <td>9</td>
+      <td>22</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>2</td>
+      <td>11</td>
+      <td>9</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>Individual Neutral Athletes[AIN]</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>Independent Olympic Athletes[IOA]</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>Independent Olympic Participants[IOP]</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>Mixed team[ZZX]</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Totals</td>
+      <td>30</td>
+      <td>5793</td>
+      <td>5764</td>
+      <td>6277</td>
+      <td>17834</td>
+      <td>24</td>
+      <td>1170</td>
+      <td>1169</td>
+      <td>1160</td>
+      <td>3500</td>
+      <td>54</td>
+      <td>6964</td>
+      <td>6933</td>
+      <td>7437</td>
+      <td>21334</td>
+    </tr>
+  </tbody>
+</table>
+<p>163 rows × 16 columns</p>
+</div></div></div>
+</div>
+<p>Dữ liệu cần được đặt tên lại cho các cột để phù hợp với mục tiêu phân tích.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_level_1</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Team (IOC code)&#39;</span><span class="p">,</span>  <span class="c1"># for &#39;Team&#39;</span>
+    <span class="s1">&#39;No.&#39;</span><span class="p">,</span> <span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="s1">&#39;Silver&#39;</span><span class="p">,</span> <span class="s1">&#39;Bronze&#39;</span><span class="p">,</span> <span class="s1">&#39;Total&#39;</span><span class="p">,</span>      <span class="c1"># for &#39;Summer&#39;</span>
+    <span class="s1">&#39;No.&#39;</span><span class="p">,</span> <span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="s1">&#39;Silver&#39;</span><span class="p">,</span> <span class="s1">&#39;Bronze&#39;</span><span class="p">,</span> <span class="s1">&#39;Total&#39;</span><span class="p">,</span>      <span class="c1"># for &#39;Winter&#39;</span>
+    <span class="s1">&#39;No.&#39;</span><span class="p">,</span> <span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="s1">&#39;Silver&#39;</span><span class="p">,</span> <span class="s1">&#39;Bronze&#39;</span><span class="p">,</span> <span class="s1">&#39;Total&#39;</span>       <span class="c1"># for &#39;Combined&#39;</span>
+<span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([</span>
+    <span class="p">(</span><span class="n">level0</span><span class="p">,</span> <span class="n">new1</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">level0</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="n">new1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">new_level_1</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Team</th>
+      <th colspan="5" halign="left">Summer Olympic Games</th>
+      <th colspan="5" halign="left">Winter Olympic Games</th>
+      <th colspan="5" halign="left">Combined total</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Team (IOC code)</th>
+      <th>No.</th>
+      <th>Gold</th>
+      <th>Silver</th>
+      <th>Bronze</th>
+      <th>Total</th>
+      <th>No.</th>
+      <th>Gold</th>
+      <th>Silver</th>
+      <th>Bronze</th>
+      <th>Total</th>
+      <th>No.</th>
+      <th>Gold</th>
+      <th>Silver</th>
+      <th>Bronze</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>15</td>
+      <td>7</td>
+      <td>4</td>
+      <td>9</td>
+      <td>20</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>18</td>
+      <td>7</td>
+      <td>4</td>
+      <td>9</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Argentina</td>
+      <td>26</td>
+      <td>22</td>
+      <td>27</td>
+      <td>31</td>
+      <td>80</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>46</td>
+      <td>22</td>
+      <td>27</td>
+      <td>31</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Armenia</td>
+      <td>8</td>
+      <td>2</td>
+      <td>11</td>
+      <td>9</td>
+      <td>22</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>2</td>
+      <td>11</td>
+      <td>9</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>Individual Neutral Athletes[AIN]</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>Independent Olympic Athletes[IOA]</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>Independent Olympic Participants[IOP]</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>Mixed team[ZZX]</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>8</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Totals</td>
+      <td>30</td>
+      <td>5793</td>
+      <td>5764</td>
+      <td>6277</td>
+      <td>17834</td>
+      <td>24</td>
+      <td>1170</td>
+      <td>1169</td>
+      <td>1160</td>
+      <td>3500</td>
+      <td>54</td>
+      <td>6964</td>
+      <td>6933</td>
+      <td>7437</td>
+      <td>21334</td>
+    </tr>
+  </tbody>
+</table>
+<p>163 rows × 16 columns</p>
+</div></div></div>
+</div>
+<p>Chúng ta có thể thực hiện được phân tích trên dữ liệu này. Ví dụ, chúng ta muốn so sánh tổng số lượng huy chương vàng của top 5 quốc gia có số lượng huy chương vàng nhiều nhất so với phần còn lại của thế giới:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1"># Tạo DataFrame mới và làm sạch</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[(</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Team (IOC code)&#39;</span><span class="p">)]</span> <span class="o">!=</span> <span class="s1">&#39;Totals&#39;</span><span class="p">]</span> <span class="c1"># Bỏ dòng total</span>
+<span class="n">teams</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[(</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Team (IOC code)&#39;</span><span class="p">)]</span>
+<span class="n">gold</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[(</span><span class="s1">&#39;Summer Olympic Games&#39;</span><span class="p">,</span> <span class="s1">&#39;Gold&#39;</span><span class="p">)]</span>
+
+<span class="n">df_gold</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="n">teams</span><span class="p">,</span>
+    <span class="s1">&#39;Gold&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">gold</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="p">})</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Lấy top 5 và tính phần còn lại</span>
+<span class="n">df_gold_sorted</span> <span class="o">=</span> <span class="n">df_gold</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">top5</span> <span class="o">=</span> <span class="n">df_gold_sorted</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">top5_sum</span> <span class="o">=</span> <span class="n">top5</span><span class="p">[</span><span class="s1">&#39;Gold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">others_sum</span> <span class="o">=</span> <span class="n">df_gold_sorted</span><span class="p">[</span><span class="s1">&#39;Gold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">top5_sum</span>
+
+<span class="c1"># Vẽ biểu đồ pie chart</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">top5</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Others&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">top5</span><span class="p">[</span><span class="s1">&#39;Gold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="n">others_sum</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tỷ lệ huy chương vàng Olympic mùa hè của Top 5 quốc gia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>  <span class="c1"># hình tròn</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5f575be8cd24a857b5e947e8d02cca7d28ea50eacd2c5f192c4bdecf1bd2fb38.png" src="../_images/5f575be8cd24a857b5e947e8d02cca7d28ea50eacd2c5f192c4bdecf1bd2fb38.png" />
+</div>
+</div>
+<p>Nhiều trang web cho phép truy cập dữ liệu dưới định đạng <code class="docutils literal notranslate"><span class="pre">xml</span></code>. Như đã trình bày ở trên, một định dạng dữ liệu có cấu trúc, được thiết kế để lưu trữ và trao đổi dữ liệu giữa các hệ thống. Ví dụ, <code class="docutils literal notranslate"><span class="pre">https://cafef.vn/index.rss</span></code> chứa nội dung thông tin về các kênh RSS do Cafef cung cấp, phù hợp để bạn theo dõi các chủ đề như thời sự, kinh tế, tài chính, …, hoàn toàn bằng định dạng XML:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://cafef.vn/thi-truong-chung-khoan.rss&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;xml&#39;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">pubDate</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;pubDate&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;pubDate&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+        <span class="s1">&#39;link&#39;</span><span class="p">:</span> <span class="n">link</span><span class="p">,</span>
+        <span class="s1">&#39;pubDate&#39;</span><span class="p">:</span> <span class="n">pubDate</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">description</span>
+    <span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>link</th>
+      <th>pubDate</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>“Gánh nặng” cổ phiếu dầu khí, VN-Index “quay đ...</td>
+      <td>https://cafef.vn/ganh-nang-co-phieu-dau-khi-vn...</td>
+      <td>Wed, 25 Jun 25 16:58:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/ganh-nang-co-phieu-d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Phiên 25/6: Khối ngoại tiếp đà mua ròng hơn tr...</td>
+      <td>https://cafef.vn/phien-25-6-khoi-ngoai-tiep-da...</td>
+      <td>Wed, 25 Jun 25 15:55:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/phien-25-6-khoi-ngoa...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Một công ty Nhà nước chưa thể thoái vốn tại MSB</td>
+      <td>https://cafef.vn/mot-cong-ty-nha-nuoc-chua-the...</td>
+      <td>Wed, 25 Jun 25 14:45:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/mot-cong-ty-nha-nuoc...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lãi kỷ lục, công ty "họ" Viettel chốt ngày trả...</td>
+      <td>https://cafef.vn/lai-ky-luc-cong-ty-ho-viettel...</td>
+      <td>Wed, 25 Jun 25 14:15:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/lai-ky-luc-cong-ty-h...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Vietnam Airlines lãi rất đậm</td>
+      <td>https://cafef.vn/vietnam-airlines-lai-rat-dam-...</td>
+      <td>Wed, 25 Jun 25 14:00:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/vietnam-airlines-lai...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>495</th>
+      <td>Một công ty hàng hải chốt ngày trả cổ tức tiền...</td>
+      <td>https://cafef.vn/mot-cong-ty-hang-hai-chot-nga...</td>
+      <td>Thu, 29 May 25 00:46:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/mot-cong-ty-hang-hai...</td>
+    </tr>
+    <tr>
+      <th>496</th>
+      <td>“Ôm” lượng tiền mặt lớn hơn vốn hóa, doanh ngh...</td>
+      <td>https://cafef.vn/om-luong-tien-mat-lon-hon-von...</td>
+      <td>Thu, 29 May 25 00:05:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/om-luong-tien-mat-lo...</td>
+    </tr>
+    <tr>
+      <th>497</th>
+      <td>Tổng Giám đốc VNDirect nói về giá cổ phiếu VND...</td>
+      <td>https://cafef.vn/tong-giam-doc-vndirect-noi-ve...</td>
+      <td>Thu, 29 May 25 00:04:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/tong-giam-doc-vndire...</td>
+    </tr>
+    <tr>
+      <th>498</th>
+      <td>Làm dự án "quốc gia đại sự": Việt Nam cần gần ...</td>
+      <td>https://cafef.vn/lam-du-an-quoc-gia-dai-su-vie...</td>
+      <td>Thu, 29 May 25 00:01:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/lam-du-an-quoc-gia-d...</td>
+    </tr>
+    <tr>
+      <th>499</th>
+      <td>Chuyên gia VPBankS chia sẻ bí quyết đầu tư chứ...</td>
+      <td>https://cafef.vn/chuyen-gia-vpbanks-chia-se-bi...</td>
+      <td>Thu, 29 May 25 00:01:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/chuyen-gia-vpbanks-c...</td>
+    </tr>
+  </tbody>
+</table>
+<p>500 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Chúng ta có thể thực hiện các phân tích, chẳng hạn như lấy ra các thông tin có liên quan đến mã cổ phiếu HVN của hãng hàng không quốc gia Vietnam Airline:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_hvn</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;vietnam airlines&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;vietnam airlines&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">df_hvn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>link</th>
+      <th>pubDate</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>Vietnam Airlines lãi rất đậm</td>
+      <td>https://cafef.vn/vietnam-airlines-lai-rat-dam-...</td>
+      <td>Wed, 25 Jun 25 14:00:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/vietnam-airlines-lai...</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>Vietnam Airlines khởi công 2 dự án gần 1.800 t...</td>
+      <td>https://cafef.vn/vietnam-airlines-khoi-cong-2-...</td>
+      <td>Sun, 15 Jun 25 20:41:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/vietnam-airlines-kho...</td>
+    </tr>
+    <tr>
+      <th>324</th>
+      <td>Vietnam Airlines "bắt tay" hãng hàng không Tru...</td>
+      <td>https://cafef.vn/vietnam-airlines-bat-tay-hang...</td>
+      <td>Fri, 06 Jun 25 21:33:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/vietnam-airlines-bat...</td>
+    </tr>
+    <tr>
+      <th>444</th>
+      <td>Thủ tướng: Vietnam Airlines góp phần nâng vị t...</td>
+      <td>https://cafef.vn/thu-tuong-vietnam-airlines-go...</td>
+      <td>Sun, 01 Jun 25 15:40:00 +0700</td>
+      <td>&lt;a href="https://cafef.vn/thu-tuong-vietnam-ai...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Có thể thấy rằng có bốn thông tin chứng khoán liên quan đến HVN trong ngày 25 tháng 06 và đều là các thông tin tích cực.</p>
+</section>
+<section id="doc-du-lieu-tu-microsoft-excel">
+<h2><span class="section-number">7.3. </span>Đọc dữ liệu từ Microsoft Excel<a class="headerlink" href="#doc-du-lieu-tu-microsoft-excel" title="Link to this heading">#</a></h2>
+<hr><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> cũng hỗ trợ đọc dữ liệu dạng bảng được lưu trữ trong các tệp Excel từ phiên bản 2003 bằng cách sử dụng <code class="docutils literal notranslate"><span class="pre">pandas.ExcelFile</span></code> hoặc <code class="docutils literal notranslate"><span class="pre">pandas.read_excel</span></code>. Bên trong, các công cụ này sử dụng các thư viện bổ trợ <code class="docutils literal notranslate"><span class="pre">xlrd</span></code> và <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> để đọc các tệp XLS kiểu cũ và XLSX mới hơn, tương ứng. Các thư viện này phải được cài đặt riêng biệt với <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## !pip install openpyxl xlrd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Để sử dụng <code class="docutils literal notranslate"><span class="pre">pandas.ExcelFile</span></code>, hãy tạo một ví dụ:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tạo tệp ex1.xlsx giả lập</span>
+<span class="n">df_to_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df_to_excel</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;data/ex1.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">xlsx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;data/ex1.xlsx&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">xlsx</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thư viện openpyxl chưa được cài đặt. Bỏ qua ví dụ Excel.&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xlsx</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Sheet1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dữ liệu được lưu trữ trong một trang tính sau đó có thể được đọc vào DataFrame bằng <code class="docutils literal notranslate"><span class="pre">parse</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">xlsx</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Unnamed: 0  a   b   c   d message
+0           0  1   2   3   4   hello
+1           1  5   6   7   8   world
+2           2  9  10  11  12     foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bảng Excel này có một cột chỉ số, vì vậy chúng ta có thể chỉ định bằng tham số <code class="docutils literal notranslate"><span class="pre">index_col</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span>
+    <span class="c1"># Đọc lại với index_col, tệp gốc ex1.xlsx không có cột chỉ mục rõ ràng là cột 0</span>
+    <span class="c1"># để khớp với output của sách, chúng ta sẽ đọc lại tệp đã tạo</span>
+    <span class="c1"># và giả sử cột &#39;Unnamed: 0&#39; là chỉ mục mong muốn</span>
+    <span class="n">frame_excel_indexed</span> <span class="o">=</span> <span class="n">xlsx</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">frame_excel_indexed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            a   b   c   d message
+Unnamed: 0                       
+0           1   2   3   4   hello
+1           5   6   7   8   world
+2           9  10  11  12     foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nếu bạn đang đọc nhiều trang tính trong một tệp, thì việc tạo <code class="docutils literal notranslate"><span class="pre">pandas.ExcelFile</span></code> sẽ nhanh hơn. Trong trường hợp bạn chỉ làm việc trên 1 trang tính cụ thể, bạn có thể sử dụng <code class="docutils literal notranslate"><span class="pre">pandas.read_excel</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span> <span class="c1"># Kiểm tra xem xlsx có được khởi tạo không</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;data/ex1.xlsx&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Unnamed: 0  a   b   c   d message
+0           0  1   2   3   4   hello
+1           1  5   6   7   8   world
+2           2  9  10  11  12     foo
+</pre></div>
+</div>
+</div>
+</div>
+<p>Để lưu dữ liệu <code class="docutils literal notranslate"><span class="pre">pandas</span></code> vào định dạng Excel, trước tiên bạn phải tạo một <code class="docutils literal notranslate"><span class="pre">ExcelWriter</span></code>, sau đó ghi dữ liệu vào đó bằng phương thức <code class="docutils literal notranslate"><span class="pre">to_excel</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span> <span class="c1"># Sử dụng frame từ ô trước</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;data/ex2.xlsx&quot;</span><span class="p">)</span>
+        <span class="n">frame</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Sách gốc dùng writer.save() nhưng API mới hơn có thể dùng close()</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thư viện openpyxl chưa được cài đặt để ghi Excel.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Bạn cũng có thể truyền đường dẫn tệp cho <code class="docutils literal notranslate"><span class="pre">to_excel</span></code> và tránh dùng <code class="docutils literal notranslate"><span class="pre">ExcelWriter</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">xlsx</span><span class="p">:</span> <span class="c1"># Sử dụng frame từ ô trước</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">frame</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;data/ex2.xlsx&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thư viện openpyxl chưa được cài đặt để ghi Excel.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuong-tac-voi-api-web">
+<h2><span class="section-number">7.4. </span>Tương tác với API Web<a class="headerlink" href="#tuong-tac-voi-api-web" title="Link to this heading">#</a></h2>
+<hr><p>Nhiều trang web có các API công khai cung cấp nguồn cấp dữ liệu qua JSON hoặc một số định dạng khác. Có một số cách để truy cập các API này từ Python; một phương pháp mà bạn đọc nên dùng là sử dụng thư viện <code class="docutils literal notranslate"><span class="pre">requests</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dưới đây là một ví dụ về truy cập dữ liệu về các tỉnh thành, huyện, thị xã, xã tại Việt Nam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="c1"># Lấy dữ liệu tất cả tỉnh</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://provinces.open-api.vn/api/p/&quot;</span><span class="p">)</span>
+<span class="n">resp</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">provinces</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="n">provinces</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau khi có code của các tỉnh, chúng ta có thể truy cập vào các đơn vị huyện, thị xã của tỉnh. Chẳng hạn như các quận huyện của Hà Nội</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lấy dữ liệu tỉnh Hà Nội (code=01) bao gồm quận/huyện</span>
+<span class="n">resp2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://provinces.open-api.vn/api/p/01?depth=2&quot;</span><span class="p">)</span>
+<span class="n">resp2</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">hanoi</span> <span class="o">=</span> <span class="n">resp2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">hanoi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hanoi</span><span class="p">[</span><span class="s2">&quot;districts&quot;</span><span class="p">])</span>
+<span class="n">hanoi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau cùng là thông tin về các phường của quận Ba Đình</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bước 3: Lấy phường thuộc Quận Ba Đình (code = 1)</span>
+<span class="n">url_ba_dinh</span> <span class="o">=</span> <span class="s2">&quot;https://provinces.open-api.vn/api/d/1?depth=2&quot;</span>
+<span class="n">ba_dinh_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_ba_dinh</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Đưa vào DataFrame</span>
+<span class="n">df_wards</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ba_dinh_data</span><span class="p">[</span><span class="s1">&#39;wards&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_wards</span><span class="p">[[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    code               name
+0      1     Phường Phúc Xá
+1      4   Phường Trúc Bạch
+2      6   Phường Vĩnh Phúc
+3      7     Phường Cống Vị
+4      8   Phường Liễu Giai
+5     13  Phường Quán Thánh
+6     16     Phường Ngọc Hà
+7     19   Phường Điện Biên
+8     22     Phường Đội Cấn
+9     25  Phường Ngọc Khánh
+10    28      Phường Kim Mã
+11    31    Phường Giảng Võ
+12    34  Phường Thành Công
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tuong-tac-voi-co-so-du-lieu">
+<h2><span class="section-number">7.5. </span>Tương tác với cơ sở dữ liệu<a class="headerlink" href="#tuong-tac-voi-co-so-du-lieu" title="Link to this heading">#</a></h2>
+<hr><p>Trong môi trường kinh doanh, nhiều dữ liệu có thể không được lưu trữ trong các tệp văn bản hoặc Excel. Các cơ sở dữ liệu quan hệ dựa trên SQL (chẳng hạn như SQL Server, PostgreSQL và MySQL) được sử dụng rộng rãi, và nhiều cơ sở dữ liệu thay thế đã trở nên khá phổ biến. Việc lựa chọn cơ sở dữ liệu thường phụ thuộc vào hiệu suất, tính toàn vẹn dữ liệu và nhu cầu mở rộng của một ứng dụng.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> có một số hàm để đơn giản hóa việc tải kết quả của một truy vấn SQL vào DataFrame. Ví dụ, chúng tôi sẽ tạo một cơ sở dữ liệu SQLite3 bằng trình điều khiển <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> tích hợp sẵn của Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE TABLE test</span>
+<span class="s2">(a VARCHAR(20), b VARCHAR(20),</span>
+<span class="s2"> c REAL,        d INTEGER</span>
+<span class="s2">);&quot;&quot;&quot;</span>
+
+<span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;mydata.sqlite&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">OperationalError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lỗi khi tạo bảng (có thể bảng đã tồn tại): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sau đó, chèn một vài hàng dữ liệu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_sql</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Atlanta&quot;</span><span class="p">,</span> <span class="s2">&quot;Georgia&quot;</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Tallahassee&quot;</span><span class="p">,</span> <span class="s2">&quot;Florida&quot;</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Sacramento&quot;</span><span class="p">,</span> <span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="n">stmt</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO test VALUES(?, ?, ?, ?)&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">data_sql</span><span class="p">)</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lỗi khi chèn dữ liệu (có thể dữ liệu đã tồn tại): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hầu hết các trình điều khiển SQL Python trả về một danh sách các tuple khi chọn dữ liệu từ một bảng:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM test&quot;</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bạn có thể truyền danh sách các tuple cho hàm tạo DataFrame, nhưng bạn cũng cần tên cột, chứa trong thuộc tính <code class="docutils literal notranslate"><span class="pre">description</span></code> của con trỏ. Lưu ý rằng đối với SQLite3, mô tả con trỏ chỉ cung cấp tên cột, nhưng đối với một số trình điều khiển cơ sở dữ liệu khác, thông tin cột được cung cấp nhiều hơn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">description</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">description</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Đây là khá nhiều công việc xử lý mà bạn không muốn lặp lại mỗi khi truy vấn cơ sở dữ liệu. Dự án SQLAlchemy là một bộ công cụ SQL Python phổ biến giúp trừu tượng hóa nhiều khác biệt phổ biến giữa các cơ sở dữ liệu SQL. pandas có hàm <code class="docutils literal notranslate"><span class="pre">read_sql</span></code> cho phép bạn đọc dữ liệu dễ dàng từ một kết nối SQLAlchemy chung. Bạn có thể cài đặt SQLAlchemy bằng conda như sau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install sqlalchemy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bây giờ, chúng ta sẽ kết nối với cùng một cơ sở dữ liệu SQLite bằng SQLAlchemy và đọc dữ liệu từ bảng đã tạo trước đó:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sqla</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">sqla</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///mydata.sqlite&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM test&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Thư viện SQLAlchemy chưa được cài đặt. Bỏ qua ví dụ SQLAlchemy.&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Đóng kết nối sqlite3 ban đầu</span>
+    <span class="c1"># Xóa tệp sqlite để các lần chạy sau không bị lỗi</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;mydata.sqlite&quot;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;mydata.sqlite&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nhập dữ liệu thường là bước đầu tiên trong quy trình phân tích dữ liệu. Chúng ta đã xem xét một số công cụ hữu ích trong chương này sẽ giúp bạn bắt đầu. Trong các chương sắp tới, chúng ta sẽ tìm hiểu sâu hơn về xử lý dữ liệu, trực quan hóa dữ liệu, phân tích chuỗi thời gian và các chủ đề khác.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter6-pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Giới thiệu về pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter8-prepare.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Làm sạch và chuẩn bị dữ liệu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-va-luu-du-lieu-o-dinh-dang-van-ban">7.1. Đọc và lưu dữ liệu ở định dạng văn bản</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-du-lieu-van-ban-theo-tung-phan">7.1.1. Đọc dữ liệu văn bản theo từng phần</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ghi-du-lieu-vao-van-ban">7.1.2. Ghi dữ liệu vào văn bản</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#du-lieu-json">7.1.3. Dữ liệu JSON</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thu-thap-du-lieu-web">7.2. Thu thập dữ liệu web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-du-lieu-tu-microsoft-excel">7.3. Đọc dữ liệu từ Microsoft Excel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuong-tac-voi-api-web">7.4. Tương tác với API Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuong-tac-voi-co-so-du-lieu">7.5. Tương tác với cơ sở dữ liệu</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

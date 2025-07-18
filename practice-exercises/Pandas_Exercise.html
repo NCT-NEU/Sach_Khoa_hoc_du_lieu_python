@@ -1,0 +1,2375 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Thực hành nhập liệu từ các nguồn khác nhau &#8212; Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'practice-exercises/Pandas_Exercise';</script>
+    <link rel="canonical" href="/Sach_Khoa_hoc_du_lieu_python/practice-exercises/Pandas_Exercise.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tiền xử lý dữ liệu" href="50_bai_tap_tien_xu_ly_du_lieu.html" />
+    <link rel="prev" title="Bài tập trực quan hóa dữ liệu" href="30_bai_tap_pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Khoa học dữ liệu trong Kinh tế và Kinh doanh (Sử dụng ngôn ngữ Python)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Khoa học dữ liệu trong Kinh tế và Kinh doanh
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Danh sách chương</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/gioi-thieu-ve-khoa-hoc-du-lieu.html">1. Các khái niệm cơ bản trong khoa học dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/nguyen-ly-phan-tich-du-lieu.html">2. Nguyên lý phân tích dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/khung-phuong-phap-xay-dung-mo-hinh.html">3. Tổng quan về xây dựng mô hình trên dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter4-basics.html">4. Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter5-Numpy.html">5. Kiến thức cơ bản về NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter6-pandas.html">6. Giới thiệu về pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter7-Import-data.html">7. Nhập và lưu trữ dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter8-prepare.html">8. Làm sạch và chuẩn bị dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter9-transform.html">9. Sắp xếp và biến đổi dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter10-visualization.html">10. Trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/chapter12-Supervised.html">11. Các mô hình học máy có giám sát</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bài tập thực hành</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="100_bai_tap_python_day_du.html">Python cơ bản</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_numpy.html">Bài tập NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30_bai_tap_pandas.html">Bài tập trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Thực hành nhập liệu từ các nguồn khác nhau</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_tien_xu_ly_du_lieu.html">Tiền xử lý dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_matplotlib_seaborn.html">Thực hành trực quan hóa dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_linear_softmax_models.html">Mô hình tuyến tính</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50_bai_tap_cay_rung_boosting.html">Cây quyết định và tập hợp cây quyết định</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/main?urlpath=tree/practice-exercises/Pandas_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/blob/main/practice-exercises/Pandas_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCT-NEU/Sach_Khoa_hoc_du_lieu_python/issues/new?title=Issue%20on%20page%20%2Fpractice-exercises/Pandas_Exercise.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/practice-exercises/Pandas_Exercise.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Thực hành nhập liệu từ các nguồn khác nhau</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Thực hành nhập liệu từ các nguồn khác nhau</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-1-doc-file-tu-file-delimited-data">Bài tập 1: Đọc file Từ file delimited data:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu">🔰 Giới thiệu:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-doc-file-delimited-data"><strong>1A.</strong> Đọc file Delimited data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-gop-files"><strong>1B.</strong> Gộp files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-1">Lời giải bài tập 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a"><strong>1A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b"><strong>1B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-2-doc-du-lieu-tu-tu-file-excel">Bài tập 2: Đọc dữ liệu từ Từ File excel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-3-tu-file-hoac-object-json">Bài tập 3: Từ file hoặc object json:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yeu-cau">Yêu cầu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-3">Lời giải bài tập 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>3A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-4-lay-du-lieu-tu-api">Bài tập 4: Lấy dữ liệu từ API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Yêu cầu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tim-api-du-lieu-bang-gia-khop-lenh-vn30"><strong>4A.</strong> Tìm API dữ liệu bảng giá khớp lệnh VN30</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tai-tao-du-lieu"><strong>4B.</strong> Tái tạo dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai">Lời giải</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-5-lay-du-lieu-tu-trang-web-khong-qua-api">Bài tập 5: Lấy dữ liệu từ trang web (không qua API)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Yêu cầu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-khoi-tao-trinh-duyet-va-load-du-lieu"><strong>5A.</strong> Khởi tạo trình duyệt và load dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-khoi-tao-trinh-duyet-va-load-du-lieu"><strong>5B.</strong> Khởi tạo trình duyệt và load dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Lời giải</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>5A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>5B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-6-doc-du-lieu-tu-co-so-du-lieu-sql-voi-pandas">Bài tập 6: Đọc dữ liệu từ cơ sở dữ liệu SQL với Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Yêu cầu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-thong-ke-doanh-thu-theo-quoc-gia"><strong>6A.</strong> Thống kê doanh thu theo quốc gia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tinh-so-bai-hat-theo-tung-the-loai-genre">6B. Tính số bài hát theo từng thể loại (Genre)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-6">Lời giải bài tập 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>6A.</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6B</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="thuc-hanh-nhap-lieu-tu-cac-nguon-khac-nhau">
+<h1>Thực hành nhập liệu từ các nguồn khác nhau<a class="headerlink" href="#thuc-hanh-nhap-lieu-tu-cac-nguon-khac-nhau" title="Link to this heading">#</a></h1>
+<p>Mục tiêu chung của phần này là để tổng hợp các cách xử lý file format khác nhau, biến thành dataframe, xử lý rồi xuất file dưới định dạng excel với python. Các dữ liệu của chương bài tập này có thể download từ link sau: <a class="reference external" href="https://drive.google.com/drive/folders/1Ckmw9z7FLnpuVBdiLorI4YgTuV3xQjeL">https://drive.google.com/drive/folders/1Ckmw9z7FLnpuVBdiLorI4YgTuV3xQjeL</a>. Các thư viện liên quan của phần bài tập này cũng được liệt kê dưới đây:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install beautifulsoup4 pandas pandasql requests selenium sqlalchemy webdriver-manager</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bai-tap-1-doc-file-tu-file-delimited-data">
+<h2>Bài tập 1: Đọc file Từ file delimited data:<a class="headerlink" href="#bai-tap-1-doc-file-tu-file-delimited-data" title="Link to this heading">#</a></h2>
+</section>
+<section id="gioi-thieu">
+<h2>🔰 Giới thiệu:<a class="headerlink" href="#gioi-thieu" title="Link to this heading">#</a></h2>
+<p>Delimited data (dữ liệu phân tách) là dạng dữ liệu văn bản trong đó các trường được ngăn cách bằng ký tự đặc biệt như dấu phẩy (,), tab (\t), hoặc dấu chấm phẩy (;). Các định dạng phổ biến nhất là CSV (Comma-Separated Values), TSV(Tab-Separated Values) hoặc trong một vài trường hợp là txt(text-file). Các dữ liệu này thường được dùng để lưu trữ bảng dữ liệu từ Excel, cơ sở dữ liệu hoặc xuất từ phần mềm.
+Mục tiêu bài tập này là giúp bạn đọc và xử lý dữ liệu từ các file CSV bằng pandas để chuẩn bị cho phân tích dữ liệu.</p>
+<section id="a-doc-file-delimited-data">
+<h3><strong>1A.</strong> Đọc file Delimited data<a class="headerlink" href="#a-doc-file-delimited-data" title="Link to this heading">#</a></h3>
+<p>Data từ 2 file book_data.csv và comments.txt từ folder Data.</p>
+<p>File đầu tiên có định dạng csv; trong khi file thứ 2 có định dạng txt, phân cách bởi dấu ;.</p>
+<p>Mục tiêu thu được 2 object pd.DataFrame có định dạng như sau:</p>
+<p><img alt="image.png" src="practice-exercises/attachment:image.png" /></p>
+<p><img alt="image-2.png" src="practice-exercises/attachment:image-2.png" /></p>
+</section>
+<section id="b-gop-files">
+<h3><strong>1B.</strong> Gộp files<a class="headerlink" href="#b-gop-files" title="Link to this heading">#</a></h3>
+<p>Tổng hợp 2 lại theo product_id để có 1 file data tổng hợp theo từng sản phẩm và từng comment. Xuất thành excel, đặt tên là Book_data_full.csv</p>
+</section>
+</section>
+<section id="loi-giai-bai-tap-1">
+<h2>Lời giải bài tập 1<a class="headerlink" href="#loi-giai-bai-tap-1" title="Link to this heading">#</a></h2>
+<section id="a">
+<h3><strong>1A.</strong><a class="headerlink" href="#a" title="Link to this heading">#</a></h3>
+<p>Để đọc hai file dữ liệu dạng delimited, bạn có thể sử dụng hàm pd.read_csv trong thư viện pandas. Hàm này hỗ trợ nhiều tham số cấu hình như lựa chọn ký tự phân tách, mã hóa ngôn ngữ (ví dụ: tiếng Việt, tiếng Anh), v.v. Để hiểu rõ hơn về cách sử dụng, bạn có thể tham khảo tài liệu chính thức tại: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/book_data.csv&#39;</span><span class="p">)</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/comments.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/book_data.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/comments.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;Data/book_data.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_id</th>
+      <th>title</th>
+      <th>authors</th>
+      <th>original_price</th>
+      <th>current_price</th>
+      <th>quantity</th>
+      <th>category</th>
+      <th>n_review</th>
+      <th>avg_rating</th>
+      <th>pages</th>
+      <th>manufacturer</th>
+      <th>cover_link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_id</th>
+      <th>comment_id</th>
+      <th>title</th>
+      <th>thank_count</th>
+      <th>customer_id</th>
+      <th>rating</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>74021317</td>
+      <td>12559756</td>
+      <td>Cực kì hài lòng</td>
+      <td>313</td>
+      <td>22051463</td>
+      <td>5</td>
+      <td>Có những người bước đến, họ lấp đầy hạnh phúc ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>74021317</td>
+      <td>16979365</td>
+      <td>Cực kì hài lòng</td>
+      <td>6</td>
+      <td>27791831</td>
+      <td>5</td>
+      <td>Thấy nhiều bạn chê tiki gói hàng quá, may sao ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="b">
+<h3><strong>1B.</strong><a class="headerlink" href="#b" title="Link to this heading">#</a></h3>
+<p>Để kết hợp (gộp) thông tin từ hai bảng dữ liệu dựa trên một khóa chung (key), bạn đọc có thể sử dụng các hàm trong thư viện pandas như:</p>
+<ul class="simple">
+<li><p>pd.merge() – linh hoạt và phổ biến nhất, cho phép gộp theo một hoặc nhiều cột khóa, với nhiều kiểu gộp như inner, left, right, outer</p></li>
+<li><p>DataFrame.join() – thường dùng khi gộp theo chỉ số (index) hoặc khi chỉ cần nối đơn giản hai bảng</p></li>
+<li><p>pd.concat() – sử dụng khi muốn gộp dữ liệu theo chiều dọc hoặc ngang mà không cần chỉ rõ khóa</p></li>
+</ul>
+<p>Lưu ý: với các phương pháp này, bạn cần chỉ định rõ cột khóa (key) – tức là thông tin chung giữa hai bảng – để quá trình ghép dữ liệu được thực hiện chính xác.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
+<span class="n">merged_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_id</th>
+      <th>title_x</th>
+      <th>authors</th>
+      <th>original_price</th>
+      <th>current_price</th>
+      <th>quantity</th>
+      <th>category</th>
+      <th>n_review</th>
+      <th>avg_rating</th>
+      <th>pages</th>
+      <th>manufacturer</th>
+      <th>cover_link</th>
+      <th>comment_id</th>
+      <th>title_y</th>
+      <th>thank_count</th>
+      <th>customer_id</th>
+      <th>rating</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+      <td>12559756.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>313.0</td>
+      <td>22051463.0</td>
+      <td>5.0</td>
+      <td>Có những người bước đến, họ lấp đầy hạnh phúc ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+      <td>16979365.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>6.0</td>
+      <td>27791831.0</td>
+      <td>5.0</td>
+      <td>Thấy nhiều bạn chê tiki gói hàng quá, may sao ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+      <td>14069617.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>25.0</td>
+      <td>17748750.0</td>
+      <td>5.0</td>
+      <td>Bìa cực xinh, tiki giao hàng nhanh, sách không...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+      <td>8569824.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>57.0</td>
+      <td>410797.0</td>
+      <td>5.0</td>
+      <td>Sách lúc nhận hình thức rất ổn, không cong vên...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>74021317</td>
+      <td>Cây Cam Ngọt Của Tôi</td>
+      <td>José Mauro de Vasconcelos</td>
+      <td>108000</td>
+      <td>64800</td>
+      <td>53075.0</td>
+      <td>Tiểu Thuyết</td>
+      <td>11481</td>
+      <td>5.0</td>
+      <td>244</td>
+      <td>Nhà Xuất Bản Hội Nhà Văn</td>
+      <td>https://salt.tikicdn.com/ts/product/5e/18/24/2...</td>
+      <td>18368714.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>28545286.0</td>
+      <td>5.0</td>
+      <td>Một cuốn sách rất đáng đọc về tình yêu thương ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>128765</th>
+      <td>58971672</td>
+      <td>The Best of Chicken Soup - Tuyển Tập Những Câu...</td>
+      <td>Jack Canfield</td>
+      <td>138000</td>
+      <td>91000</td>
+      <td>954.0</td>
+      <td>Sách nghệ thuật sống đẹp</td>
+      <td>176</td>
+      <td>5.0</td>
+      <td>256</td>
+      <td>Nhà Xuất Bản Tổng hợp TP.HCM</td>
+      <td>https://salt.tikicdn.com/media/catalog/product...</td>
+      <td>16391630.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>6625296.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>128766</th>
+      <td>58971672</td>
+      <td>The Best of Chicken Soup - Tuyển Tập Những Câu...</td>
+      <td>Jack Canfield</td>
+      <td>138000</td>
+      <td>91000</td>
+      <td>954.0</td>
+      <td>Sách nghệ thuật sống đẹp</td>
+      <td>176</td>
+      <td>5.0</td>
+      <td>256</td>
+      <td>Nhà Xuất Bản Tổng hợp TP.HCM</td>
+      <td>https://salt.tikicdn.com/media/catalog/product...</td>
+      <td>12767000.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>16435374.0</td>
+      <td>5.0</td>
+      <td>Tuyệt vời lắm</td>
+    </tr>
+    <tr>
+      <th>128767</th>
+      <td>58971672</td>
+      <td>The Best of Chicken Soup - Tuyển Tập Những Câu...</td>
+      <td>Jack Canfield</td>
+      <td>138000</td>
+      <td>91000</td>
+      <td>954.0</td>
+      <td>Sách nghệ thuật sống đẹp</td>
+      <td>176</td>
+      <td>5.0</td>
+      <td>256</td>
+      <td>Nhà Xuất Bản Tổng hợp TP.HCM</td>
+      <td>https://salt.tikicdn.com/media/catalog/product...</td>
+      <td>16322348.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>10549708.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>128768</th>
+      <td>58971672</td>
+      <td>The Best of Chicken Soup - Tuyển Tập Những Câu...</td>
+      <td>Jack Canfield</td>
+      <td>138000</td>
+      <td>91000</td>
+      <td>954.0</td>
+      <td>Sách nghệ thuật sống đẹp</td>
+      <td>176</td>
+      <td>5.0</td>
+      <td>256</td>
+      <td>Nhà Xuất Bản Tổng hợp TP.HCM</td>
+      <td>https://salt.tikicdn.com/media/catalog/product...</td>
+      <td>16288080.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>14487833.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>128769</th>
+      <td>58971672</td>
+      <td>The Best of Chicken Soup - Tuyển Tập Những Câu...</td>
+      <td>Jack Canfield</td>
+      <td>138000</td>
+      <td>91000</td>
+      <td>954.0</td>
+      <td>Sách nghệ thuật sống đẹp</td>
+      <td>176</td>
+      <td>5.0</td>
+      <td>256</td>
+      <td>Nhà Xuất Bản Tổng hợp TP.HCM</td>
+      <td>https://salt.tikicdn.com/media/catalog/product...</td>
+      <td>16204880.0</td>
+      <td>Cực kì hài lòng</td>
+      <td>0.0</td>
+      <td>27440114.0</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>128770 rows × 18 columns</p>
+</div></div></div>
+</div>
+<p>Để lưu dữ liệu thành file csv, một trong những cách phổ biến nhất là sử dụng phương thức .to_csv() của đối tượng DataFrame trong pandas. Phương thức này có thể sử dụng kèm với thư viện openpyxl để hỗ trợ ghi file .csv:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install openpyxl</span>
+<span class="n">merged_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Book_data_full.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bai-tap-2-doc-du-lieu-tu-tu-file-excel">
+<h1>Bài tập 2: Đọc dữ liệu từ Từ File excel<a class="headerlink" href="#bai-tap-2-doc-du-lieu-tu-tu-file-excel" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bai-tap-3-tu-file-hoac-object-json">
+<h1>Bài tập 3: Từ file hoặc object json:<a class="headerlink" href="#bai-tap-3-tu-file-hoac-object-json" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>🔰 Giới thiệu:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>JSON (JavaScript Object Notation) là định dạng văn bản phổ biến dùng để lưu trữ và trao đổi dữ liệu,
+đặc biệt trong các ứng dụng web và API. JSON có cấu trúc gần giống với dict và list trong Python.
+Mục tiêu bài tập này là giúp bạn đọc, xử lý và chuyển đổi dữ liệu JSON (bao gồm cả lồng nhau) sang dạng bảng pandas để dễ phân tích.</p>
+</section>
+<section id="yeu-cau">
+<h2>Yêu cầu:<a class="headerlink" href="#yeu-cau" title="Link to this heading">#</a></h2>
+<p>Cho json_string_basic và json_string_nested với cùng thông tin như bên dưới. Lưu ý rằng 2 string này mang cùng 1 thông tin, Bạn đọc hãy biến 2 string này thành pd.DataFrame như sau:</p>
+<p><img alt="image.png" src="practice-exercises/attachment:image.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_string_basic</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;An&quot;,</span>
+<span class="s1">        &quot;age&quot;: 20,</span>
+<span class="s1">        &quot;major&quot;: &quot;Kinh tế&quot;,</span>
+<span class="s1">        &quot;subject&quot;: &quot;Toán&quot;,</span>
+<span class="s1">        &quot;score&quot;: 9.0</span>
+<span class="s1">    },</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;An&quot;,</span>
+<span class="s1">        &quot;age&quot;: 20,</span>
+<span class="s1">        &quot;major&quot;: &quot;Kinh tế&quot;,</span>
+<span class="s1">        &quot;subject&quot;: &quot;Văn&quot;,</span>
+<span class="s1">        &quot;score&quot;: 8.5</span>
+<span class="s1">    },</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;Bình&quot;,</span>
+<span class="s1">        &quot;age&quot;: 21,</span>
+<span class="s1">        &quot;major&quot;: &quot;Tài chính&quot;,</span>
+<span class="s1">        &quot;subject&quot;: &quot;Toán&quot;,</span>
+<span class="s1">        &quot;score&quot;: 7.5</span>
+<span class="s1">    },</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;Bình&quot;,</span>
+<span class="s1">        &quot;age&quot;: 21,</span>
+<span class="s1">        &quot;major&quot;: &quot;Tài chính&quot;,</span>
+<span class="s1">        &quot;subject&quot;: &quot;Văn&quot;,</span>
+<span class="s1">        &quot;score&quot;: 9.0</span>
+<span class="s1">    }</span>
+<span class="s1">]</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">json_string_nested</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">[</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;An&quot;,</span>
+<span class="s1">        &quot;age&quot;: 20,</span>
+<span class="s1">        &quot;major&quot;: &quot;Kinh tế&quot;,</span>
+<span class="s1">        &quot;scores&quot;: [</span>
+<span class="s1">            {&quot;subject&quot;: &quot;Toán&quot;, &quot;score&quot;: 9.0},</span>
+<span class="s1">            {&quot;subject&quot;: &quot;Văn&quot;, &quot;score&quot;: 8.5}</span>
+<span class="s1">        ]</span>
+<span class="s1">    },</span>
+<span class="s1">    {</span>
+<span class="s1">        &quot;name&quot;: &quot;Bình&quot;,</span>
+<span class="s1">        &quot;age&quot;: 21,</span>
+<span class="s1">        &quot;major&quot;: &quot;Tài chính&quot;,</span>
+<span class="s1">        &quot;scores&quot;: [</span>
+<span class="s1">            {&quot;subject&quot;: &quot;Toán&quot;, &quot;score&quot;: 7.5},</span>
+<span class="s1">            {&quot;subject&quot;: &quot;Văn&quot;, &quot;score&quot;: 9.0}</span>
+<span class="s1">        ]</span>
+<span class="s1">    }</span>
+<span class="s1">]</span>
+<span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loi-giai-bai-tap-3">
+<h2>Lời giải bài tập 3<a class="headerlink" href="#loi-giai-bai-tap-3" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3><strong>3A.</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Vì json_string_basic là chuỗi chứa một danh sách các từ điển (list of dict), nên ta có thể dễ dàng chuyển đổi thành DataFrame, với mỗi từ điển tương ứng với một dòng dữ liệu.
+Đây là phương pháp đơn giản và trực tiếp nhất trong trường hợp dữ liệu dạng phẳng (flat). Bạn có thể sử dụng hàm json.loads để chuyển chuỗi JSON thành đối tượng Python (dict), sau đó dùng pandas.DataFrame để tạo bảng.
+Để hiểu rõ hơn về cách làm việc với JSON trong Python, bạn có thể tham khảo thêm tại tài liệu chính thức: <a class="reference external" href="https://docs.python.org/3/library/json.html">https://docs.python.org/3/library/json.html</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parse chuỗi JSON basic</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">json_normalize</span>
+<span class="n">data_basic</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string_basic</span><span class="p">)</span>
+
+<span class="c1"># Chuyển thành DataFrame trực tiếp</span>
+<span class="n">df_basic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_basic</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📄 Bảng từ JSON dạng basic:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_basic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📄 Bảng từ JSON dạng basic:
+   name  age      major subject  score
+0    An   20    Kinh tế    Toán    9.0
+1    An   20    Kinh tế     Văn    8.5
+2  Bình   21  Tài chính    Toán    7.5
+3  Bình   21  Tài chính     Văn    9.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><strong>3B.</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>ương tự như với danh sách các dict hoặc dict of dicts, chúng ta thường gặp phải dữ liệu JSON có cấu trúc lồng nhau – gọi là nested JSON. Trong json_string_nested, mỗi phần tử đại diện cho một sinh viên, và bên trong chứa danh sách điểm (scores), tức là có cấu trúc lồng.</p>
+<p>Trong trường hợp này, tuy vẫn có thể chuyển chuỗi JSON thành dict, nhưng ta không thể trực tiếp biến đổi nó thành DataFrame như với dữ liệu phẳng.</p>
+<p>Để xử lý, bạn đọc có thể :</p>
+<ul class="simple">
+<li><p>Dùng hàm json_normalize() – một công cụ mạnh mẽ giúp “làm phẳng” cấu trúc JSON</p></li>
+<li><p>Chỉ rõ phần lồng (ví dụ: scores) thông qua record_path.</p></li>
+<li><p>Giữ lại các trường ngoài (student_id, name,…) qua meta.</p></li>
+</ul>
+<p>Cách này rất hữu ích khi làm việc với dữ liệu từ API, MongoDB hoặc các file .json có nhiều lớp phức tạp. Nó giúp tránh phải viết vòng lặp thủ công, tăng hiệu suất xử lý, và linh hoạt mở rộng nếu dữ liệu có thêm cấp lồng khác trong tương lai.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parse chuỗi JSON nested</span>
+<span class="n">data_nested</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string_nested</span><span class="p">)</span>
+
+<span class="c1"># Làm phẳng phần &#39;scores&#39; bên trong mỗi sinh viên</span>
+<span class="n">df_nested</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span>
+    <span class="n">data_nested</span><span class="p">,</span>
+    <span class="n">record_path</span><span class="o">=</span><span class="s1">&#39;scores&#39;</span><span class="p">,</span>
+    <span class="n">meta</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;major&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">df_nested</span> <span class="o">=</span> <span class="n">df_nested</span><span class="p">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="s1">&#39;subject&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🌲 Bảng từ JSON dạng nested:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_nested</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🌲 Bảng từ JSON dạng nested:
+   name age      major subject  score
+0    An  20    Kinh tế    Toán    9.0
+1    An  20    Kinh tế     Văn    8.5
+2  Bình  21  Tài chính    Toán    7.5
+3  Bình  21  Tài chính     Văn    9.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bai-tap-4-lay-du-lieu-tu-api">
+<h1>Bài tập 4: Lấy dữ liệu từ API<a class="headerlink" href="#bai-tap-4-lay-du-lieu-tu-api" title="Link to this heading">#</a></h1>
+<section id="id4">
+<h2>🔰 Giới thiệu:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>API (Application Programming Interface) là giao diện lập trình ứng dụng – cho phép các hệ thống phần mềm trao đổi dữ liệu với nhau một cách có cấu trúc. Trong lĩnh vực web, API thường được dùng để trao đổi dữ liệu giữa trình duyệt (frontend) và máy chủ (backend).</p>
+<p>Để quan sát dữ liệu được trao đổi qua API, bạn có thể mở công cụ DevTools (F12) → chọn tab “Network”, sau đó refresh lại trang web.Tại đây, trong mục “Fetch” hoặc “XHR”, bạn sẽ thấy danh sách các request mà trang web gửi đi – đa phần là các API.</p>
+<p>Trong ví dụ này, chúng ta sẽ tìm hiểu bảng giá chứng khoán của Công ty Cổ phần Chứng khoán VPS thông qua API. Đây là một trong những ứng dụng phổ biến nhất của API – cung cấp dữ liệu động cho trang web và cho phép bên thứ ba (như bạn) truy cập được thông tin đó.</p>
+<p>Bạn đọc cũng nên Lưu ý rằng:</p>
+<ul class="simple">
+<li><p>Không phải trang web nào cũng “mở” API ra ngoài. Nhiều trang đã ẩn API, mã hóa request, hoặc yêu cầu token xác thực.</p></li>
+<li><p>Ngoài API, còn có những cách khác để lấy dữ liệu như: đọc HTML (web scraping), tải file Excel/CSV trực tiếp, hoặc dùng thư viện chuyên dụng nếu có.</p></li>
+</ul>
+<p>Mục tiêu bài tập này là giúp bạn làm quen với tư duy: xác định API → gửi request → nhận dữ liệu JSON → xử lý với pandas.</p>
+</section>
+<section id="id5">
+<h2>Yêu cầu<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="a-tim-api-du-lieu-bang-gia-khop-lenh-vn30">
+<h3><strong>4A.</strong> Tìm API dữ liệu bảng giá khớp lệnh VN30<a class="headerlink" href="#a-tim-api-du-lieu-bang-gia-khop-lenh-vn30" title="Link to this heading">#</a></h3>
+<p>Hãy truy cập vào trang <a class="reference external" href="https://banggia.vps.com.vn/chung-khoan/VN30">https://banggia.vps.com.vn/chung-khoan/VN30</a> để quan sát bảng giá chứng khoán mới nhất của các cổ phiếu trong rổ VN30.
+Sử dụng công cụ dành cho nhà phát triển (DevTools – nhấn F12), chuyển sang tab Network, sau đó refresh lại trang để theo dõi các yêu cầu được gửi từ trình duyệt.
+Nhiệm vụ của bạn là tìm ra đường dẫn API trả về dữ liệu bảng giá hiển thị trong hình.</p>
+<p><img alt="image.png" src="practice-exercises/attachment:image.png" /></p>
+</section>
+<section id="b-tai-tao-du-lieu">
+<h3><strong>4B.</strong> Tái tạo dữ liệu<a class="headerlink" href="#b-tai-tao-du-lieu" title="Link to this heading">#</a></h3>
+<p>Từ đường dẫn API bạn đã tìm được, hãy đối chiếu dữ liệu JSON trả về với bảng giá hiển thị trên trang web để xác nhận độ chính xác.
+Sau đó, trích xuất các trường dữ liệu tương ứng (ví dụ: mã cổ phiếu, giá khớp, khối lượng, giá trần/sàn…) và chuyển đổi thành một DataFrame để thuận tiện cho việc phân tích và xử lý trong Python.</p>
+</section>
+</section>
+<section id="loi-giai">
+<h2>Lời giải<a class="headerlink" href="#loi-giai" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3><strong>4A.</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Bạn có thể tìm thấy đường dẫn API chứa dữ liệu bảng giá bằng cách mở tab Network như hình minh họa.
+Tại đây, hãy nhấn chuột phải vào dòng tương ứng và chọn “Copy link address” để lấy URL API:
+<a class="reference external" href="https://bgapidatafeed.vps.com.vn/getliststockdata/ACB,BCM,BID,BVH,">https://bgapidatafeed.vps.com.vn/getliststockdata/ACB,BCM,BID,BVH,</a>…,VRE
+Đây chính là địa chỉ trả về dữ liệu JSON của toàn bộ cổ phiếu trong rổ VN30.</p>
+<p><img alt="image.png" src="practice-exercises/attachment:image.png" /></p>
+</section>
+<section id="id7">
+<h3><strong>4B.</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Sau khi truy cập được vào URL API, bạn sẽ thấy dữ liệu trả về ở dạng <strong>JSON</strong> với nhiều trường thông tin hơn so với bảng hiển thị trên website.
+Các trường dữ liệu cũng có thể được đặt tên khác (ví dụ: <code class="docutils literal notranslate"><span class="pre">&quot;sym&quot;</span></code> cho mã cổ phiếu, <code class="docutils literal notranslate"><span class="pre">&quot;r&quot;</span></code> cho giá tham chiếu…).
+Để xử lý dữ liệu này, bạn có thể sử dụng thư viện <code class="docutils literal notranslate"><span class="pre">requests</span></code> để gửi lệnh <code class="docutils literal notranslate"><span class="pre">GET</span></code>, nhận JSON thô, và sau đó chuyển thành <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> để dễ dàng phân tích và thao tác trong Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Gửi yêu cầu tới API</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://bgapidatafeed.vps.com.vn/getliststockdata/ACB,BCM,BID,BVH,CTG,FPT,GAS,GVR,HDB,HPG,LPB,MBB,MSN,MWG,PLX,SAB,SHB,SSB,SSI,STB,TCB,TPB,VCB,VHM,VIB,VIC,VJC,VNM,VPB,VRE&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="c1"># response.json() đã trả lại object dưới dạng list các dictionary</span>
+
+<span class="c1"># Lấy các cột cần thiết</span>
+<span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">record</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Mã CK&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;sym&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;TC&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Trần&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Sàn&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Giá khớp&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;lastPrice&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;KL khớp&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;lastVolume&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Tổng KL&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;lot&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Giá 3 Mua&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;g3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;g3&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;KL 3 Mua&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;g3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;g3&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;Giá 3 Bán&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;g6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;g6&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;KL 3 Bán&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;g6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;g6&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;+/-&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;ot&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;ot&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">}</span>
+    <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+
+<span class="c1"># Chuyển thành DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+
+<span class="c1"># Hiển thị kết quả</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📊 Bảng giá chứng khoán VN30 (VPS):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📊 Bảng giá chứng khoán VN30 (VPS):
+   Mã CK      TC    Trần     Sàn  Giá khớp  KL khớp  Tổng KL  Giá 3 Mua  \
+0    ACB   21.30   22.75   19.85     21.45      100  1575260      21.35   
+1    BCM   59.00   63.10   54.90     58.60       90    34100      58.40   
+2    BID   35.80   38.30   33.30     36.00       30   598230      35.85   
+3    BVH   51.30   54.80   47.75     50.60      360    52180      50.40   
+4    CTG   40.70   43.50   37.90     41.30       30  1244920      41.20   
+5    FPT  116.00  124.10  107.90    116.10       10   433940     115.80   
+6    GAS   71.80   76.80   66.80     69.50       80   174190      69.30   
+7    GVR   29.90   31.95   27.85     29.20       80   230610      29.10   
+8    HDB   22.00   23.50   20.50     22.15       20  1533990      22.00   
+9    HPG   26.90   28.75   25.05     27.00       40  2341640      26.90   
+10   LPB   32.40   34.65   30.15     31.90       40   205510      31.80   
+11   MBB   25.10   26.85   23.35     25.80      500  5115110      25.65   
+12   MSN   67.50   72.20   62.80     67.50      480   600510      67.20   
+13   MWG   64.00   68.40   59.60     64.10      700   481420      63.80   
+14   PLX   39.55   42.30   36.80     39.15       10   143480      38.95   
+15   SAB   49.45   52.90   46.00     49.50       20    71660      49.35   
+16   SHB   13.00   13.90   12.10     13.10       10  5950270      12.95   
+17   SSB   18.10   19.35   16.85     18.15       10   257650      18.00   
+18   SSI   23.90   25.55   22.25     24.00       20  2508620      23.85   
+19   STB   47.15   50.40   43.85     46.60      100  1092150      46.50   
+20   TCB   34.00   36.35   31.65     34.00      130  1710600      33.90   
+21   TPB   13.40   14.30   12.50     13.35      250   695230      13.25   
+22   VCB   56.60   60.50   52.70     57.10       10   688650      56.80   
+23   VHM   71.70   76.70   66.70     70.20       20   892500      70.00   
+24   VIB   18.00   19.25   16.75     18.10     2000   566200      17.95   
+25   VIC   89.40   95.60   83.20     86.80       10  1361530      86.60   
+26   VJC   88.50   94.60   82.40     88.70       10    69760      88.40   
+27   VNM   56.10   60.00   52.20     56.60       10   466140      56.20   
+28   VPB   18.50   19.75   17.25     18.45      500  2490140      18.35   
+29   VRE   24.70   26.40   23.00     24.60       50   383530      24.35   
+
+    KL 3 Mua  Giá 3 Bán  KL 3 Bán   +/-  
+0      16490      21.60     55490  0.15  
+1       1790      59.00       420  0.40  
+2       5840      36.10     11950  0.20  
+3       2240      51.50       340  0.70  
+4      19360      41.45     13660  0.60  
+5      18350     116.30      1560  0.10  
+6       5460      69.80      1300  2.30  
+7       8560      29.35      4910  0.70  
+8     191840      22.25     32390  0.15  
+9     100400      27.15     59240  0.10  
+10     22750      32.05       300  0.50  
+11     91930      25.90     54030  0.70  
+12      1100      67.70     10050  0.00  
+13       480      64.30      3080  0.10  
+14      1150      39.25       130  0.40  
+15      2590      49.60      3510  0.05  
+16    289410      13.20    273020  0.10  
+17      5920      18.25      3340  0.05  
+18     43750      24.10     73210  0.10  
+19      7010      46.75      2280  0.55  
+20     24790      34.15     11120  0.00  
+21     46620      13.50    123890  0.05  
+22        60      57.30     73900  0.50  
+23     92490      71.10        30  1.50  
+24     35640      18.20     60030  0.10  
+25     10290      87.30        30  2.60  
+26       200      88.90      2000  0.20  
+27        10      56.80     44100  0.50  
+28     55680      18.60     31420  0.05  
+29       470      24.70     19930  0.10  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bai-tap-5-lay-du-lieu-tu-trang-web-khong-qua-api">
+<h1>Bài tập 5: Lấy dữ liệu từ trang web (không qua API)<a class="headerlink" href="#bai-tap-5-lay-du-lieu-tu-trang-web-khong-qua-api" title="Link to this heading">#</a></h1>
+<section id="id8">
+<h2>🔰 Giới thiệu:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Không phải lúc nào dữ liệu trên trang web cũng được lấy thông qua API.
+Trong một số trường hợp, dữ liệu được render sẵn từ phía server (server-side rendering) và chỉ xuất hiện dưới dạng HTML đã xử lý.
+Khi đó, bạn cần hiểu về cấu trúc HTML, DOM và sử dụng các công cụ như BeautifulSoup (hoặc lxml) để trích xuất dữ liệu trực tiếp từ mã nguồn trang.</p>
+<p>Đây là kỹ năng quan trọng gọi là web scraping, và thường áp dụng trong một số trường hợp:</p>
+<ul class="simple">
+<li><p>Không có API công khai</p></li>
+<li><p>API bị ẩn hoặc bảo vệ</p></li>
+<li><p>Bạn chỉ cần lấy một phần thông tin hiển thị sẵn trên web</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>Yêu cầu<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="a-khoi-tao-trinh-duyet-va-load-du-lieu">
+<h3><strong>5A.</strong> Khởi tạo trình duyệt và load dữ liệu<a class="headerlink" href="#a-khoi-tao-trinh-duyet-va-load-du-lieu" title="Link to this heading">#</a></h3>
+<p>Sử dụng đường dẫn sau để làm việc với danh sách 200 bộ phim thuộc thể loại hài kịch (Comedy), mỗi phim có tối thiểu 100 lượt đánh giá:
+🔗 <a class="reference external" href="https://www.imdb.com/search/title/?title_type=feature&amp;amp;num_votes=100,&amp;amp;genres=comedy&amp;amp;sort=moviemeter">https://www.imdb.com/search/title/?title_type=feature&amp;num_votes=100,&amp;genres=comedy&amp;sort=moviemeter</a></p>
+<p>Bạn đọc hãy:</p>
+<ul class="simple">
+<li><p>Áp dụng thư viện Selenium để mở trang IMDb được cung cấp.</p></li>
+<li><p>Sử dụng thao tác tự động để nhấn nút “Load more” 3 lần, giúp mở rộng danh sách và hiển thị đủ ít nhất 200 bộ phim.</p></li>
+<li><p>Sau khi hoàn tất thao tác tải thêm nội dung, hãy trích xuất toàn bộ mã HTML hiện tại và xử lý nó bằng thư viện BeautifulSoup để chuẩn bị cho bước trích xuất dữ liệu ở phần tiếp theo.</p></li>
+</ul>
+</section>
+<section id="b-khoi-tao-trinh-duyet-va-load-du-lieu">
+<h3><strong>5B.</strong> Khởi tạo trình duyệt và load dữ liệu<a class="headerlink" href="#b-khoi-tao-trinh-duyet-va-load-du-lieu" title="Link to this heading">#</a></h3>
+<p>Từ mã HTML đã tải, sử dụng BeautifulSoup để trích xuất thông tin của từng bộ phim. Với mỗi thông tin cần lấy, hãy xác định thành tố HTML (thẻ, class, thuộc tính…) tương ứng.</p>
+<ul class="simple">
+<li><p>Title (Tên phim);</p></li>
+<li><p>Link (Đường dẫn IMDb);</p></li>
+<li><p>Year (Năm phát hành); Duration (Thời lượng); Age Rating (Phân loại độ tuổi)</p></li>
+<li><p>Metascore (điểm Meta)</p></li>
+<li><p>IMDb Rating (Điểm IMDb)</p></li>
+<li><p>IMDb Votes (giữ nguyên định dạng như “200K”)</p></li>
+<li><p>Plot (Mô tả nội dung)</p></li>
+</ul>
+<p>Kết quả được lưu vào một pandas DataFrame gồm 9 cột tương ứng.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install selenium,webdriver-manager, bs4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>Lời giải<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3><strong>5A.</strong><a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Nếu dùng các phương pháp thông thường như requests hay urllib, ta chỉ lấy được HTML tĩnh ban đầu và không có phần nội dung tải động, khiến dữ liệu bị thiếu.</p>
+<p>Ngoài ra, IMDb có áp dụng một số cơ chế chống bot, như:</p>
+<ul class="simple">
+<li><p>Trả về mã trạng thái 202.</p></li>
+<li><p>Yêu cầu JavaScript mới hiển thị nội dung.</p></li>
+<li><p>Trả về thông báo “Please enable JavaScript” nếu phát hiện truy cập không đến từ trình duyệt thực.</p></li>
+</ul>
+<p>Vì vậy, Selenium giúp giải quyết những hạn chế này bằng cách Giả lập trình duyệt thật để thực thi JavaScript và Tự động tương tác (như click nút “Load more”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium</span><span class="w"> </span><span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.chrome.service</span><span class="w"> </span><span class="kn">import</span> <span class="n">Service</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.support</span><span class="w"> </span><span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">webdriver_manager.chrome</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChromeDriverManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># 1. Khởi tạo trình duyệt Chrome thông qua webdriver-manager</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="n">ChromeDriverManager</span><span class="p">()</span><span class="o">.</span><span class="n">install</span><span class="p">()))</span>
+
+<span class="c1"># 2. Truy cập vào trang IMDb chứa danh sách các phim hài (comedy) có ít nhất 100 lượt đánh giá</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.imdb.com/search/title/?title_type=feature&amp;num_votes=100,&amp;genres=comedy&amp;sort=moviemeter&quot;</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># 3. Tạo đối tượng WebDriverWait để chờ các phần tử xuất hiện tối đa 10 giây</span>
+<span class="n">wait</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 4. Tự động nhấn nút “Load more” 3 lần để hiển thị thêm phim (tổng cộng ít nhất 200 phim)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Đợi một chút để trang ổn định trước khi click</span>
+        <span class="c1"># Tìm nút &quot;Load more&quot; và đợi cho đến khi có thể click</span>
+        <span class="n">button</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;button.ipc-see-more__button&quot;</span><span class="p">)))</span>
+        <span class="c1"># Click nút thông qua JavaScript (ổn định hơn click trực tiếp)</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;arguments[0].click();&quot;</span><span class="p">,</span> <span class="n">button</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Click lần </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Nếu có lỗi (ví dụ: không tìm thấy nút), in lỗi và thoát vòng lặp</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Lỗi click lần </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># 5. Đợi thêm để chắc chắn toàn bộ nội dung đã được tải</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 6. Lấy toàn bộ mã HTML của trang sau khi đã render bằng JavaScript</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+
+<span class="c1"># 7. Đóng trình duyệt</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Click lần 1
+✅ Click lần 2
+✅ Click lần 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h3><strong>5B.</strong><a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Bạn đọc có thể tìm thấy element tương ứng với các thông tin mình cần bằng cách nhấp chuột phải -&gt; chọn inspect. Các thông tin tương ứng có thể được tìm thấy ở trong các element sau, tất cả các thành phần trên đều nằm bên trong thẻ <code class="docutils literal notranslate"><span class="pre">&lt;li</span> <span class="pre">class=&quot;ipc-metadata-list-summary-item&quot;&gt;</span></code>, mỗi <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> đại diện cho một bộ phim.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thông tin</p></th>
+<th class="head"><p>Thẻ HTML / Element chứa dữ liệu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tên phim (<code class="docutils literal notranslate"><span class="pre">Title</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;h3</span> <span class="pre">class=&quot;ipc-title__text&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Link IMDb (<code class="docutils literal notranslate"><span class="pre">Link</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">class=&quot;ipc-title-link-wrapper&quot;</span> <span class="pre">href=&quot;...&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Năm, thời lượng, độ tuổi</p></td>
+<td><p><strong>Nằm chung trong 1 dòng</strong> → <code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;dli-title-metadata-item&quot;&gt;</span></code> (xuất hiện theo thứ tự)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metascore</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;metacritic-score-label&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>IMDb Rating</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">aria-label=&quot;IMDb</span> <span class="pre">rating:</span> <span class="pre">...&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>IMDb Votes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class=&quot;ipc-rating-star--voteCount&quot;&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Mô tả phim (<code class="docutils literal notranslate"><span class="pre">Plot</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;ipc-html-content-inner-div&quot;&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parse dữ liệu từng phim từ biến soup đã lấy ở phần A</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Mỗi thẻ &lt;li class=&quot;ipc-metadata-list-summary-item&quot;&gt; chứa thông tin của 1 bộ phim</span>
+<span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;li.ipc-metadata-list-summary-item&quot;</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Lấy tiêu đề phim (tên phim)</span>
+        <span class="n">title_tag</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;h3.ipc-title__text&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Lấy thẻ &lt;a&gt; chứa đường link IMDb</span>
+        <span class="n">link_tag</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;a.ipc-title-link-wrapper&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Lấy nhóm các thẻ chứa: năm, thời lượng, độ tuổi (nằm chung trong các &lt;span&gt;)</span>
+        <span class="n">meta_tags</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;span.dli-title-metadata-item&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Trích xuất văn bản từ các thành phần</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">title_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="s2">&quot;https://www.imdb.com&quot;</span> <span class="o">+</span> <span class="n">link_tag</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">link_tag</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Trích xuất theo vị trí nếu có đủ phần tử</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">meta_tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">meta_tags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">age_rating</span> <span class="o">=</span> <span class="n">meta_tags</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta_tags</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Lấy metascore nếu có</span>
+        <span class="n">metascore_tag</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;span.metacritic-score-box&quot;</span><span class="p">)</span>
+        <span class="n">metascore</span> <span class="o">=</span> <span class="n">metascore_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">metascore_tag</span> <span class="k">else</span> <span class="kc">None</span>
+
+
+        <span class="c1"># Lấy điểm IMDb từ thuộc tính aria-label</span>
+        <span class="n">imdb_rating_tag</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;span[aria-label^=&#39;IMDb rating&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">imdb_rating</span> <span class="o">=</span> <span class="n">imdb_rating_tag</span><span class="p">[</span><span class="s1">&#39;aria-label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="k">if</span> <span class="n">imdb_rating_tag</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Lấy mô tả phim (plot)</span>
+        <span class="n">plot</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s2">&quot;div.ipc-html-content-inner-div&quot;</span><span class="p">)</span>
+        <span class="n">plot</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">plot</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Lấy số lượng người đánh giá IMDb (votes), giữ nguyên định dạng &quot;200K&quot;, &quot;1.5M&quot;</span>
+        <span class="n">votes_tag</span> <span class="o">=</span> <span class="n">li</span><span class="o">.</span><span class="n">select_one</span><span class="p">(</span><span class="s1">&#39;span.ipc-rating-star--voteCount&#39;</span><span class="p">)</span>
+        <span class="n">votes</span> <span class="o">=</span> <span class="n">votes_tag</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; ()</span><span class="se">\xa0</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">votes_tag</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Lưu thông tin vào list</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;Title&quot;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+            <span class="s2">&quot;Link&quot;</span><span class="p">:</span> <span class="n">link</span><span class="p">,</span>
+            <span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span>
+            <span class="s2">&quot;Duration&quot;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span>
+            <span class="s2">&quot;Age Rating&quot;</span><span class="p">:</span> <span class="n">age_rating</span><span class="p">,</span>
+            <span class="s2">&quot;Metascore&quot;</span><span class="p">:</span> <span class="n">metascore</span><span class="p">,</span>
+            <span class="s2">&quot;IMDb Rating&quot;</span><span class="p">:</span> <span class="n">imdb_rating</span><span class="p">,</span>
+            <span class="s2">&quot;IMDb Votes&quot;</span><span class="p">:</span> <span class="n">votes</span><span class="p">,</span>
+            <span class="s2">&quot;Plot&quot;</span><span class="p">:</span> <span class="n">plot</span>
+        <span class="p">})</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Bỏ qua nếu có lỗi xảy ra ở 1 phim</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Lỗi khi xử lý phim: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+
+<span class="c1"># Chuyển danh sách phim thành pandas DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># (Tuỳ chọn) Lưu ra file CSV nếu muốn</span>
+<span class="c1"># df.to_csv(&quot;IMDb_Comedy_Top200.csv&quot;, index=False)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Crawl xong 200 phim. Đã lưu vào IMDb_Comedy_Top200.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hiển thị 10 dòng đầu tiên</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Crawl xong 200 phim. Đã lưu vào IMDb_Comedy_Top200.csv
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Year</th>
+      <th>Duration</th>
+      <th>Age Rating</th>
+      <th>Metascore</th>
+      <th>IMDb Rating</th>
+      <th>IMDb Votes</th>
+      <th>Plot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1. Bí Kíp Luyện Rồng</td>
+      <td>https://www.imdb.com/title/tt26743210/</td>
+      <td>2025</td>
+      <td>2h 5m</td>
+      <td>K</td>
+      <td>61</td>
+      <td>8.1</td>
+      <td>30K</td>
+      <td>As an ancient threat endangers both Vikings an...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2. Deep Cover</td>
+      <td>https://www.imdb.com/title/tt31121295/</td>
+      <td>2025</td>
+      <td>1h 39m</td>
+      <td>R</td>
+      <td>67</td>
+      <td>6.7</td>
+      <td>14K</td>
+      <td>Three improv actors are asked to go undercover...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3. Một Nửa Hoàn Hảo</td>
+      <td>https://www.imdb.com/title/tt30253473/</td>
+      <td>2025</td>
+      <td>1h 56m</td>
+      <td>R</td>
+      <td>71</td>
+      <td>6.9</td>
+      <td>7.4K</td>
+      <td>A young, ambitious New York City matchmaker fi...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4. Lilo và Stitch</td>
+      <td>https://www.imdb.com/title/tt11655566/</td>
+      <td>2025</td>
+      <td>1h 48m</td>
+      <td>P</td>
+      <td>53</td>
+      <td>6.9</td>
+      <td>40K</td>
+      <td>A lonely Hawaiian girl befriends a runaway ali...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5. The Phoenician Scheme</td>
+      <td>https://www.imdb.com/title/tt30840798/</td>
+      <td>2025</td>
+      <td>1h 41m</td>
+      <td>PG-13</td>
+      <td>69</td>
+      <td>6.9</td>
+      <td>17K</td>
+      <td>Wealthy businessman Zsa-zsa Korda appoints his...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6. Đại Chiến Thiên Hà</td>
+      <td>https://www.imdb.com/title/tt0094012/</td>
+      <td>1987</td>
+      <td>1h 36m</td>
+      <td>PG</td>
+      <td>46</td>
+      <td>7.1</td>
+      <td>217K</td>
+      <td>A star-pilot for hire and his trusty sidekick ...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7. Mickey 17</td>
+      <td>https://www.imdb.com/title/tt12299608/</td>
+      <td>2025</td>
+      <td>2h 17m</td>
+      <td>T18</td>
+      <td>72</td>
+      <td>6.8</td>
+      <td>159K</td>
+      <td>During a human expedition to colonize space, M...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8. Eddington</td>
+      <td>https://www.imdb.com/title/tt31176520/</td>
+      <td>2025</td>
+      <td>2h 28m</td>
+      <td>R</td>
+      <td>64</td>
+      <td>5.9</td>
+      <td>874</td>
+      <td>In May of 2020, a standoff between a small-tow...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9. Nhà Hàng Của Các Bà</td>
+      <td>https://www.imdb.com/title/tt28309594/</td>
+      <td>2025</td>
+      <td>1h 51m</td>
+      <td>PG</td>
+      <td>57</td>
+      <td>6.9</td>
+      <td>28K</td>
+      <td>After losing his beloved mother, a man risks e...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10. Friendship</td>
+      <td>https://www.imdb.com/title/tt30505698/</td>
+      <td>2024</td>
+      <td>1h 40m</td>
+      <td>R</td>
+      <td>72</td>
+      <td>7.1</td>
+      <td>11K</td>
+      <td>A suburban dad falls hard for his charismatic ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Ngoài ra, bạn đọc cũng có thể chuẩn hoá các thông tin về duration và IMDb Votes để biến chúng về dạng numeric:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse_duration</span><span class="p">(</span><span class="n">duration_str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Chuyển &#39;2h 5m&#39; thành 125 (phút).</span>
+<span class="sd">    Nếu chỉ có &#39;h&#39; hoặc &#39;m&#39;, vẫn xử lý được.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">duration_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="s1">&#39;h&#39;</span> <span class="ow">in</span> <span class="n">duration_str</span><span class="p">:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">if</span> <span class="s1">&#39;m&#39;</span> <span class="ow">in</span> <span class="n">duration_str</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="s1">&#39;m&#39;</span> <span class="ow">in</span> <span class="n">duration_str</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">m</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_votes</span><span class="p">(</span><span class="n">vote_str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Chuyển &#39;30K&#39; → 30000, &#39;1.5M&#39; → 1500000</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">vote_str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">vote_str</span> <span class="o">=</span> <span class="n">vote_str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">vote_str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">vote_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1_000</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">vote_str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">vote_str</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1_000_000</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">vote_str</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Duration(min)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Duration&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">parse_duration</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;IMDb Votes (int)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;IMDb Votes&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">parse_votes</span><span class="p">)</span>
+<span class="c1"># Loại bỏ số thứ tự dạng &quot;123. &quot; ở đầu chuỗi</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\d+\.\s*&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Year</th>
+      <th>Duration</th>
+      <th>Age Rating</th>
+      <th>Metascore</th>
+      <th>IMDb Rating</th>
+      <th>IMDb Votes</th>
+      <th>Plot</th>
+      <th>Duration(min)</th>
+      <th>IMDb Votes (int)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bí Kíp Luyện Rồng</td>
+      <td>https://www.imdb.com/title/tt26743210/</td>
+      <td>2025</td>
+      <td>2h 5m</td>
+      <td>K</td>
+      <td>61</td>
+      <td>8.1</td>
+      <td>30K</td>
+      <td>As an ancient threat endangers both Vikings an...</td>
+      <td>125</td>
+      <td>30000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Deep Cover</td>
+      <td>https://www.imdb.com/title/tt31121295/</td>
+      <td>2025</td>
+      <td>1h 39m</td>
+      <td>R</td>
+      <td>67</td>
+      <td>6.7</td>
+      <td>14K</td>
+      <td>Three improv actors are asked to go undercover...</td>
+      <td>99</td>
+      <td>14000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Một Nửa Hoàn Hảo</td>
+      <td>https://www.imdb.com/title/tt30253473/</td>
+      <td>2025</td>
+      <td>1h 56m</td>
+      <td>R</td>
+      <td>71</td>
+      <td>6.9</td>
+      <td>7.4K</td>
+      <td>A young, ambitious New York City matchmaker fi...</td>
+      <td>116</td>
+      <td>7400</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lilo và Stitch</td>
+      <td>https://www.imdb.com/title/tt11655566/</td>
+      <td>2025</td>
+      <td>1h 48m</td>
+      <td>P</td>
+      <td>53</td>
+      <td>6.9</td>
+      <td>40K</td>
+      <td>A lonely Hawaiian girl befriends a runaway ali...</td>
+      <td>108</td>
+      <td>40000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>The Phoenician Scheme</td>
+      <td>https://www.imdb.com/title/tt30840798/</td>
+      <td>2025</td>
+      <td>1h 41m</td>
+      <td>PG-13</td>
+      <td>69</td>
+      <td>6.9</td>
+      <td>17K</td>
+      <td>Wealthy businessman Zsa-zsa Korda appoints his...</td>
+      <td>101</td>
+      <td>17000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Đại Chiến Thiên Hà</td>
+      <td>https://www.imdb.com/title/tt0094012/</td>
+      <td>1987</td>
+      <td>1h 36m</td>
+      <td>PG</td>
+      <td>46</td>
+      <td>7.1</td>
+      <td>217K</td>
+      <td>A star-pilot for hire and his trusty sidekick ...</td>
+      <td>96</td>
+      <td>217000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Mickey 17</td>
+      <td>https://www.imdb.com/title/tt12299608/</td>
+      <td>2025</td>
+      <td>2h 17m</td>
+      <td>T18</td>
+      <td>72</td>
+      <td>6.8</td>
+      <td>159K</td>
+      <td>During a human expedition to colonize space, M...</td>
+      <td>137</td>
+      <td>159000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Eddington</td>
+      <td>https://www.imdb.com/title/tt31176520/</td>
+      <td>2025</td>
+      <td>2h 28m</td>
+      <td>R</td>
+      <td>64</td>
+      <td>5.9</td>
+      <td>874</td>
+      <td>In May of 2020, a standoff between a small-tow...</td>
+      <td>148</td>
+      <td>874</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Nhà Hàng Của Các Bà</td>
+      <td>https://www.imdb.com/title/tt28309594/</td>
+      <td>2025</td>
+      <td>1h 51m</td>
+      <td>PG</td>
+      <td>57</td>
+      <td>6.9</td>
+      <td>28K</td>
+      <td>After losing his beloved mother, a man risks e...</td>
+      <td>111</td>
+      <td>28000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Friendship</td>
+      <td>https://www.imdb.com/title/tt30505698/</td>
+      <td>2024</td>
+      <td>1h 40m</td>
+      <td>R</td>
+      <td>72</td>
+      <td>7.1</td>
+      <td>11K</td>
+      <td>A suburban dad falls hard for his charismatic ...</td>
+      <td>100</td>
+      <td>11000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bai-tap-6-doc-du-lieu-tu-co-so-du-lieu-sql-voi-pandas">
+<h1>Bài tập 6: Đọc dữ liệu từ cơ sở dữ liệu SQL với Pandas<a class="headerlink" href="#bai-tap-6-doc-du-lieu-tu-co-so-du-lieu-sql-voi-pandas" title="Link to this heading">#</a></h1>
+<section id="id13">
+<h2>🔰 Giới thiệu:<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>SQL (Structured Query Language) là ngôn ngữ tiêu chuẩn dùng để quản lý và truy vấn dữ liệu trong các hệ quản trị cơ sở dữ liệu quan hệ (RDBMS).
+Một số hệ quản trị phổ biến bao gồm :</p>
+<ul class="simple">
+<li><p>SQLite: Nhẹ, đơn tệp, không cần server – phù hợp học tập, thử nghiệm.</p></li>
+<li><p>PostgreSQL: Mã nguồn mở, mạnh mẽ, hỗ trợ nhiều tính năng nâng cao.</p></li>
+<li><p>MySQL / MariaDB: Phổ biến trong web app, dễ triển khai.</p></li>
+<li><p>SQL Server (Microsoft) và Oracle: Được dùng nhiều trong doanh nghiệp.</p></li>
+</ul>
+<p>Trong Python, thư viện pandas có thể kết nối đến các CSDL này để:
+Đọc dữ liệu trực tiếp vào DataFrame, cũng như thực hiện truy vấn SQL và xử lý bằng Pandas</p>
+</section>
+<section id="id14">
+<h2>Yêu cầu<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>Chinook là một cơ sở dữ liệu mẫu mô phỏng hệ thống bán nhạc trực tuyến. Cơ sở dữ liệu bao gồm các bảng liên quan đến:</p>
+<ul class="simple">
+<li><p>Thông tin âm nhạc: Artist, Album, Track, Genre, MediaType</p></li>
+<li><p>Khách hàng &amp; giao dịch: Customer, Invoice, InvoiceLine</p></li>
+<li><p>Nhân sự: Employee</p></li>
+<li><p>Playlist: Playlist, PlaylistTrack (bảng trung gian để liên kết nhiều bài hát với playlist)</p></li>
+</ul>
+<p>Bài tập này sẽ ứng dụng CSDL trên để giúp luyện tập truy vấn SQL phức tạp và xử lý dữ liệu thực tế.
+Bạn có thể tải database này theo link github dưới và tìm hiểu thêm database này tại đây: <a class="github reference external" href="https://github.com/lerocha/chinook-database">lerocha/chinook-database</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite&quot;</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;Data/Chinook.sqlite&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Đã tải Chinook.sqlite&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Đã tải Chinook.sqlite
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-thong-ke-doanh-thu-theo-quoc-gia">
+<h2><strong>6A.</strong> Thống kê doanh thu theo quốc gia<a class="headerlink" href="#a-thong-ke-doanh-thu-theo-quoc-gia" title="Link to this heading">#</a></h2>
+<p>Mục tiêu: Tìm ra quốc gia có doanh thu lớn nhất từ các đơn hàng.
+Hướng dẫn thực hiện:</p>
+<ul class="simple">
+<li><p>Dùng sqlite3 và pandas để kết nối và đọc bảng invoices</p></li>
+<li><p>Nhóm theo BillingCountry và tính tổng Total</p></li>
+<li><p>Lọc và hiển thị top 5 quốc gia có doanh thu cao nhất (sắp xếp giảm dần)</p></li>
+</ul>
+</section>
+<section id="b-tinh-so-bai-hat-theo-tung-the-loai-genre">
+<h2>6B. Tính số bài hát theo từng thể loại (Genre)<a class="headerlink" href="#b-tinh-so-bai-hat-theo-tung-the-loai-genre" title="Link to this heading">#</a></h2>
+<p>Mục tiêu: Đếm số lượng bài hát thuộc từng thể loại trong hệ thống.
+Hướng dẫn thực hiện:</p>
+<ul class="simple">
+<li><p>Truy vấn bảng tracks và bảng genres</p></li>
+<li><p>Gộp (merge) 2 bảng theo GenreId</p></li>
+<li><p>Đếm số lượng bài hát trong từng GenreName, sắp xếp giảm dần</p></li>
+</ul>
+</section>
+<section id="loi-giai-bai-tap-6">
+<h2>Lời giải bài tập 6<a class="headerlink" href="#loi-giai-bai-tap-6" title="Link to this heading">#</a></h2>
+</section>
+<section id="id15">
+<h2><strong>6A.</strong><a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandasql</span><span class="o">,</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="o">,</span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Bước 1: Kết nối tới cơ sở dữ liệu Chinook</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;Data/Chinook.sqlite&#39;</span><span class="p">)</span>
+
+<span class="c1"># Bước 2: Đọc bảng invoices</span>
+<span class="n">Invoice</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Invoice&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="c1"># Bước 3: Nhóm theo quốc gia và tính tổng doanh thu</span>
+<span class="n">revenue_by_country</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Invoice</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;BillingCountry&quot;</span><span class="p">)[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;BillingCountry&quot;</span><span class="p">:</span> <span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="s2">&quot;TotalRevenue&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+
+<span class="c1"># Bước 4: Sắp xếp giảm dần và lấy top 5 quốc gia có doanh thu cao nhất</span>
+<span class="n">top_countries</span> <span class="o">=</span> <span class="n">revenue_by_country</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;TotalRevenue&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Hiển thị kết quả</span>
+<span class="n">top_countries</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>TotalRevenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>22</th>
+      <td>USA</td>
+      <td>523.06</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Canada</td>
+      <td>303.96</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>France</td>
+      <td>195.10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Brazil</td>
+      <td>190.10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Germany</td>
+      <td>156.48</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id16">
+<h2>6B<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 1. Kết nối tới database, đã kết nối ở phần 5A</span>
+<span class="c1">#conn = sqlite3.connect(&quot;Chinook.sqlite&quot;)</span>
+
+<span class="c1"># 2. Đọc bảng Track và Genre</span>
+<span class="n">df_track</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Track&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">df_genre</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM Genre&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+
+<span class="c1"># 3. Gộp theo GenreId</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_track</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_genre</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;GenreId&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4. Đổi tên cột rõ ràng</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Name_x&quot;</span><span class="p">:</span> <span class="s2">&quot;TrackName&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Name_y&quot;</span><span class="p">:</span> <span class="s2">&quot;GenreName&quot;</span>
+<span class="p">})</span>
+
+<span class="c1"># 5. Đếm số lượng bài hát theo thể loại</span>
+<span class="n">genre_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;GenreName&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">genre_counts</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GenreName&quot;</span><span class="p">,</span> <span class="s2">&quot;TrackCount&quot;</span><span class="p">]</span>
+
+<span class="c1"># 6. Hiển thị kết quả</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">genre_counts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            GenreName  TrackCount
+0                Rock        1297
+1               Latin         579
+2               Metal         374
+3  Alternative &amp; Punk         332
+4                Jazz         130
+5            TV Shows          93
+6               Blues          81
+7           Classical          74
+8               Drama          64
+9            R&amp;B/Soul          61
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./practice-exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="30_bai_tap_pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bài tập trực quan hóa dữ liệu</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="50_bai_tap_tien_xu_ly_du_lieu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tiền xử lý dữ liệu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Thực hành nhập liệu từ các nguồn khác nhau</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-1-doc-file-tu-file-delimited-data">Bài tập 1: Đọc file Từ file delimited data:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu">🔰 Giới thiệu:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-doc-file-delimited-data"><strong>1A.</strong> Đọc file Delimited data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-gop-files"><strong>1B.</strong> Gộp files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-1">Lời giải bài tập 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a"><strong>1A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b"><strong>1B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-2-doc-du-lieu-tu-tu-file-excel">Bài tập 2: Đọc dữ liệu từ Từ File excel</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-3-tu-file-hoac-object-json">Bài tập 3: Từ file hoặc object json:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yeu-cau">Yêu cầu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-3">Lời giải bài tập 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>3A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-4-lay-du-lieu-tu-api">Bài tập 4: Lấy dữ liệu từ API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Yêu cầu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tim-api-du-lieu-bang-gia-khop-lenh-vn30"><strong>4A.</strong> Tìm API dữ liệu bảng giá khớp lệnh VN30</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tai-tao-du-lieu"><strong>4B.</strong> Tái tạo dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai">Lời giải</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-5-lay-du-lieu-tu-trang-web-khong-qua-api">Bài tập 5: Lấy dữ liệu từ trang web (không qua API)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Yêu cầu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-khoi-tao-trinh-duyet-va-load-du-lieu"><strong>5A.</strong> Khởi tạo trình duyệt và load dữ liệu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-khoi-tao-trinh-duyet-va-load-du-lieu"><strong>5B.</strong> Khởi tạo trình duyệt và load dữ liệu</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Lời giải</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>5A.</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>5B.</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-6-doc-du-lieu-tu-co-so-du-lieu-sql-voi-pandas">Bài tập 6: Đọc dữ liệu từ cơ sở dữ liệu SQL với Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">🔰 Giới thiệu:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Yêu cầu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-thong-ke-doanh-thu-theo-quoc-gia"><strong>6A.</strong> Thống kê doanh thu theo quốc gia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-tinh-so-bai-hat-theo-tung-the-loai-genre">6B. Tính số bài hát theo từng thể loại (Genre)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loi-giai-bai-tap-6">Lời giải bài tập 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>6A.</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6B</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nguyen Quang Huy
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+  <p>© 2025 Trường Công nghệ - NEU</p>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
